@@ -8,15 +8,154 @@
 }
 
 
+
+
 :root{
     --bg-color: #101113;
     --text-color: #fff;
-    --main-color: #34e7f8;
+    --main-color: #ffd700;
     --h1-font:6rem;
     --p-font:1rem;
 }
 
-body{
-    background-color: var(--bg-color);
 
+
+nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 8%;
+    transition: all .55s ease;
+    background: transparent;
+    
+}
+header{
+    background-image: url(../css/media/banner-inicio.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: var(--text-color);
+}
+
+header::before{
+    position: absolute;
+    content: '';
+    background-color: black;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .7;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: bold;
+
+}
+
+.logo i{
+    color: var(--main-color);
+    font-size: 32px;
+    margin-right: 5px;
+}
+
+.navbar {
+    display: flex;
+
+}
+
+.navbar a{
+    color: var(--other-color);
+    font-size: var(--p-font);
+    font-weight: 500;
+    margin: 0 30px;
+    transition: all .55s ease
+
+}
+
+.navbar a:hover{
+    color: var(--main-color);
+}
+
+.navbar a.active{
+    color: var(--main-color); 
+}
+
+.nav-icons{
+    display: flex;
+    align-items: center;
+}
+
+#menu-icon{
+    font-size: 35px;
+    color: var(--text-color);
+    z-index: 10001;
+    cursor: pointer;
+}
+
+.nav-icons i{
+    margin-right: 25px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all .55s ease;
+
+}
+
+.nav-icons i:hover{
+    transform: translateY(-5px);
+    color: var(--main-color);
+}
+
+.coursesearch input{
+    background: #0d0f14;
+    border: 1px solid #ffd700;
+    border-radius: .5rem;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    letter-spacing: .16px;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: .375rem 2.5rem .375rem 1rem;
+}
+
+.coursesearch button{
+    background-color: 0 0;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 3.5rem;
+    width: 3rem;
+    padding: 1rem .75rem;
+
+}
+
+
+section{
+    padding: 0 15%;
+}
+
+.home{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
 }
