@@ -7,9 +7,6 @@
     list-style-type: none;
 }
 
-
-
-
 :root{
     --bg-color: #101113;
     --text-color: #fff;
@@ -18,10 +15,8 @@
     --p-font:1rem;
 }
 
-
-
 nav{
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
     right: 0;
@@ -34,6 +29,7 @@ nav{
     background: transparent;
     
 }
+
 header{
     background-image: url(../css/media/banner-inicio.jpg);
     background-position: center center;
@@ -166,17 +162,6 @@ section{
     padding: .375rem 2.5rem .375rem 1rem;
 }
 
-.coursesearch button{
-    background-color: 0 0;
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 3.5rem;
-    width: 3rem;
-    padding: 1rem .75rem;
-}
-
 .home{
     display: flex;
     flex-direction: column;
@@ -227,3 +212,23 @@ section{
         top:100%
     }
 }
+
+section .beneficios{
+    background-color: #fff;
+}
+
+
+hr .line-oferta-basic{
+    vertical-align: middle;
+    width: 30%;
+    display: inline-block;
+    border: 1px solid black; 
+}
+
+hr .line-oferta-premiun{
+    vertical-align: middle;
+    width: 30%;
+    display: inline-block;
+    border: 1px solid black; 
+}
+
