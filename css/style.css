@@ -232,3 +232,22 @@ hr .line-oferta-premiun{
     border: 1px solid black; 
 }
 
+.beneficios-icons1, .beneficios-icons2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.beneficios-icons article img{
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+section.beneficios article p{
+    text-align: center;
+}
+
+.beneficios-icons1,.beneficios-icons2{
+    justify-content: space-between;
+}
