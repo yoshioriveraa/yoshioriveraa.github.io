@@ -232,9 +232,25 @@ hr .line-oferta-premiun{
     border: 1px solid black; 
 }
 
-.mision-vision img{ 
-    width: 800px;
+
+/* MISION Y VISION */
+
+section.mision-vision{
+    width: 100%;
 }
+
+.container-mision, .container-vision{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: center;
+}
+
+.mision-vision img{ 
+    width: 100%;
+}
+
+
 
 /* TESTIMONIOS */
 .flex-div{
@@ -251,11 +267,6 @@ hr .line-oferta-premiun{
 
 section.testimonios{
     width: 100%; 
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #fff;
-
 }
 
 .container-testimonios{
@@ -264,9 +275,9 @@ section.testimonios{
 }
 
 .testimonios-empresas{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    justify-content: space-between;
     gap: 10px;
     padding: 1% 8%;
 }
@@ -277,9 +288,7 @@ section.testimonios{
     justify-content: center;
 }
 
-section.testimonios article{
-    display: relative;
-    width: 30%;  
+section.testimonios article{ 
     padding: 6% 3%;
     border: 1px solid;
     border-radius: 6px;

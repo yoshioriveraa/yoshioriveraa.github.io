@@ -200,10 +200,40 @@ section{
 
 
 
+.ruta-aprendizaje-contenido{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
 
+.ruta-aprendizaje-contenido article{
+    padding: 6% 3%;
+    border: 1px solid #dfdfdf;
+    border-radius: 6px;
+    margin: 0 auto; 
+    align-items: center;
+    text-align: center;
+}
+
+.ruta-aprendizaje-contenido article h3,p{
+    text-align: start;
+}
 
 
 section.ruta-aprendizaje img{
-    width: 300px;
+    width: 50%;
+}
+
+@media (max-width: 1070px){
+    .ruta-aprendizaje-contenido{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 430px){
+    .ruta-aprendizaje-contenido{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
