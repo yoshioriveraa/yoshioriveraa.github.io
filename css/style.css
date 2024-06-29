@@ -293,6 +293,9 @@ section.beneficios article p{
 }
 
 
+
+
+
 /* HERRAMIENTAS */
 section.herramientas{
     width: 100%;
@@ -328,9 +331,15 @@ section.herramientas{
 
 .herramientas-text{
     font-size: 24px;
+
     margin-bottom: 100px;
     padding: 20px 0;
 }
+
+#herramientas-p{
+    font-weight: 650;
+}
+
 
 
 
@@ -436,4 +445,14 @@ footer{
 
 footer p{
     color: var(--text-color);
+}
+
+
+@media (max-width:768px){
+    .beneficios-icons{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .herramientas-icons{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
