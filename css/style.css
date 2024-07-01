@@ -5,6 +5,16 @@
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
     list-style-type: none;
+
+}
+
+* p{
+    font-size: 20px
+}
+
+* h2{
+    font-size: 40px;
+    text-align: center;
 }
 
 :root{
@@ -13,6 +23,12 @@
     --main-color: #ffd700;
     --h1-font:6rem;
     --p-font:1rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 12rem;
 }
 
 nav{
@@ -178,12 +194,12 @@ section{
 .home h4{
 
     font-weight: 300;
-    font-size: 18px;
+    font-size: 20px;
 }
 .home-text .coursesearch p{
     margin: 20px 0;
     font-weight: 300;
-    font-size: 18px;
+
 }
 
 
@@ -244,16 +260,6 @@ hr .line-oferta-premiun{
 
 /* BENEFICIOS */
 
-section.beneficios{
-    width: 100%;
-    margin: 50px 0;
-}
-
-.container-beneficios{
-    width: 100%;
-    padding: 100px 0;
-}
-
 .beneficios-title{
     display: flex;
     justify-content: center;
@@ -264,13 +270,11 @@ section.beneficios{
 }
 
 .beneficios-icons{
-    height: 500px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 20px;
 
 }
-
 
 .beneficios-icons article{
     border: 1px solid #dfdfdf;
@@ -278,42 +282,29 @@ section.beneficios{
     padding: 10px;
     text-align: center;
     transition: all ease.55s;
-
+    
 }
 
 .beneficios-icons img{
-    width: 50%;
-
+    width: 40%;
+    margin: 10px 0;
 }
 
 section.beneficios article p{
     text-align: center;
     padding-top: 10px;
-    font-size: 18px;
+    margin: 10px 0;
 }
-
-
 
 
 
 /* HERRAMIENTAS */
-section.herramientas{
-    width: 100%;
-    margin: 150px 0;
-}
-
-
-.container-herramientas{
-    width: 100%;
-    padding: 100px 0;
-    margin: auto;
-}
 
 .herramientas-icons{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     text-align: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .herramientas-icons article{
@@ -322,7 +313,7 @@ section.herramientas{
     padding: 10px;
     text-align: center;
     transition: all ease.55s;
-    font-size: 18px;
+;
 }
 
 .herramientas-icons img{
@@ -330,10 +321,8 @@ section.herramientas{
 }
 
 .herramientas-text{
-    font-size: 24px;
-
-    margin-bottom: 100px;
     padding: 20px 0;
+    margin-bottom: 50px;
 }
 
 #herramientas-p{
@@ -341,25 +330,13 @@ section.herramientas{
 }
 
 
-
-
 /*  PAGOS */
-
-section.pagos{
-    width: 100%;
-}
-
-.container-pagos{
-    padding: 5% 0;
-}
 
 .pagos-ofertas{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
-    gap: 10px;
-    font-size: 18px;
-    
+    gap: 1px; 
 
 }
 
@@ -370,6 +347,12 @@ section.pagos{
 
 }
 
+
+.oferta-premiun{
+    color: #fff;
+    background-color: #002750;
+}
+
 .btn-ofertas{
     display: flex;
     border: 1px solid transparent;
@@ -377,30 +360,26 @@ section.pagos{
     width: 100%;
     justify-content: center;
     margin: 10px 0 ;
-    padding: 4px 0;
-    color: var(--text-color);
+    padding: 1.5%;
+    font-size: 20px;
+}
+
+#btn-basic{
     background-color: #1c7ce2;
-    font-size: 12px;
+    color: var(--text-color);
 }
 
-h2{
-    text-align: center;
-    padding: auto;
-    
+#btn-premiun{
+    background-color: #fff;
+    color: #002750;
 }
 
-.pagos-text{
-    padding: 50px 0;
-    font-size: 24px;
-    
+.oferta-beneficios .beneficio{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-
-
-.pagos-text p{
-    text-align: center;
-    font-size: 18px;
-}
 
 .oferta-beneficios{
     display: flex;
@@ -426,25 +405,65 @@ h2{
     font-size: 40px;
 
 }
+
+.pagos-ofertas p{
+    text-align: left;
+    margin: 2% 0;
+}
+
+
+.pagos-text{
+    padding: 50px 0;
+    font-size: 24px;
+    
+}
+
+.pagos-text p{
+    text-align: center;
+}
+
+
 /* CONTACTO */
 
-section.contacto{
-    width: 100%;
-}
-
-.container-contacto{
-    padding: 5% 0;
-}
-
-
 /* FOOTER */
+
 footer{
-    width: 100%;
-    background: #0d0f14;
+    background-color: #002750;
 }
 
-footer p{
+footer p, i, a{
     color: var(--text-color);
+    
+}
+
+.container-footer1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.redes-img img{
+    width: 4%;
+}
+
+.redes-nav a{
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.redes-sociales{
+    display: flex;
+    gap: 10px;
+}
+
+.redes-sociales i{
+    font-size: 28px;
+}
+
+.container-footer2{
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -456,3 +475,18 @@ footer p{
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+
+@media (max-width: 425px){
+    .beneficios-icons{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .herramientas-icons{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .pagos-ofertas{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+}
+
