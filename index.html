@@ -1,281 +1,647 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css\style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Perú</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <!-- or -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leonardo Rivera Agarie — Analista de Datos</title>
+  <meta name="description" content="Portfolio profesional de Leonardo Rivera Agarie. Analista de Datos especializado en Python, SQL, automatización y dashboards en Lima, Perú." />
+  <meta name="keywords" content="analista de datos, python, sql, automatización, dashboards, Lima, Perú, data analyst" />
+  <meta name="author" content="Leonardo Rivera Agarie" />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Leonardo Rivera Agarie — Analista de Datos" />
+  <meta property="og:description" content="Transformo datos en decisiones. Especialista en Python, SQL, automatización y dashboards." />
+  <meta property="og:type" content="website" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-    <main>
 
-        <!-- HEADER -->
-        <header>
-            <nav>
-                
-                <a href="#" class="logo"><i class='bx bxl-python'></i>Python Perú</a>
-                <ul class="navbar">   
-                    <li><a href="..\..\index.html" class="active">Inicio</a></li>
-                    <li><a href="html\nosotros\nosotros.html">Nosotros</a></li>
-                    <li><a href="html\cursos\cursos.html">Cursos</a></li>
-                    <li><a href="html\blog\blog.html">Blog</a></li>
-                    <li><a href="#">Contáctenos</a></li>        
-                </ul>
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
 
-                <div class="nav-icons">
-                    <a href="#" class="h-btn">Acceder</a>
-                    <div class="bx bx-menu" id="menu-icon"></div>
-                </div>
-            </nav>
+  <!-- ─── NAV ─── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">LRA<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#experience">Experiencia</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+      <a href="#" class="btn-nav" download>Descargar CV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="#about" class="mobile-link">Sobre mí</a></li>
+        <li><a href="#stack" class="mobile-link">Stack</a></li>
+        <li><a href="#projects" class="mobile-link">Proyectos</a></li>
+        <li><a href="#experience" class="mobile-link">Experiencia</a></li>
+        <li><a href="#contact" class="mobile-link">Contacto</a></li>
+        <li><a href="#" class="mobile-link" download>Descargar CV</a></li>
+      </ul>
+    </div>
+  </nav>
 
-            <section class="home">
-                <div class="home-text">
-                    <h1>Aprende a programar en<span> 4 semanas</span></h1>
-                    <h4>Trabaja con las herramientas tecnologías más demandadas</h4>
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge reveal">Lima, Perú · Disponible para proyectos</div>
+      <h1 class="hero-name reveal">Leonardo<br /><em>Rivera Agarie</em></h1>
+      <p class="hero-title reveal">
+        <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
+      </p>
+      <p class="hero-desc reveal">
+        Convierto datos desordenados en decisiones claras. Diseño automatizaciones, dashboards y pipelines que resuelven problemas reales de negocio — no solo análisis bonitos.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn-primary">Ver Proyectos</a>
+        <a href="#" class="btn-secondary" download>
+          <i class="fa-solid fa-download"></i> Descargar CV
+        </a>
+        <a href="https://linkedin.com/in/leonardoriveraagarie" target="_blank" class="btn-icon" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/leonardoriveraagarie" target="_blank" class="btn-icon" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://youtube.com/@leonardoriveraagarie" target="_blank" class="btn-icon" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="stat-num">1+</span>
+          <span class="stat-label">Año de experiencia</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">6+</span>
+          <span class="stat-label">Proyectos entregados</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Tecnologías dominadas</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-                    <article class="coursesearch">
-                        <p>¿Qué quieres aprender?</p>
-                        <div class="buscador">
-                            <input type="text">
-                        </div>
-                    </article>
-                </div>
-            </section>
-        </header>
-
-
-        <!-- BENEFICIOS -->
-        <section class="beneficios">
-            <div class="container-beneficios">
-                <div class="beneficios-title">
-                    <div class="beneficios-text">
-                        <h2>¿Por qué Python Perú?</h2>
-                    </div>
-                    <div class="beneficios-logo">
-                        <img src="" alt="">
-                    </div>
-                </div>
-                <div class="beneficios-icons">
-                    <article>
-                        <img src="css\media\conexion.png" alt="Acceso Global">
-                        <p>Acceso global</p>
-                    </article>
-                    <article>
-                        <img src="css\media\flexibilidad.png" alt="Flexibilidad Horaria">
-                        <p>Flexibilidad horaria</p>
-                    </article>
-                    <article>
-                        <img src="css\media\comunidad.png" alt="Comunidad">
-                        <p>Comunidad y soporte</p>
-                    </article>
-                
-                    <article>
-                        <img src="css\media\certificado.png" alt="Certificado">
-                        <p>Certificado</p>
-                    </article>
-                    <article>
-                        <img src="css\media\actualizaciones.png" alt="Actualizaciones">
-                        <p>Actualizaciones</p>
-                    </article>
-                    <article>
-                        <img src="css\media\recursos.png" alt="Recursos informáticos">
-                        <p>Recursos informáticos</p>
-                    </article>
-                    
-                </div>
+  <!-- ─── SOBRE MÍ ─── -->
+  <section class="about section-pad" id="about">
+    <div class="container">
+      <div class="section-label reveal">01 — Sobre mí</div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2 class="section-title">Datos sin análisis<br /><em>son solo ruido.</em></h2>
+          <p>
+            Soy analista de datos con más de un año de experiencia profesional trabajando en entornos donde los datos tienen que convertirse en acción. Me especializo en automatizar procesos repetitivos con Python, construir dashboards que directivos realmente entienden, y diseñar pipelines ETL que eliminan el trabajo manual.
+          </p>
+          <p>
+            No me limito a limpiar datos — entiendo el negocio, identifico dónde está el cuello de botella y propongo soluciones medibles. He trabajado en digitalización de procesos, organización de bases de datos, optimización de consultas SQL y reportes gerenciales que aceleran la toma de decisiones.
+          </p>
+          <p>
+            Además creo contenido educativo en YouTube y TikTok sobre programación y análisis de datos, porque enseñar es la mejor forma de dominar un tema.
+          </p>
+          <div class="about-tags">
+            <span>Resolución de problemas</span>
+            <span>Automatización</span>
+            <span>Comunicación de datos</span>
+            <span>Pensamiento analítico</span>
+            <span>Mentoría técnica</span>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="avatar-container">
+            <div class="avatar-placeholder">
+              <span class="avatar-initials">LRA</span>
+              <div class="avatar-ring"></div>
             </div>
-        </section>
-
-        <!-- HERRAMIENTAS -->
-        <section class="herramientas">
-            <div class="container-herramientas">
-                <div class="herramientas-text">
-                    <h2>Herramientas más utilizadas del Análisis de datos</h2>
-                </div>
-                <div class="herramientas-icons">
-                    <article>
-                        <img src="css\media\logopython.png" alt="Python">
-                        <p id="herramientas-p">Python</p>
-                        <p id="span">Lenguaje de programación</p>
-                    </article>
-                    <article>
-                        <img src="css\media\logonumpy.png" alt="Numpy">
-                        <p id="herramientas-p">Numpy</p>
-                        <p id="span">Cálculo Numérico</p>
-                    </article>
-                    <article>
-                        <img src="css\media\logopandas.png" alt="Pandas">
-                        <p id="herramientas-p">Pandas</p>
-                        <p id="span">Manipulación de Datos</p>
-                    </article>
-                    <article>
-                        <img src="css\media\logomatplotlib.png" alt="Matplotlib">
-                        <p id="herramientas-p">Matplotlib</p>
-                        <p id="span">Personalización de gráficas</p>
-                    </article>
-                    <article>
-                        <img src="css\media\logoseaborn.png" alt="Seaborn">
-                        <p id="herramientas-p">Seaborn</p>
-                        <p id="span">Gráficas Avanzadas</p>
-                    </article>
-                    <article>
-                        <img src="css\media\logoplotly.png" alt="Skicitlearn">
-                        <p id="herramientas-p">Plotly</p>
-                        <p id="span">Gráficas Interactivas</p>
-                    </article>
-                </div>
+            <div class="about-card floating-card card-top">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <strong>Dashboard en producción</strong>
+                <small>Looker Studio + BigQuery</small>
+              </div>
             </div>
-        </section>
-
-        <!-- PAGOS -->
-        <section class="pagos">
-            <div class="container-pagos">
-                <div class="pagos-text">
-                    <h2>Elije el plan ideal para ti</h2>
-                    <p id="precio_valido">Precios válidos para 1 estudiantes</p>
-                </div>
-                <div class="pagos-ofertas">
-                    <article  class="oferta-basic">
-                        <div class="container-oferta-basic">
-                            <div class="precio">
-                                <p class="precio-oferta">$10</p>
-                                <p class="mes">/mes</p>
-                            </div>
-                            <div class="tipo-cuenta">
-                                <p class="basic-oferta">BASIC</p>
-                            </div>
-                        </div>
-                        <p id="cobro_anual">Cobro Anual recurrente de $110</p>
-                        <!-- Linea -->
-                        <hr class="line-oferta-basic">
-                        <div class="oferta-beneficios">
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Acceso limitado</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Acceso al discord</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>24/7 soporte de dudas</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Certificado digitales</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Descuentos 30% en sesiones en vivo</p>
-                            </div>
-                        </div>
-                        <a href="#" class="btn-ofertas" id="btn-basic">Suscríbete a Basic</a>
-                    </article>
-                    <article class="oferta-premiun">
-                        <div class="container-oferta-basic">
-                            <div class="precio">
-                                <p class="precio-oferta">$50</p>
-                                <p class="mes">/mes</p>
-                            </div>
-                            <div class="tipo-cuenta">
-                                <p  class="premiun-oferta">PREMIUN</p>
-                            </div>
-                        </div>
-                        <p id="cobro_anual">Cobro Anual recurrente de $550</p>
-                        <!-- Linea -->
-                        <hr class="line-oferta-premiun">
-
-                        <div class="oferta-beneficios">
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Acceso ilimitado</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Acceso al discord de por vida</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Asesorías personalizadas</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Certificados digitales</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Descuentos del 50% en sesiones en vivo</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Eventos exclusivos</p>
-                            </div>
-                            <div class="beneficio">
-                                <i class='bx bx-check-circle'></i>
-                                <p>24/7 Soporte de dudas</p>
-                            </div>
-                        </div>
-                        <a href="#" class="btn-ofertas" id="btn-premiun">Suscríbete a Premiun</a>
-                    </article>
-                </div>
+            <div class="about-card floating-card card-bottom">
+              <i class="fa-brands fa-python"></i>
+              <div>
+                <strong>Automatización lista</strong>
+                <small>Proceso manual → 0 horas</small>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- CONTACTO -->
-        <section class="contacto">
-            <div class="container-contacto">
-                <h2>Contáctenos</h2>
-                <p>Envíemos su correo para brindarle mayor información para cursos corporativos en empresas y instituciones educativas.
-                </p>
-                <div class="contacto-correo">
-                    
-                </div>
+  <!-- ─── STACK TECNOLÓGICO ─── -->
+  <section class="stack section-pad" id="stack">
+    <div class="container">
+      <div class="section-label reveal">02 — Stack tecnológico</div>
+      <h2 class="section-title reveal">Herramientas que<br /><em>uso en producción</em></h2>
+      <p class="section-sub reveal">No teoría. Estas son las tecnologías con las que entrego resultados.</p>
+
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <div class="stack-group-label">Lenguajes & Datos</div>
+          <div class="stack-items">
+            <div class="stack-item">
+              <i class="fa-brands fa-python"></i>
+              <span>Python</span>
             </div>
-        </section>
+            <div class="stack-item">
+              <i class="fa-solid fa-database"></i>
+              <span>SQL</span>
+            </div>
+            <div class="stack-item">
+              <span class="tech-icon">pd</span>
+              <span>Pandas</span>
+            </div>
+            <div class="stack-item">
+              <span class="tech-icon">np</span>
+              <span>NumPy</span>
+            </div>
+            <div class="stack-item">
+              <span class="tech-icon">plt</span>
+              <span>Matplotlib</span>
+            </div>
+          </div>
+        </div>
+        <div class="stack-group">
+          <div class="stack-group-label">Visualización & BI</div>
+          <div class="stack-items">
+            <div class="stack-item">
+              <i class="fa-solid fa-chart-bar"></i>
+              <span>Looker Studio</span>
+            </div>
+            <div class="stack-item">
+              <i class="fa-solid fa-chart-pie"></i>
+              <span>Power BI</span>
+            </div>
+            <div class="stack-item">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Excel</span>
+            </div>
+          </div>
+        </div>
+        <div class="stack-group">
+          <div class="stack-group-label">Procesos & Herramientas</div>
+          <div class="stack-items">
+            <div class="stack-item">
+              <i class="fa-solid fa-arrows-spin"></i>
+              <span>ETL</span>
+            </div>
+            <div class="stack-item">
+              <i class="fa-solid fa-robot"></i>
+              <span>Automatización</span>
+            </div>
+            <div class="stack-item">
+              <i class="fa-brands fa-git-alt"></i>
+              <span>Git</span>
+            </div>
+            <div class="stack-item">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </div>
+            <div class="stack-item">
+              <i class="fa-brands fa-html5"></i>
+              <span>HTML/CSS/JS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ─── PROYECTOS ─── -->
+  <section class="projects section-pad" id="projects">
+    <div class="container">
+      <div class="section-label reveal">03 — Proyectos</div>
+      <div class="projects-header">
+        <h2 class="section-title reveal">Trabajo real,<br /><em>resultados medibles</em></h2>
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="analysis">Data Analysis</button>
+          <button class="filter-btn" data-filter="automation">Automatización</button>
+          <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        </div>
+      </div>
 
-        <!-- FOOTER -->
-        <footer>
-            <section class="redes">
-                <div class="container-footer1">
-                    <div class="redes-img">
-                        <img src="css\media\logopython.png" alt="Python">
-                    </div>
+      <div class="projects-grid" id="projectsGrid">
 
-                    <div class="redes-nav">
-                        <a href="#" class="inicio">Inicio</a>
-                        <a href="#" class="nosotros">Nosotros</a>
-                        <a href="#" class="cursos">Cursos</a>
-                        <a href="#" class="blog">Blog</a>
-                        <a href="#" class="contacto">Contáctenos</a>
-                    </div>
+        <!-- Proyecto 1 -->
+        <article class="project-card reveal" data-category="dashboard">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="project-tag">Dashboard</div>
+          </div>
+          <div class="project-body">
+            <h3>Dashboard de KPIs Gerenciales</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> El equipo directivo tardaba horas en consolidar reportes de Excel para reuniones semanales.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Dashboard en tiempo real que redujo el tiempo de reporte de 4 horas a 15 minutos.
+            </p>
+            <div class="project-tech">
+              <span>Looker Studio</span>
+              <span>SQL</span>
+              <span>BigQuery</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
 
-                    <div class="redes-sociales">
-                        <!-- Iconos de redes sociales -->
-                        <i class='bx bxl-facebook-square'></i>
-                        <i class='bx bxl-instagram-alt' ></i>
-                        <i class='bx bxl-linkedin-square' ></i>
-                        <i class='bx bxl-youtube' ></i>
-                    </div> 
-                </div>
-                
-            </section>
+        <!-- Proyecto 2 -->
+        <article class="project-card reveal" data-category="automation">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="project-tag">Automatización</div>
+          </div>
+          <div class="project-body">
+            <h3>Automatización de Reportes con Python</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> Un proceso manual de 3 horas diarias para generar y enviar reportes por correo.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Script Python que automatiza extracción, procesamiento y envío — 0 intervención humana.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>SMTP</span>
+              <span>Cron</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
 
-            <section class="container-footer2">
-                <p>Copyright 2024 Website. All rights reserved.</p>
-                <p>Terms & Conditions</p>
-            </section>
-        </footer>
-    </main>
-    
+        <!-- Proyecto 3 -->
+        <article class="project-card reveal" data-category="analysis">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </div>
+            <div class="project-tag">Data Analysis</div>
+          </div>
+          <div class="project-body">
+            <h3>Análisis Exploratorio de Ventas</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> Sin visibilidad sobre qué productos, regiones y temporadas generaban más revenue.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> EDA completo con insights accionables que guiaron estrategia comercial del siguiente trimestre.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>Matplotlib</span>
+              <span>NumPy</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 4 -->
+        <article class="project-card reveal" data-category="automation">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <div class="project-tag">Automatización</div>
+          </div>
+          <div class="project-body">
+            <h3>Pipeline ETL para Base de Datos Empresarial</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> Datos dispersos en múltiples fuentes sin estandarización ni trazabilidad.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Pipeline ETL que unifica, limpia y carga datos automáticamente con logs de auditoría.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>ETL</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 5 -->
+        <article class="project-card reveal" data-category="ml">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <div class="project-tag">Machine Learning</div>
+          </div>
+          <div class="project-body">
+            <h3>Modelo Predictivo de Churn</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> La empresa no podía anticipar qué clientes estaban en riesgo de abandonar el servicio.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Modelo con 85% de accuracy que identifica clientes en riesgo 30 días antes del churn.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Scikit-learn</span>
+              <span>Pandas</span>
+              <span>Matplotlib</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 6 -->
+        <article class="project-card reveal" data-category="web">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="project-tag">Web</div>
+          </div>
+          <div class="project-body">
+            <h3>Aplicación Web de Análisis de Datos</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> El equipo necesitaba explorar datasets sin depender de un analista para cada consulta.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> App web que permite subir CSV y explorar datos con gráficos interactivos sin escribir código.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Streamlit</span>
+              <span>Pandas</span>
+              <span>Plotly</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCIA ─── -->
+  <section class="experience section-pad" id="experience">
+    <div class="container">
+      <div class="section-label reveal">04 — Experiencia</div>
+      <h2 class="section-title reveal">Dónde he<br /><em>creado impacto</em></h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 — Presente</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Analista de Datos</h3>
+              <span class="timeline-company">Empresa Actual · Lima, Perú</span>
+            </div>
+            <ul class="timeline-achievements">
+              <li>Desarrollo de automatizaciones en Python que eliminaron procesos manuales repetitivos, liberando 10+ horas semanales del equipo.</li>
+              <li>Diseño e implementación de dashboards de KPIs para dirección, reduciendo el tiempo de preparación de reportes en un 80%.</li>
+              <li>Optimización de consultas SQL que mejoraron la velocidad de extracción de datos en un 60%.</li>
+              <li>Digitalización de procesos empresariales manuales, reduciendo errores operativos.</li>
+            </ul>
+            <div class="timeline-tech">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Looker Studio</span>
+              <span>Pandas</span>
+              <span>ETL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022 — 2023</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Creador de Contenido Técnico</h3>
+              <span class="timeline-company">YouTube & TikTok · Independiente</span>
+            </div>
+            <ul class="timeline-achievements">
+              <li>Creación de contenido educativo sobre Python, SQL y análisis de datos con enfoque práctico.</li>
+              <li>Desarrollo de tutoriales y proyectos guiados para audiencias hispanohablantes.</li>
+              <li>Construcción de comunidad de programadores y analistas en crecimiento.</li>
+            </ul>
+            <div class="timeline-tech">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Educación técnica</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EDUCACIÓN ─── -->
+  <section class="education section-pad" id="education">
+    <div class="container">
+      <div class="section-label reveal">05 — Formación</div>
+      <h2 class="section-title reveal">Educación y<br /><em>certificaciones</em></h2>
+
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">2020 — 2024</span>
+            <h3>Carrera Universitaria</h3>
+            <p class="edu-place">Universidad · Lima, Perú</p>
+            <p>Formación en sistemas, tecnología e informática con enfoque en análisis de datos y programación.</p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-icon"><i class="fa-solid fa-certificate"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">2023</span>
+            <h3>Data Analytics Certification</h3>
+            <p class="edu-place">Plataforma de Certificación</p>
+            <p>Análisis de datos, estadística aplicada, visualización y comunicación de resultados.</p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-icon"><i class="fa-brands fa-python"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">2022</span>
+            <h3>Python for Data Science</h3>
+            <p class="edu-place">Plataforma Online</p>
+            <p>Pandas, NumPy, Matplotlib, análisis exploratorio y manipulación avanzada de datos.</p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-icon"><i class="fa-solid fa-database"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">2023</span>
+            <h3>SQL Avanzado & Optimización</h3>
+            <p class="edu-place">Certificación SQL</p>
+            <p>Consultas complejas, optimización de queries, diseño de bases de datos relacionales.</p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-icon"><i class="fa-solid fa-chart-bar"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">2023</span>
+            <h3>Business Intelligence & Dashboards</h3>
+            <p class="edu-place">Google / Looker Studio</p>
+            <p>Diseño de dashboards, KPIs, storytelling con datos y visualización ejecutiva.</p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">2024</span>
+            <h3>Machine Learning Fundamentals</h3>
+            <p class="edu-place">Plataforma Online</p>
+            <p>Fundamentos de ML, modelos supervisados, evaluación y despliegue básico con Scikit-learn.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACTO ─── -->
+  <section class="contact section-pad" id="contact">
+    <div class="container">
+      <div class="section-label reveal">06 — Contacto</div>
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <h2 class="section-title">¿Tienes un proyecto<br /><em>con datos?</em></h2>
+          <p>
+            Estoy disponible para proyectos de análisis de datos, automatización, dashboards y consultoría. Conversamos sin compromiso.
+          </p>
+          <div class="contact-links">
+            <a href="https://linkedin.com/in/leonardoriveraagarie" target="_blank" class="contact-link">
+              <i class="fa-brands fa-linkedin-in"></i>
+              <div>
+                <strong>LinkedIn</strong>
+                <small>linkedin.com/in/leonardoriveraagarie</small>
+              </div>
+            </a>
+            <a href="https://github.com/leonardoriveraagarie" target="_blank" class="contact-link">
+              <i class="fa-brands fa-github"></i>
+              <div>
+                <strong>GitHub</strong>
+                <small>github.com/leonardoriveraagarie</small>
+              </div>
+            </a>
+            <a href="mailto:hola@leonardorivera.dev" class="contact-link">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>Email</strong>
+                <small>hola@leonardorivera.dev</small>
+              </div>
+            </a>
+            <a href="https://youtube.com/@leonardoriveraagarie" target="_blank" class="contact-link">
+              <i class="fa-brands fa-youtube"></i>
+              <div>
+                <strong>YouTube</strong>
+                <small>Contenido sobre Python & Data</small>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right reveal">
+          <div class="contact-form-wrapper">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" placeholder="Tu nombre completo" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="tu@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="subject">Asunto</label>
+              <input type="text" id="subject" placeholder="¿En qué te puedo ayudar?" />
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" rows="5" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+            </div>
+            <button class="btn-primary btn-full" id="sendBtn" onclick="handleFormSubmit(event)">
+              Enviar mensaje <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <p class="form-note" id="formNote"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">LRA<span class="dot">.</span></div>
+      <p class="footer-copy">
+        © 2024 Leonardo Rivera Agarie · Hecho con <i class="fa-solid fa-heart"></i> en Lima, Perú
+      </p>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/leonardoriveraagarie" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/leonardoriveraagarie" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://youtube.com/@leonardoriveraagarie" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
