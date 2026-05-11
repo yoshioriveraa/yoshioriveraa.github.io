@@ -60,6 +60,8 @@
   <!-- ─── HERO ─── -->
   <section class="hero" id="hero">
     <div class="hero-grid-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
     <div class="container hero-content">
       <div class="hero-badge reveal">Lima, Perú · Disponible para proyectos</div>
       <h1 class="hero-name reveal">Leonardo<br /><em>Rivera Agarie</em></h1>
@@ -74,13 +76,13 @@
         <a href="#" class="btn-secondary" download>
           <i class="fa-solid fa-download"></i> Descargar CV
         </a>
-        <a href="https://linkedin.com/in/leonardoriveraagarie" target="_blank" class="btn-icon" aria-label="LinkedIn">
+        <a href="https://linkedin.com/in/yoshioriveraa" target="_blank" class="btn-icon" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
-        <a href="https://github.com/leonardoriveraagarie" target="_blank" class="btn-icon" aria-label="GitHub">
+        <a href="https://github.com/yoshioriveraa" target="_blank" class="btn-icon" aria-label="GitHub">
           <i class="fa-brands fa-github"></i>
         </a>
-        <a href="https://youtube.com/@leonardoriveraagarie" target="_blank" class="btn-icon" aria-label="YouTube">
+        <a href="https://youtube.com/@yoshioriveraa" target="_blank" class="btn-icon" aria-label="YouTube">
           <i class="fa-brands fa-youtube"></i>
         </a>
       </div>
@@ -165,8 +167,9 @@
       <p class="section-sub reveal">No teoría. Estas son las tecnologías con las que entrego resultados.</p>
 
       <div class="stack-grid reveal">
-        <div class="stack-group">
-          <div class="stack-group-label">Lenguajes & Datos</div>
+
+        <div class="stack-group stack-group--python">
+          <div class="stack-group-label"><i class="fa-brands fa-python"></i> Lenguajes & Datos</div>
           <div class="stack-items">
             <div class="stack-item">
               <i class="fa-brands fa-python"></i>
@@ -188,10 +191,15 @@
               <span class="tech-icon">plt</span>
               <span>Matplotlib</span>
             </div>
+            <div class="stack-item">
+              <span class="tech-icon">sb</span>
+              <span>Seaborn</span>
+            </div>
           </div>
         </div>
-        <div class="stack-group">
-          <div class="stack-group-label">Visualización & BI</div>
+
+        <div class="stack-group stack-group--bi">
+          <div class="stack-group-label"><i class="fa-solid fa-chart-bar"></i> Visualización & BI</div>
           <div class="stack-items">
             <div class="stack-item">
               <i class="fa-solid fa-chart-bar"></i>
@@ -205,19 +213,42 @@
               <i class="fa-solid fa-file-excel"></i>
               <span>Excel</span>
             </div>
+            <div class="stack-item">
+              <span class="tech-icon">pq</span>
+              <span>Power Query</span>
+            </div>
           </div>
         </div>
-        <div class="stack-group">
-          <div class="stack-group-label">Procesos & Herramientas</div>
+
+        <div class="stack-group stack-group--etl">
+          <div class="stack-group-label"><i class="fa-solid fa-gears"></i> Procesos & ETL</div>
           <div class="stack-items">
             <div class="stack-item">
               <i class="fa-solid fa-arrows-spin"></i>
-              <span>ETL</span>
+              <span>ETL Pipelines</span>
             </div>
             <div class="stack-item">
               <i class="fa-solid fa-robot"></i>
               <span>Automatización</span>
             </div>
+            <div class="stack-item">
+              <span class="tech-icon">sq</span>
+              <span>SQLite</span>
+            </div>
+            <div class="stack-item">
+              <span class="tech-icon">pg</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="stack-item">
+              <span class="tech-icon">⚡</span>
+              <span>PySpark <span class="badge-learning">Aprendiendo</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack-group stack-group--tools">
+          <div class="stack-group-label"><i class="fa-brands fa-git-alt"></i> Herramientas</div>
+          <div class="stack-items">
             <div class="stack-item">
               <i class="fa-brands fa-git-alt"></i>
               <span>Git</span>
@@ -227,11 +258,16 @@
               <span>GitHub</span>
             </div>
             <div class="stack-item">
+              <span class="tech-icon">nb</span>
+              <span>Jupyter</span>
+            </div>
+            <div class="stack-item">
               <i class="fa-brands fa-html5"></i>
               <span>HTML/CSS/JS</span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -254,9 +290,102 @@
 
       <div class="projects-grid" id="projectsGrid">
 
-        <!-- Proyecto 1 -->
+        <!-- Proyecto 1 — Gasto COVID Perú -->
+        <article class="project-card reveal" data-category="analysis">
+          <div class="project-img project-img--teal">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-landmark"></i>
+            </div>
+            <div class="project-tag">Data Analysis · ETL</div>
+          </div>
+          <div class="project-body">
+            <h3>Análisis del Gasto COVID-19 en Perú (2020–2026)</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> Sin visibilidad clara sobre cómo el Estado peruano distribuyó los recursos COVID — datos dispersos en 456,000+ registros del SIAF.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Pipeline ETL completo + EDA con 9 visualizaciones. Eficiencia presupuestal del 91.6%, con hallazgos sobre concentración en Lima (81%) y los 3 sectores que absorbieron el 69% del gasto.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>SQLite</span>
+              <span>SQL</span>
+              <span>Matplotlib</span>
+              <span>Seaborn</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/yoshioriveraa/gasto_covid_peru" target="_blank" class="btn-project-demo">Ver Proyecto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="https://github.com/yoshioriveraa/gasto_covid_peru" target="_blank" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 2 — Shopify E-Commerce Analytics -->
+        <article class="project-card reveal" data-category="analysis">
+          <div class="project-img project-img--purple">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div class="project-tag">E-Commerce Analytics</div>
+          </div>
+          <div class="project-body">
+            <h3>Shopify E-Commerce Analytics — Revenue & Retención</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> Tienda Shopify multi-país con revenue estancado, tasa de devolución del 14.8% y descuentos sin estrategia en 31,000+ clientes.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Análisis end-to-end con segmentación RFM, dashboard Power BI y recomendaciones accionables para aumentar revenue recurrente 15%. Revenue total analizado: $50.8M en 51,113 órdenes.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>SQL</span>
+              <span>Power BI</span>
+              <span>Matplotlib</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/yoshioriveraa/shopify-ecommerce-analysis" target="_blank" class="btn-project-demo">Ver Proyecto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="https://github.com/yoshioriveraa/shopify-ecommerce-analysis" target="_blank" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 3 — Docentes Perú -->
+        <article class="project-card reveal" data-category="analysis">
+          <div class="project-img project-img--orange">
+            <div class="project-img-placeholder">
+              <i class="fa-solid fa-chalkboard-teacher"></i>
+            </div>
+            <div class="project-tag">Sector Público · EDA</div>
+          </div>
+          <div class="project-body">
+            <h3>Análisis de Docentes — IIEE Públicas del Perú</h3>
+            <p class="project-problem">
+              <strong>Problema:</strong> Sin análisis estructurado sobre 405,000 docentes en 66,000+ instituciones para identificar brechas de formación y género.
+            </p>
+            <p class="project-result">
+              <strong>Resultado:</strong> Pipeline ETL modular + 8 visualizaciones + reporte PDF ejecutivo. Hallazgos: 61.6% docentes mujeres, 77% IEs rurales, brecha crítica en Loreto y Ucayali con 10%+ sin título.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>SQLite</span>
+              <span>Seaborn</span>
+              <span>ReportLab</span>
+              <span>Jupyter</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/yoshioriveraa/docentes_peru_analisis" target="_blank" class="btn-project-demo">Ver Proyecto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="https://github.com/yoshioriveraa/docentes_peru_analisis" target="_blank" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 4 — Dashboard KPIs -->
         <article class="project-card reveal" data-category="dashboard">
-          <div class="project-img">
+          <div class="project-img project-img--blue">
             <div class="project-img-placeholder">
               <i class="fa-solid fa-chart-line"></i>
             </div>
@@ -277,14 +406,14 @@
             </div>
             <div class="project-actions">
               <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+              <a href="#" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
             </div>
           </div>
         </article>
 
-        <!-- Proyecto 2 -->
+        <!-- Proyecto 5 — Automatización Reportes -->
         <article class="project-card reveal" data-category="automation">
-          <div class="project-img">
+          <div class="project-img project-img--green">
             <div class="project-img-placeholder">
               <i class="fa-solid fa-robot"></i>
             </div>
@@ -306,47 +435,18 @@
             </div>
             <div class="project-actions">
               <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+              <a href="#" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
             </div>
           </div>
         </article>
 
-        <!-- Proyecto 3 -->
-        <article class="project-card reveal" data-category="analysis">
-          <div class="project-img">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-magnifying-glass-chart"></i>
-            </div>
-            <div class="project-tag">Data Analysis</div>
-          </div>
-          <div class="project-body">
-            <h3>Análisis Exploratorio de Ventas</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> Sin visibilidad sobre qué productos, regiones y temporadas generaban más revenue.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> EDA completo con insights accionables que guiaron estrategia comercial del siguiente trimestre.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>Matplotlib</span>
-              <span>NumPy</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 4 -->
+        <!-- Proyecto 6 — ETL Pipeline -->
         <article class="project-card reveal" data-category="automation">
-          <div class="project-img">
+          <div class="project-img project-img--red">
             <div class="project-img-placeholder">
               <i class="fa-solid fa-gears"></i>
             </div>
-            <div class="project-tag">Automatización</div>
+            <div class="project-tag">Automatización · ETL</div>
           </div>
           <div class="project-body">
             <h3>Pipeline ETL para Base de Datos Empresarial</h3>
@@ -364,65 +464,7 @@
             </div>
             <div class="project-actions">
               <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 5 -->
-        <article class="project-card reveal" data-category="ml">
-          <div class="project-img">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-brain"></i>
-            </div>
-            <div class="project-tag">Machine Learning</div>
-          </div>
-          <div class="project-body">
-            <h3>Modelo Predictivo de Churn</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> La empresa no podía anticipar qué clientes estaban en riesgo de abandonar el servicio.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Modelo con 85% de accuracy que identifica clientes en riesgo 30 días antes del churn.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Scikit-learn</span>
-              <span>Pandas</span>
-              <span>Matplotlib</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 6 -->
-        <article class="project-card reveal" data-category="web">
-          <div class="project-img">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-globe"></i>
-            </div>
-            <div class="project-tag">Web</div>
-          </div>
-          <div class="project-body">
-            <h3>Aplicación Web de Análisis de Datos</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> El equipo necesitaba explorar datasets sin depender de un analista para cada consulta.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> App web que permite subir CSV y explorar datos con gráficos interactivos sin escribir código.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Streamlit</span>
-              <span>Pandas</span>
-              <span>Plotly</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+              <a href="#" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
             </div>
           </div>
         </article>
@@ -439,47 +481,76 @@
 
       <div class="timeline">
 
+        <!-- Men Graph -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2023 — Presente</div>
+          <div class="timeline-date">Diciembre 2025 — Mayo 2026</div>
           <div class="timeline-content">
             <div class="timeline-header">
               <h3>Analista de Datos</h3>
-              <span class="timeline-company">Empresa Actual · Lima, Perú</span>
+              <span class="timeline-company">Men Graph S.A.C · Lima, Perú</span>
             </div>
             <ul class="timeline-achievements">
-              <li>Desarrollo de automatizaciones en Python que eliminaron procesos manuales repetitivos, liberando 10+ horas semanales del equipo.</li>
-              <li>Diseño e implementación de dashboards de KPIs para dirección, reduciendo el tiempo de preparación de reportes en un 80%.</li>
-              <li>Optimización de consultas SQL que mejoraron la velocidad de extracción de datos en un 60%.</li>
-              <li>Digitalización de procesos empresariales manuales, reduciendo errores operativos.</li>
+              <li>Diseñé e implementé una infraestructura de base de datos desde cero, digitalizando procesos que se gestionaban en papel y archivos PDF en Google Drive.</li>
+              <li>Desarrollé automatizaciones para la generación y procesamiento de facturas con scripts en Python, reduciendo tiempos operativos y minimizando errores manuales.</li>
+              <li>Realicé análisis de datos orientados a la toma de decisiones gerenciales, identificando tendencias clave y presentando reportes visuales con indicadores de desempeño.</li>
+              <li>Organicé y centralicé bases de datos documentales previamente dispersas, estableciendo flujos de trabajo estandarizados para el equipo.</li>
             </ul>
             <div class="timeline-tech">
               <span>Python</span>
               <span>SQL</span>
-              <span>Looker Studio</span>
-              <span>Pandas</span>
               <span>ETL</span>
+              <span>Automatización</span>
+              <span>Looker Studio</span>
             </div>
           </div>
         </div>
 
+        <!-- Veterinaria Animal Friends -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2022 — 2023</div>
+          <div class="timeline-date">Enero 2025 — Mayo 2025</div>
           <div class="timeline-content">
             <div class="timeline-header">
-              <h3>Creador de Contenido Técnico</h3>
-              <span class="timeline-company">YouTube & TikTok · Independiente</span>
+              <h3>Analista de Datos</h3>
+              <span class="timeline-company">Veterinaria Animal Friends · Lima, Perú</span>
             </div>
             <ul class="timeline-achievements">
-              <li>Creación de contenido educativo sobre Python, SQL y análisis de datos con enfoque práctico.</li>
-              <li>Desarrollo de tutoriales y proyectos guiados para audiencias hispanohablantes.</li>
-              <li>Construcción de comunidad de programadores y analistas en crecimiento.</li>
+              <li>Realicé análisis, limpieza y procesamiento de datos con Python, aplicando Pandas, NumPy, Matplotlib y Seaborn para generar informes y reportes clave.</li>
+              <li>Desarrollé y optimicé consultas SQL para extraer, transformar y combinar datos de distintas fuentes de forma eficiente.</li>
+              <li>Diseñé y mantuve dashboards interactivos y reportes visuales en Looker Studio, facilitando la visualización de indicadores para la toma de decisiones.</li>
+              <li>Colaboré con distintas áreas para identificar necesidades de información, generar insights relevantes y proponer soluciones orientadas a resultados.</li>
+            </ul>
+            <div class="timeline-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>SQL</span>
+              <span>Looker Studio</span>
+              <span>Matplotlib</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divulgador -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Enero 2024 — Actualidad</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Divulgador y Formador en Programación</h3>
+              <span class="timeline-company">Freelance · YouTube & TikTok</span>
+            </div>
+            <ul class="timeline-achievements">
+              <li>Creo contenido educativo accesible para principiantes, enseñando Python desde cero enfocado en análisis de datos.</li>
+              <li>Desarrollé tutoriales prácticos para resolución de problemas y automatización de tareas con Python, aplicados a casos reales.</li>
+              <li>Promuevo el aprendizaje autónomo y la curiosidad por la programación en la comunidad hispanohablante.</li>
             </ul>
             <div class="timeline-tech">
               <span>Python</span>
               <span>SQL</span>
               <span>Educación técnica</span>
+              <span>Contenido digital</span>
             </div>
           </div>
         </div>
@@ -495,65 +566,67 @@
       <h2 class="section-title reveal">Educación y<br /><em>certificaciones</em></h2>
 
       <div class="edu-grid">
-        <div class="edu-card reveal">
+
+        <div class="edu-card edu-card--blue reveal">
           <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <div class="edu-body">
-            <span class="edu-date">2020 — 2024</span>
-            <h3>Carrera Universitaria</h3>
-            <p class="edu-place">Universidad · Lima, Perú</p>
-            <p>Formación en sistemas, tecnología e informática con enfoque en análisis de datos y programación.</p>
+            <span class="edu-date">2025 — Actualidad</span>
+            <h3>Bachiller en Desarrollo de Sistemas Frontend y Backend</h3>
+            <p class="edu-place">IDAT · Lima, Perú</p>
+            <p>Formación en desarrollo de sistemas con enfoque en frontend, backend, bases de datos y programación orientada a producción.</p>
           </div>
         </div>
 
-        <div class="edu-card reveal">
+        <div class="edu-card edu-card--purple reveal">
           <div class="edu-icon"><i class="fa-solid fa-certificate"></i></div>
           <div class="edu-body">
-            <span class="edu-date">2023</span>
-            <h3>Data Analytics Certification</h3>
-            <p class="edu-place">Plataforma de Certificación</p>
-            <p>Análisis de datos, estadística aplicada, visualización y comunicación de resultados.</p>
+            <span class="edu-date">Marzo 2020 — Diciembre 2022</span>
+            <h3>Programa de Especialización en Data Science</h3>
+            <p class="edu-place">Social Data Consulting Learning · Lima, Perú</p>
+            <p>100 horas académicas. Python para Data Science, análisis estadístico, visualización y machine learning aplicado a casos reales.</p>
           </div>
         </div>
 
-        <div class="edu-card reveal">
+        <div class="edu-card edu-card--orange reveal">
           <div class="edu-icon"><i class="fa-brands fa-python"></i></div>
           <div class="edu-body">
-            <span class="edu-date">2022</span>
-            <h3>Python for Data Science</h3>
-            <p class="edu-place">Plataforma Online</p>
-            <p>Pandas, NumPy, Matplotlib, análisis exploratorio y manipulación avanzada de datos.</p>
+            <span class="edu-date">Mayo 2021</span>
+            <h3>Python Specialization Program</h3>
+            <p class="edu-place">Umaker S.A.C · Lima, Perú</p>
+            <p>42 horas de clase. Especialización en Python aplicado: automatización, manejo de datos, POO y resolución de problemas reales con código.</p>
           </div>
         </div>
 
-        <div class="edu-card reveal">
-          <div class="edu-icon"><i class="fa-solid fa-database"></i></div>
+        <div class="edu-card edu-card--green reveal">
+          <div class="edu-icon"><i class="fa-solid fa-medal"></i></div>
           <div class="edu-body">
-            <span class="edu-date">2023</span>
-            <h3>SQL Avanzado & Optimización</h3>
-            <p class="edu-place">Certificación SQL</p>
-            <p>Consultas complejas, optimización de queries, diseño de bases de datos relacionales.</p>
+            <span class="edu-date">Diciembre 2020 — Febrero 2021</span>
+            <h3>Voluntariado Vacaciones Re-Útiles</h3>
+            <p class="edu-place">Perú Te Quiero Aprendiendo & PROA</p>
+            <p>44 horas de voluntariado. Acompañamiento personalizado a estudiantes en programas de recuperación académica del Ministerio de Educación.</p>
           </div>
         </div>
 
-        <div class="edu-card reveal">
+        <div class="edu-card edu-card--teal reveal">
+          <div class="edu-icon"><i class="fa-brands fa-linkedin"></i></div>
+          <div class="edu-body">
+            <span class="edu-date">Marzo 2023</span>
+            <h3>Introducción a las habilidades profesionales en análisis de datos</h3>
+            <p class="edu-place">LinkedIn Learning</p>
+            <p>Certificación completada en análisis de datos profesional: metodologías, herramientas y comunicación efectiva de resultados para equipos de negocio.</p>
+          </div>
+        </div>
+
+        <div class="edu-card edu-card--red reveal">
           <div class="edu-icon"><i class="fa-solid fa-chart-bar"></i></div>
           <div class="edu-body">
-            <span class="edu-date">2023</span>
+            <span class="edu-date">2023 — 2024</span>
             <h3>Business Intelligence & Dashboards</h3>
-            <p class="edu-place">Google / Looker Studio</p>
-            <p>Diseño de dashboards, KPIs, storytelling con datos y visualización ejecutiva.</p>
+            <p class="edu-place">Google Looker Studio</p>
+            <p>Diseño de dashboards ejecutivos, definición de KPIs, storytelling con datos y visualización interactiva orientada a la toma de decisiones gerenciales.</p>
           </div>
         </div>
 
-        <div class="edu-card reveal">
-          <div class="edu-icon"><i class="fa-solid fa-robot"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">2024</span>
-            <h3>Machine Learning Fundamentals</h3>
-            <p class="edu-place">Plataforma Online</p>
-            <p>Fundamentos de ML, modelos supervisados, evaluación y despliegue básico con Scikit-learn.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -569,28 +642,28 @@
             Estoy disponible para proyectos de análisis de datos, automatización, dashboards y consultoría. Conversamos sin compromiso.
           </p>
           <div class="contact-links">
-            <a href="https://linkedin.com/in/leonardoriveraagarie" target="_blank" class="contact-link">
+            <a href="https://linkedin.com/in/yoshioriveraa" target="_blank" class="contact-link contact-link--linkedin">
               <i class="fa-brands fa-linkedin-in"></i>
               <div>
                 <strong>LinkedIn</strong>
-                <small>linkedin.com/in/leonardoriveraagarie</small>
+                <small>linkedin.com/in/yoshioriveraa</small>
               </div>
             </a>
-            <a href="https://github.com/leonardoriveraagarie" target="_blank" class="contact-link">
+            <a href="https://github.com/yoshioriveraa" target="_blank" class="contact-link contact-link--github">
               <i class="fa-brands fa-github"></i>
               <div>
                 <strong>GitHub</strong>
-                <small>github.com/leonardoriveraagarie</small>
+                <small>github.com/yoshioriveraa</small>
               </div>
             </a>
-            <a href="mailto:hola@leonardorivera.dev" class="contact-link">
+            <a href="mailto:leonardo.yoshio@hotmail.com" class="contact-link contact-link--email">
               <i class="fa-solid fa-envelope"></i>
               <div>
                 <strong>Email</strong>
-                <small>hola@leonardorivera.dev</small>
+                <small>leonardo.yoshio@hotmail.com</small>
               </div>
             </a>
-            <a href="https://youtube.com/@leonardoriveraagarie" target="_blank" class="contact-link">
+            <a href="https://youtube.com/@yoshioriveraa" target="_blank" class="contact-link contact-link--youtube">
               <i class="fa-brands fa-youtube"></i>
               <div>
                 <strong>YouTube</strong>
@@ -632,12 +705,12 @@
     <div class="container footer-inner">
       <div class="footer-logo">LRA<span class="dot">.</span></div>
       <p class="footer-copy">
-        © 2024 Leonardo Rivera Agarie · Hecho con <i class="fa-solid fa-heart"></i> en Lima, Perú
+        © 2026 Leonardo Rivera Agarie · Hecho con <i class="fa-solid fa-heart"></i> en Lima, Perú
       </p>
       <div class="footer-socials">
-        <a href="https://linkedin.com/in/leonardoriveraagarie" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/leonardoriveraagarie" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://youtube.com/@leonardoriveraagarie" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://linkedin.com/in/yoshioriveraa" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/yoshioriveraa" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://youtube.com/@yoshioriveraa" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
   </footer>
