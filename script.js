@@ -174,13 +174,14 @@ const activeSectionObserver = new IntersectionObserver(
 sections.forEach(section => activeSectionObserver.observe(section));
 
 // ─── CONTACT FORM ───
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('sendBtn');
   const note = document.getElementById('formNote');
 
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value.trim();
   const message = document.getElementById('message').value.trim();
 
   if (!name || !email || !message) {
@@ -189,28 +190,43 @@ function handleFormSubmit(e) {
     return;
   }
 
-  // Simulate send
   btn.textContent = 'Enviando...';
   btn.disabled = true;
+  note.textContent = '';
 
-  setTimeout(() => {
-    btn.innerHTML = 'Mensaje enviado <i class="fa-solid fa-check"></i>';
-    btn.style.background = 'var(--green)';
-    note.textContent = '✓ Gracias por escribir. Te respondo en breve.';
-    note.style.color = 'var(--green)';
+  try {
+    const response = await fetch('https://formspree.io/f/xnjwlpje', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message }),
+    });
 
-    // Reset after 3 seconds
-    setTimeout(() => {
-      btn.innerHTML = 'Enviar mensaje <i class="fa-solid fa-paper-plane"></i>';
-      btn.style.background = '';
-      btn.disabled = false;
-      note.textContent = '';
-      document.getElementById('name').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('subject').value = '';
-      document.getElementById('message').value = '';
-    }, 3500);
-  }, 1200);
+    if (response.ok) {
+      btn.innerHTML = 'Mensaje enviado <i class="fa-solid fa-check"></i>';
+      btn.style.background = 'var(--green)';
+      note.textContent = '✓ Gracias por escribir. Te respondo en breve.';
+      note.style.color = 'var(--green)';
+
+      setTimeout(() => {
+        btn.innerHTML = 'Enviar mensaje <i class="fa-solid fa-paper-plane"></i>';
+        btn.style.background = '';
+        btn.disabled = false;
+        note.textContent = '';
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('subject').value = '';
+        document.getElementById('message').value = '';
+      }, 3500);
+    } else {
+      throw new Error('Error del servidor');
+    }
+  } catch (err) {
+    btn.innerHTML = 'Enviar mensaje <i class="fa-solid fa-paper-plane"></i>';
+    btn.style.background = '';
+    btn.disabled = false;
+    note.textContent = '✗ Hubo un error al enviar. Intenta de nuevo.';
+    note.style.color = '#f87171';
+  }
 }
 
 // ─── STAT COUNTER ANIMATION ───
