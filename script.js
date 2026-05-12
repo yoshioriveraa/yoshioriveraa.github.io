@@ -243,6 +243,7 @@ function animateCounter(el, target, duration = 1400) {
   requestAnimationFrame(step);
 }
 
+
 const statNums = document.querySelectorAll('.stat-num');
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -254,9 +255,13 @@ const statsObserver = new IntersectionObserver((entries) => {
         animateCounter(el, num);
       }
       statsObserver.unobserve(el);
+      
     }
   });
 }, { threshold: 0.5 });
+
+
+
 
 statNums.forEach(el => statsObserver.observe(el));
 
