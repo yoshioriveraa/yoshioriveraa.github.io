@@ -16,11 +16,11 @@ if (cursorDot && window.matchMedia('(hover: hover)').matches) {
 // ─── TYPEWRITER ───
 const typedTextEl = document.getElementById('typedText');
 const phrases = [
-  'Analista de Datos',
-  'Automatización con Python',
-  'SQL & Dashboards',
-  'ETL & Data Pipelines',
-  'Creador de Contenido Tech',
+  'Consultoría de Datos',
+  'Análisis Exploratorio',
+  'Dashboards & Visualización',
+  'Automatización de Reportes',
+  'Limpieza y Modelado de Datos',
 ];
 let phraseIndex = 0;
 let charIndex = 0;
@@ -126,7 +126,7 @@ document.querySelectorAll('.reveal').forEach(el => {
 
 // ─── PROJECT FILTER ───
 const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+const projectCards = document.querySelectorAll('#projectsGrid .project-card');
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
