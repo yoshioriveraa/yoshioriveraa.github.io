@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LATYNA — Control de inventario para tu tienda</title>
+<meta name="description" content="LATYNA: registra tus ventas y compras, controla tu stock y recibe alertas de stock bajo o caducidad. 1 mes gratis, luego S/29.90 al mes.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Sora:wght@400;600;800&display=swap');
+
+  :root{
+    --verde-oscuro: #0B4D2C;
+    --verde: #16803C;
+    --verde-claro: #4ADE80;
+    --blanco: #FFFFFF;
+    --hueso: #F3FBF5;
+    --tinta: #10241A;
+    --texto: #3E5749;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Sora', Arial, sans-serif;
+    background: var(--blanco);
+    color: var(--tinta);
+    line-height:1.55;
+  }
+
+  img, svg{ max-width:100%; display:block; }
+  a{ color:inherit; }
+
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 24px; max-width:1000px; margin:0 auto;
+  }
+  .nav-logo{
+    font-family:'Space Grotesk', Arial, sans-serif; font-weight:700; font-size:22px;
+    color: var(--verde-oscuro); letter-spacing:-0.5px;
+  }
+  .nav-logo span{ color: var(--verde); }
+  .nav-cta{
+    background: var(--verde-oscuro); color:#fff; text-decoration:none;
+    padding:10px 20px; border-radius:100px; font-weight:700; font-size:14px;
+    transition: background 0.2s ease;
+  }
+  .nav-cta:hover{ background: var(--verde); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    padding: 64px 24px 76px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-160px; right:-140px;
+    width:420px; height:420px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, var(--verde-claro), var(--verde) 70%);
+    opacity:0.85;
+  }
+  .hero-inner{ max-width:1000px; margin:0 auto; position:relative; z-index:2; }
+  .eyebrow{
+    font-family:'Space Grotesk', Arial, sans-serif;
+    font-size:13px; letter-spacing:3px; text-transform:uppercase;
+    color: var(--verde-claro); font-weight:700; margin-bottom:18px;
+  }
+  .brand{
+    font-family:'Space Grotesk', Arial, sans-serif;
+    font-size:clamp(44px, 9vw, 84px); font-weight:700; line-height:0.95;
+    letter-spacing:-1.5px; color:var(--blanco);
+  }
+  .brand span{ color: var(--verde-claro); }
+  .tagline{
+    font-size:19px; margin-top:20px; max-width:560px; color:#DFF3E6;
+    font-weight:400;
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
+  .btn-primary{
+    background: var(--verde-claro); color: var(--verde-oscuro);
+    padding:15px 28px; border-radius:100px; font-weight:800; font-size:15px;
+    text-decoration:none; display:inline-block; transition: transform 0.15s ease;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost{
+    border:2px solid rgba(255,255,255,0.4); color:#fff;
+    padding:13px 26px; border-radius:100px; font-weight:700; font-size:15px;
+    text-decoration:none; display:inline-block;
+  }
+  .hero-note{ margin-top:16px; font-size:13.5px; color:#B9E3C6; }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    background: var(--verde-claro); color: var(--verde-oscuro);
+  }
+  .stat{
+    padding:24px 14px; text-align:center; border-right:1px solid rgba(11,77,44,0.2);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat-num{ font-family:'Space Grotesk', Arial, sans-serif; font-size:28px; font-weight:700; }
+  .stat-label{ font-size:11.5px; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-top:2px; }
+
+  /* ---------- SECTION ---------- */
+  .section{ padding:70px 24px 30px; }
+  .section-title{
+    font-family:'Space Grotesk', Arial, sans-serif;
+    font-size:clamp(26px, 4vw, 34px); font-weight:700; margin-bottom:10px; color:var(--verde-oscuro);
+    max-width:1000px; margin-left:auto; margin-right:auto;
+  }
+  .section-sub{
+    color:var(--texto); font-size:16px; margin-bottom:38px; max-width:600px;
+    max-width:1000px; margin-left:auto; margin-right:auto;
+  }
+  .section-sub b{ color: var(--verde-oscuro); }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    max-width:1000px; margin:0 auto;
+  }
+  .card{
+    background:var(--hueso); border:2px solid var(--verde-oscuro);
+    border-radius:16px; padding:24px 22px;
+    box-shadow:6px 6px 0 var(--verde-claro);
+  }
+  .card-icon{
+    width:42px; height:42px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; margin-bottom:14px;
+    background: var(--verde-oscuro);
+  }
+  .card h3{ font-family:'Space Grotesk', Arial, sans-serif; font-size:17px; margin-bottom:8px; color:var(--verde-oscuro); }
+  .card p{ font-size:14px; color:var(--texto); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{
+    max-width:1000px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  .step{ padding:0 6px; }
+  .step-num{
+    font-family:'Space Grotesk', Arial, sans-serif; font-weight:700; font-size:14px;
+    color:var(--verde-claro); background:var(--verde-oscuro);
+    width:32px; height:32px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+  }
+  .step h3{ font-family:'Space Grotesk', Arial, sans-serif; font-size:17px; color:var(--verde-oscuro); margin-bottom:8px; }
+  .step p{ font-size:14px; color:var(--texto); }
+
+  /* ---------- TRIAL BANNER ---------- */
+  .trial-banner{
+    max-width:1000px; margin:60px auto 0; background:var(--hueso);
+    border:2px dashed var(--verde); border-radius:20px;
+    padding:32px 30px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .trial-banner .icon{ font-size:34px; }
+  .trial-banner h3{ font-family:'Space Grotesk', Arial, sans-serif; color:var(--verde-oscuro); font-size:18px; margin-bottom:6px; }
+  .trial-banner p{ font-size:14px; color:var(--texto); max-width:640px; }
+
+  /* ---------- PRICING ---------- */
+  .pricing{
+    background: var(--verde-oscuro); color:var(--blanco);
+    padding:70px 24px 76px; position:relative; overflow:hidden; margin-top:70px;
+  }
+  .pricing::before{
+    content:""; position:absolute; top:-120px; left:50%; transform:translateX(-50%);
+    width:560px; height:560px; border-radius:50%;
+    background: radial-gradient(circle, var(--verde) 0%, transparent 70%);
+    opacity:0.5;
+  }
+  .pricing-inner{ position:relative; z-index:2; max-width:1000px; margin:0 auto; }
+  .pricing-head{ text-align:center; margin-bottom:36px; }
+  .pricing-head h2{ font-family:'Space Grotesk',Arial, sans-serif; font-size:clamp(24px,4vw,30px); font-weight:700; }
+  .pricing-head p{ color:#CFE9D9; font-size:15px; margin-top:8px; }
+
+  .price-box{
+    max-width:440px; margin:0 auto; text-align:center;
+    background: var(--blanco); color: var(--verde-oscuro);
+    border-radius:22px; padding:38px 32px;
+    border:3px solid var(--verde-claro);
+  }
+  .price-plan{ font-family:'Space Grotesk',Arial, sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--verde); }
+  .price-free{
+    font-family:'Space Grotesk',Arial, sans-serif; font-weight:700; font-size:32px;
+    color:var(--verde-oscuro); margin-top:12px;
+  }
+  .price-free span{ color:var(--verde); }
+  .price-then{ font-size:13px; color:var(--texto); margin-top:4px; }
+  .price-amount{ font-family:'Space Grotesk',Arial, sans-serif; font-size:52px; font-weight:700; margin-top:6px; }
+  .price-amount sup{ font-size:20px; top:-22px; }
+  .price-period{ color:var(--texto); font-size:14px; margin-bottom:8px; }
+  .price-divider{ height:1px; background:#E1EFE5; margin:20px 0; }
+  .price-list{ text-align:left; list-style:none; margin-bottom:6px; }
+  .price-list li{ font-size:14px; padding:6px 0; color:var(--texto); }
+  .price-list li::before{ content:"✔ "; color:var(--verde); font-weight:800; }
+  .price-cta{
+    display:block; margin-top:22px; background: var(--verde-oscuro); color:#fff;
+    padding:15px; border-radius:12px; font-weight:800; font-size:15px;
+    text-decoration:none; text-align:center; transition: background 0.2s ease;
+  }
+  .price-cta:hover{ background: var(--verde); }
+  .price-note{ margin-top:14px; font-size:12.5px; color:var(--texto); }
+
+  /* ---------- FAQ ---------- */
+  .faq{ max-width:760px; margin:0 auto; }
+  .faq-item{ border-bottom:1px solid #E1EFE5; padding:20px 0; }
+  .faq-item h3{ font-family:'Space Grotesk', Arial, sans-serif; font-size:16px; color:var(--verde-oscuro); margin-bottom:8px; }
+  .faq-item p{ font-size:14.5px; color:var(--texto); }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    background: var(--hueso); padding:44px 24px; text-align:center;
+    border-top:2px solid var(--verde-oscuro);
+  }
+  .footer-brand{ font-family:'Space Grotesk',Arial, sans-serif; font-weight:700; font-size:18px; color:var(--verde-oscuro); }
+  .footer p{ font-size:12.5px; color:var(--texto); margin-top:8px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:760px){
+    .grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(2){ border-right:none; }
+    .stat:nth-child(3), .stat:nth-child(4){ border-top:1px solid rgba(11,77,44,0.2); }
+    .hero{ padding:52px 20px 60px; }
+    .section{ padding:56px 20px 20px; }
+    .pricing{ padding:56px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">LAT<span>Y</span>NA</div>
+    <a href="#precio" class="nav-cta">Probar gratis</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Control de inventario para tu tienda</div>
+      <h1 class="brand">LAT<span>Y</span>NA</h1>
+      <p class="tagline">Registra tus ventas y compras, controla tu stock y recibe alertas antes de que algo se acabe o se venza. Todo en un solo lugar, fácil de usar para cualquier persona.</p>
+      <div class="hero-ctas">
+        <a href="#precio" class="btn-primary">Empezar mi mes gratis →</a>
+        <a href="#como-funciona" class="btn-ghost">Ver cómo funciona</a>
+      </div>
+      <p class="hero-note">1 mes gratis para probar todo. Sin compromiso, sin tarjeta.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">1 mes</div><div class="stat-label">totalmente gratis</div></div>
+    <div class="stat"><div class="stat-num">S/29.90</div><div class="stat-label">al mes, después</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">en la nube</div></div>
+    <div class="stat"><div class="stat-num">Cualquier</div><div class="stat-label">tipo de tienda</div></div>
+  </div>
+
+  <!-- VENTAJAS -->
+  <section class="section" id="funciones">
+    <h2 class="section-title">¿Qué hace LATYNA por tu tienda?</h2>
+    <p class="section-sub">Pensado para que <b>cualquier persona</b> lo entienda desde el primer día, sin cursos ni manuales. Un solo usuario, un solo lugar para todo tu negocio.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🧾</div>
+        <h3>Registra tus ventas</h3>
+        <p>Anota cada venta con fecha, producto y monto. Tu historial completo, siempre a la mano.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Registra tus compras</h3>
+        <p>Guarda lo que compras para tu tienda, ordenado junto a tus ventas, en el mismo sistema.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Stock siempre actualizado</h3>
+        <p>Cada venta y compra actualiza tu inventario solo. Siempre sabes cuánto te queda de cada producto.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔔</div>
+        <h3>Alertas de stock bajo</h3>
+        <p>Tú decides el mínimo de cada producto. LATYNA te avisa apenas estás por llegar a ese límite.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏰</div>
+        <h3>Alertas de caducidad</h3>
+        <p>Configura cuántos días antes quieres que te avisemos que un producto está por vencer.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏪</div>
+        <h3>Para cualquier tienda</h3>
+        <p>Ropa, abarrotes, tecnología, farmacia, ferretería... LATYNA se adapta al inventario de tu rubro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="section" id="como-funciona">
+    <h2 class="section-title">Así de simple funciona</h2>
+    <p class="section-sub">Tres pasos, sin complicaciones.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Crea tu cuenta</h3>
+        <p>Te registras y empiezas tu mes gratis al instante, sin tarjeta ni pagos por adelantado.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Carga tu inventario</h3>
+        <p>Agrega tus productos, tus compras y tus ventas. LATYNA arma tu stock automáticamente.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Recibe tus alertas</h3>
+        <p>Configura tus límites de stock bajo y caducidad, y deja que LATYNA te avise a tiempo.</p>
+      </div>
+    </div>
+
+    <div class="trial-banner">
+      <div class="icon">🌱</div>
+      <div>
+        <h3>Tu mes gratis también sirve para mejorar LATYNA</h3>
+        <p>Durante tu mes de prueba, el sistema se irá actualizando y mejorando con nuevas funciones, para que cuando termines de probarlo tengas la mejor versión posible para tu tienda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="precio">
+    <div class="pricing-inner">
+      <div class="pricing-head">
+        <h2>Un plan simple. Sin letra chica.</h2>
+        <p>Prueba todo gratis por 1 mes. Si te sirve, continúas por un precio fijo.</p>
+      </div>
+      <div class="price-box">
+        <div class="price-plan">Plan LATYNA</div>
+        <div class="price-free">1 mes <span>GRATIS</span></div>
+        <div class="price-then">y luego</div>
+        <div class="price-amount"><sup>S/</sup>29.90</div>
+        <div class="price-period">al mes, cancela cuando quieras</div>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>Ventas y compras ilimitadas</li>
+          <li>Stock automático en tiempo real</li>
+          <li>Alertas de stock bajo</li>
+          <li>Alertas de caducidad</li>
+          <li>1 usuario, acceso desde cualquier dispositivo</li>
+        </ul>
+        <a href="#" class="price-cta">Empezar mi mes gratis →</a>
+        <div class="price-note">No se te cobra nada hasta terminar tu mes de prueba.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <p class="section-sub">Lo que la mayoría de dueños de tienda nos pregunta antes de empezar.</p>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>¿De verdad es gratis el primer mes?</h3>
+        <p>Sí. Tienes 1 mes completo para registrar tus ventas, compras y stock sin pagar nada ni ingresar tarjeta.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Qué pasa cuando termina el mes gratis?</h3>
+        <p>Si decides seguir, pagas S/29.90 al mes. Si no, simplemente no continúas: no hay cobros automáticos sorpresa.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Sirve para cualquier tipo de tienda?</h3>
+        <p>Sí. LATYNA está hecho para adaptarse a cualquier rubro: ropa, abarrotes, tecnología, farmacia, ferretería y más.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Puedo usarlo si no soy experto en tecnología?</h3>
+        <p>Sí, está diseñado para que cualquier persona lo entienda desde el primer uso, sin necesidad de manuales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">LATYNA</div>
+    <p>Control de ventas, compras y stock, simple y directo para tu tienda.</p>
+  </footer>
+
+</body>
+</html>
