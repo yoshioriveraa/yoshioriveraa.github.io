@@ -1,0 +1,76 @@
+/* ============================================================
+   Estilos custom que Tailwind (vía CDN) no cubre:
+   - Animaciones de scroll (fade-in / slide-up)
+   - Transiciones de acordeones
+   - Detalles de la fuente Inter
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Elementos animados al entrar en viewport (ver script.js -> initScrollAnimations) */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate="fade"] {
+  transform: translateY(0);
+}
+
+/* Delays escalonados para grupos de tarjetas */
+[data-animate-delay="1"] { transition-delay: 0.1s; }
+[data-animate-delay="2"] { transition-delay: 0.2s; }
+[data-animate-delay="3"] { transition-delay: 0.3s; }
+[data-animate-delay="4"] { transition-delay: 0.4s; }
+[data-animate-delay="5"] { transition-delay: 0.5s; }
+
+/* Paneles de acordeón (temario y FAQ) */
+[data-accordion-panel] {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.35s ease-in-out;
+}
+
+[data-accordion-icon] {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Barra de progreso de cupos */
+[data-cupos-barra] {
+  transition: width 1s ease-out;
+}
+
+/* Scrollbar sutil (opcional, mejora estética en desktop) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 9999px;
+}
+
+/* Pulso sutil para el badge de urgencia */
+@keyframes pulso-suave {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+.pulso-urgencia {
+  animation: pulso-suave 2s infinite;
+}

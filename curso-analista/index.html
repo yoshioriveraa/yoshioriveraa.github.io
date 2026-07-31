@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analista de Datos Pro | Sheets, SQL, Python & Machine Learning</title>
+  <meta name="description" content="Conviértete en Analista de Datos en 40 clases en vivo: Google Sheets, Looker Studio, SQL, Python y Machine Learning con proyectos reales. Cupos limitados a 30 personas." />
+
+  <!-- ============================================================
+       OPEN GRAPH / META TAGS PARA COMPARTIR EN WHATSAPP Y REDES
+       TODO: reemplaza og-image.jpg en /assets/img/ por una imagen real 1200x630px
+       ============================================================ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yoshioriveraa.github.io/curso-analista/" />
+  <meta property="og:title" content="Analista de Datos Pro | Sheets, SQL, Python & Machine Learning" />
+  <meta property="og:description" content="De cero a Analista de Datos en 40 clases: Sheets, SQL, Python, Looker Studio y Machine Learning con proyectos reales. Cupos limitados." />
+  <meta property="og:image" content="https://yoshioriveraa.github.io/curso-analista/assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- TODO: reemplaza favicon.png en /assets/img/ por un ícono real 512x512px -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+  <!-- Tailwind CSS vía CDN (sin build process) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0F172A",     // texto principal / azul oscuro
+            brand: "#10B981",   // verde acento
+            "brand-dark": "#059669",
+            "brand-light": "#ECFDF5",
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Estilos custom (animaciones, acordeones) -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 font-extrabold text-lg">
+        <span class="w-8 h-8 rounded-lg bg-brand text-white flex items-center justify-center text-sm">AD</span>
+        Analista<span class="text-brand">Pro</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#temario" class="hover:text-brand transition">Temario</a>
+        <a href="#gratis" class="hover:text-brand transition">Clases gratis</a>
+        <a href="#instructor" class="hover:text-brand transition">Instructor</a>
+        <a href="#precio" class="hover:text-brand transition">Precio</a>
+        <a href="#faq" class="hover:text-brand transition">FAQ</a>
+      </div>
+
+      <a data-wa-cta data-cta-label="Navbar" target="_blank" rel="noopener"
+        class="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-full transition shadow-sm shadow-brand/30">
+        Reservar mi cupo
+      </a>
+
+      <button data-menu-btn class="md:hidden p-2" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <div data-mobile-menu class="hidden md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-4 text-sm font-medium">
+      <a href="#temario" class="hover:text-brand">Temario</a>
+      <a href="#gratis" class="hover:text-brand">Clases gratis</a>
+      <a href="#instructor" class="hover:text-brand">Instructor</a>
+      <a href="#precio" class="hover:text-brand">Precio</a>
+      <a href="#faq" class="hover:text-brand">FAQ</a>
+      <a data-wa-cta data-cta-label="Menú móvil" target="_blank" rel="noopener"
+        class="inline-flex justify-center items-center bg-brand text-white font-semibold px-5 py-3 rounded-full">
+        Reservar mi cupo
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section id="top" class="relative pt-28 pb-16 md:pt-36 md:pb-24 px-5 sm:px-8 overflow-hidden">
+    <!-- Fondo decorativo sutil -->
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-light via-white to-white"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 bg-brand/10 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-4xl mx-auto text-center">
+      <div data-animate class="pulso-urgencia inline-flex items-center gap-2 bg-white border border-brand/30 text-brand-dark text-xs sm:text-sm font-bold px-4 py-2 rounded-full mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-brand"></span>
+        Cupos limitados: solo <span data-cupos-restantes>30</span> de <span data-cupos-totales>30</span> disponibles
+      </div>
+
+      <h1 data-animate class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+        De cero a <span class="text-brand">Analista de Datos</span> en 40 clases:
+        desde Excel hasta Machine Learning
+      </h1>
+
+      <p data-animate data-animate-delay="1" class="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        Domina <strong class="text-ink">Google Sheets + Apps Script, Looker Studio, SQL, Python y Machine Learning</strong>
+        con proyectos reales, no solo teoría. El método que necesitas para pasar de "sé Excel" a
+        "puedo conseguir el puesto de Analista de Datos".
+      </p>
+
+      <div data-animate data-animate-delay="2" class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a data-wa-cta data-cta-label="Hero principal" target="_blank" rel="noopener"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 3.5c-4.9 0-8.9 4-8.9 8.9 0 1.57.42 3.1 1.2 4.45L3 21l4.28-1.32a8.9 8.9 0 0 0 4.77 1.38h.01c4.9 0 8.9-4 8.9-8.9a8.86 8.86 0 0 0-2.36-4.9zm-5.55 13.7a7.4 7.4 0 0 1-3.77-1.03l-.27-.16-2.8.87.86-2.73-.18-.28a7.36 7.36 0 0 1-1.13-3.94c0-4.08 3.32-7.4 7.4-7.4a7.35 7.35 0 0 1 5.24 2.17 7.35 7.35 0 0 1 2.16 5.24c0 4.08-3.32 7.4-7.4 7.4zm4.06-5.54c-.22-.11-1.3-.64-1.5-.71-.2-.07-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.8-1.11a6.75 6.75 0 0 1-1.24-1.55c-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.05-.11-.5-1.2-.68-1.65-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.05-.6.28-.2.22-.79.77-.79 1.87 0 1.1.81 2.16.92 2.31.11.15 1.6 2.44 3.87 3.42.54.23.96.37 1.29.48.54.17 1.03.15 1.42.09.43-.06 1.3-.53 1.49-1.04.18-.51.18-.95.13-1.04-.05-.09-.2-.15-.42-.26z"/></svg>
+          Reservar mi cupo gratis
+        </a>
+        <a href="#precio"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-ink/10 hover:border-brand text-ink font-semibold text-base px-8 py-4 rounded-full transition">
+          Ver precio y beneficios
+        </a>
+      </div>
+
+      <!-- Countdown -->
+      <div data-animate data-animate-delay="3" data-countdown class="mt-12 max-w-lg mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">El curso empieza en</p>
+        <div class="grid grid-cols-4 gap-2 sm:gap-4">
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-dias class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Días</p>
+          </div>
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-horas class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Horas</p>
+          </div>
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-min class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Min</p>
+          </div>
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-seg class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Seg</p>
+          </div>
+        </div>
+        <!-- TODO: actualiza COURSE_START_DATE en /js/script.js con la fecha real de inicio -->
+        <p class="text-xs text-slate-400 mt-3">Modalidad virtual en vivo · Cupo máximo 30 personas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. PROBLEMA / AGITACIÓN
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center max-w-2xl mx-auto">
+        ¿Te suena familiar?
+      </h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div data-animate data-animate-delay="1" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-2xl mb-4">😩</div>
+          <p class="font-semibold text-lg">Sabes Excel, pero no te alcanza</p>
+          <p class="text-slate-600 mt-2 text-sm leading-relaxed">Manejas tablas y fórmulas básicas, pero para el puesto que quieres piden SQL, Python y dashboards que nunca te enseñaron.</p>
+        </div>
+        <div data-animate data-animate-delay="2" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-2xl mb-4">🌀</div>
+          <p class="font-semibold text-lg">Viste tutoriales gratis, pero te perdiste</p>
+          <p class="text-slate-600 mt-2 text-sm leading-relaxed">Tienes decenas de videos de YouTube guardados, pero ninguna ruta clara de qué aprender primero ni cómo conectarlo todo.</p>
+        </div>
+        <div data-animate data-animate-delay="3" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-2xl mb-4">📁</div>
+          <p class="font-semibold text-lg">Necesitas portafolio real, no solo certificados</p>
+          <p class="text-slate-600 mt-2 text-sm leading-relaxed">Los reclutadores piden proyectos reales que demuestren que sabes resolver problemas de negocio con datos, no solo diplomas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. SOLUCIÓN / PROMESA
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">El método</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">
+          Aprende haciendo proyectos reales, no memorizando teoría
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">
+          Cada clase termina con algo que puedes mostrar en tu portafolio: dashboards, consultas SQL,
+          notebooks de Python y modelos de Machine Learning aplicados a casos de negocio reales.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div data-animate data-animate-delay="1" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">📊</div>
+          <p class="font-bold">Google Sheets + Apps Script</p>
+          <p class="text-slate-500 text-sm mt-2">Automatiza reportes y construye dashboards sin depender de otros.</p>
+        </div>
+        <div data-animate data-animate-delay="2" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">📈</div>
+          <p class="font-bold">Looker Studio</p>
+          <p class="text-slate-500 text-sm mt-2">Diseña dashboards ejecutivos que cuentan una historia con datos.</p>
+        </div>
+        <div data-animate data-animate-delay="3" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🗄️</div>
+          <p class="font-bold">SQL</p>
+          <p class="text-slate-500 text-sm mt-2">Extrae y combina información directamente desde bases de datos reales.</p>
+        </div>
+        <div data-animate data-animate-delay="4" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🐍</div>
+          <p class="font-bold">Python</p>
+          <p class="text-slate-500 text-sm mt-2">Limpia, transforma y analiza datos a gran escala con Pandas y NumPy.</p>
+        </div>
+        <div data-animate data-animate-delay="5" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🤖</div>
+          <p class="font-bold">Machine Learning</p>
+          <p class="text-slate-500 text-sm mt-2">Da tus primeros pasos entrenando e interpretando modelos predictivos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. TEMARIO COMPLETO (acordeón)
+       ============================================================ -->
+  <section id="temario" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Plan de estudios</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Temario completo · 33 clases en vivo</h2>
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">Lunes, miércoles y viernes, de 7:00 pm a 8:30 pm (hora Perú)</p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+
+        <!-- Módulo 0 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">0</span>
+              <span class="font-bold">Introducción <span class="text-slate-400 font-normal text-sm">· 1 clase</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">01.</span> Bienvenida, presentación del programa y configuración de herramientas</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 1 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">1</span>
+              <span class="font-bold">Google Sheets + Apps Script <span class="text-slate-400 font-normal text-sm">· 7 clases</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">02.</span> Fundamentos de Google Sheets para análisis de datos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">03.</span> Funciones avanzadas y fórmulas anidadas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">04.</span> Tablas dinámicas y segmentación de datos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">05.</span> Validación de datos y formato condicional avanzado</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">06.</span> Introducción a Google Apps Script</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">07.</span> Automatización de reportes con Apps Script</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">08.</span> Proyecto práctico: dashboard automatizado en Sheets</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">2</span>
+              <span class="font-bold">Looker Studio <span class="text-slate-400 font-normal text-sm">· 7 clases</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">09.</span> Introducción a Looker Studio y conexión de fuentes de datos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">10.</span> Diseño de dashboards interactivos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">11.</span> Filtros, controles y segmentaciones</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">12.</span> Cálculos y campos personalizados</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">13.</span> Storytelling visual con datos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">14.</span> Conexión Looker Studio + Google Sheets en vivo</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">15.</span> Proyecto práctico: dashboard ejecutivo</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">3</span>
+              <span class="font-bold">SQL <span class="text-slate-400 font-normal text-sm">· 7 clases</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">16.</span> Fundamentos de bases de datos y SQL</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">17.</span> Consultas SELECT, WHERE y ORDER BY</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">18.</span> Funciones de agregación y GROUP BY</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">19.</span> JOIN entre tablas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">20.</span> Subconsultas y CTEs</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">21.</span> Optimización de consultas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">22.</span> Proyecto práctico: análisis de una base de datos real con SQL</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 4 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">4</span>
+              <span class="font-bold">Python / Pandas <span class="text-slate-400 font-normal text-sm">· 7 clases</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">23.</span> Fundamentos de Python para análisis de datos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">24.</span> NumPy y cálculo numérico</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">25.</span> Introducción a Pandas: Series y DataFrames</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">26.</span> Limpieza y transformación de datos con Pandas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">27.</span> Estadística descriptiva aplicada</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">28.</span> Visualización de datos con Matplotlib y Seaborn</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">29.</span> Proyecto práctico: análisis exploratorio completo</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 5 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">5</span>
+              <span class="font-bold">Machine Learning básico <span class="text-slate-400 font-normal text-sm">· 3 clases</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">30.</span> Introducción al Machine Learning y tipos de modelos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">31.</span> Regresión y clasificación con Scikit-Learn</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">32.</span> Evaluación de modelos e interpretación de resultados</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 6 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">6</span>
+              <span class="font-bold">Proyecto Final Integrador <span class="text-slate-400 font-normal text-sm">· 1 clase</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">33.</span> Presentación y sustentación del proyecto final integrador</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. CLASES GRATIS
+       ============================================================ -->
+  <section id="gratis" class="py-16 md:py-24 px-5 sm:px-8 bg-ink text-white relative overflow-hidden">
+    <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-brand/20 rounded-full blur-3xl"></div>
+
+    <div class="max-w-4xl mx-auto relative">
+      <div class="text-center">
+        <span data-animate class="inline-block bg-brand text-white text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full">
+          100% Gratis
+        </span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-5">
+          Empieza gratis: 7 clases de Python antes del curso
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-white/70 mt-4 max-w-2xl mx-auto">
+          Lunes, miércoles y viernes, de 7:30 pm a 8:30 pm (hora Perú), durante las 2 semanas previas al inicio del programa.
+          Además, si asistes a las 6 clases gratuitas, obtienes un <strong class="text-brand">cupón de S/55 de descuento</strong> para el curso completo.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-4 sm:grid-cols-2">
+        <div data-animate data-animate-delay="1" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">B</span>
+          <div>
+            <p class="font-semibold">Clase de bienvenida</p>
+            <p class="text-white/60 text-sm mt-1">Presentación del programa, herramientas y expectativas del curso</p>
+          </div>
+        </div>
+        <div data-animate data-animate-delay="2" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">1</span>
+          <div>
+            <p class="font-semibold">Python desde cero</p>
+            <p class="text-white/60 text-sm mt-1">Variables, tipos de datos y operadores</p>
+          </div>
+        </div>
+        <div data-animate data-animate-delay="3" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">2</span>
+          <div>
+            <p class="font-semibold">Estructuras de control</p>
+            <p class="text-white/60 text-sm mt-1">Condicionales y bucles en Python</p>
+          </div>
+        </div>
+        <div data-animate data-animate-delay="4" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">3</span>
+          <div>
+            <p class="font-semibold">Listas y diccionarios</p>
+            <p class="text-white/60 text-sm mt-1">Manipulación básica de datos estructurados</p>
+          </div>
+        </div>
+        <div data-animate data-animate-delay="5" class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">4</span>
+          <div>
+            <p class="font-semibold">Funciones en Python</p>
+            <p class="text-white/60 text-sm mt-1">Reutilización de código y buenas prácticas</p>
+          </div>
+        </div>
+        <div data-animate class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">5</span>
+          <div>
+            <p class="font-semibold">Excel/Sheets vs Python</p>
+            <p class="text-white/60 text-sm mt-1">Cuándo usar cada herramienta en el análisis de datos</p>
+          </div>
+        </div>
+        <div data-animate class="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-4 sm:col-span-2">
+          <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">6</span>
+          <div>
+            <p class="font-semibold">Tu primer mini-proyecto</p>
+            <p class="text-white/60 text-sm mt-1">Analiza tu primer dataset real y comparte tu resultado</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-animate class="mt-10 text-center">
+        <a data-wa-cta-gratis data-cta-label="Clases gratis" target="_blank" rel="noopener"
+          class="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+          Inscríbete a las clases gratis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. SOBRE EL INSTRUCTOR
+       ============================================================ -->
+  <section id="instructor" class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-[220px_1fr] gap-10 items-start">
+      <!-- TODO: reemplaza con foto real del instructor en /assets/img/instructor.jpg -->
+      <div data-animate class="mx-auto md:mx-0">
+        <div class="w-40 h-40 md:w-52 md:h-52 rounded-3xl bg-brand-light border-4 border-white shadow-xl flex items-center justify-center text-5xl font-extrabold text-brand overflow-hidden">
+          <img src="assets/img/instructor.jpg" alt="Foto del instructor" class="w-full h-full object-cover"
+            onerror="this.style.display='none'; this.parentElement.textContent='YR';" />
+        </div>
+      </div>
+
+      <div>
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Tu instructor</span>
+        <!-- TODO: confirma nombre e industrias/empresas donde tiene experiencia -->
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-3xl font-extrabold mt-2">Yoshio Rivera Agarie</h2>
+        <p data-animate data-animate-delay="1" class="text-brand font-semibold">Analista de Datos & CEO de Perú Python</p>
+
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4 leading-relaxed">
+          Más de 5 años de experiencia enseñando programación y análisis de datos a estudiantes universitarios
+          y profesionales de distintos sectores. Analista de datos con conocimiento en Python y librerías como
+          Pandas, NumPy, Matplotlib, Seaborn, Plotly y Scikit-Learn. Ha liderado grupos de estudio en cursos
+          intensivos de programación y cuenta con certificaciones en Data Science y Python.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div data-animate data-animate-delay="1" class="text-center">
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+5</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Años de experiencia enseñando</p>
+          </div>
+          <div data-animate data-animate-delay="2" class="text-center">
+            <!-- TODO: ajusta esta cifra a un número real -->
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+30</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Dashboards implementados</p>
+          </div>
+          <div data-animate data-animate-delay="3" class="text-center">
+            <!-- TODO: ajusta esta cifra a un número real -->
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+500</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Estudiantes formados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. PARA QUIÉN ES / NO ES
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">¿Es este curso para ti?</h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div data-animate data-animate-delay="1" class="bg-white border-2 border-brand/20 rounded-2xl p-6 sm:p-8">
+          <p class="font-extrabold text-lg text-brand-dark flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center text-sm">✓</span>
+            Este curso es para ti si...
+          </p>
+          <ul class="mt-5 space-y-3 text-slate-600 text-sm">
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Quieres una ruta clara para convertirte en Analista de Datos, sin perderte entre tutoriales sueltos</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Ya manejas Excel/Sheets y quieres dar el salto a herramientas más profesionales</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Necesitas un portafolio de proyectos reales para postular a mejores puestos</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Estás dispuesto a practicar y asistir en vivo 3 veces por semana</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Quieres aprender Machine Learning sin necesidad de ser programador experto</li>
+          </ul>
+        </div>
+
+        <div data-animate data-animate-delay="2" class="bg-white border-2 border-red-100 rounded-2xl p-6 sm:p-8">
+          <p class="font-extrabold text-lg text-red-500 flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-red-400 text-white flex items-center justify-center text-sm">✕</span>
+            Este curso NO es para ti si...
+          </p>
+          <ul class="mt-5 space-y-3 text-slate-600 text-sm">
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> Buscas una solución mágica sin practicar ni hacer las tareas</li>
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> Ya trabajas como Data Scientist Senior y dominas SQL, Python y ML avanzado</li>
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> No puedes asistir en vivo ni ver las grabaciones durante la semana</li>
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> Solo quieres un certificado sin aplicar lo aprendido</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. TESTIMONIOS
+       ============================================================ -->
+  <!-- TODO: reemplazar con testimonios reales de exalumnos (nombre, carrera/empresa y cita) -->
+  <section class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">Lo que dicen nuestros estudiantes</h2>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        <div data-animate data-animate-delay="1" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Ha sido de las mejores experiencias en el aprendizaje de la lógica de programación,
+            con un excelente profesor que no deja ninguna duda y lo explica de diferente manera.
+          </p>
+          <p class="font-bold mt-4">Nombre Apellido</p>
+          <p class="text-sm text-slate-500">Carrera / Empresa</p>
+        </div>
+
+        <div data-animate data-animate-delay="2" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Las clases son prácticas y claras, y el profesor siempre está dispuesto a ayudar.
+            He aprendido mucho y puedo aplicarlo en mis proyectos reales. Lo recomiendo a todos.
+          </p>
+          <p class="font-bold mt-4">Nombre Apellido</p>
+          <p class="text-sm text-slate-500">Carrera / Empresa</p>
+        </div>
+
+        <div data-animate data-animate-delay="3" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            El profesor explica bien, es muy didáctico, y usa ejemplos para adquirir los conocimientos.
+            Desde la primera clase se inició desde lo básico hasta ir aprendiendo nuevas herramientas.
+          </p>
+          <p class="font-bold mt-4">Nombre Apellido</p>
+          <p class="text-sm text-slate-500">Carrera / Empresa</p>
+        </div>
+
+        <div data-animate data-animate-delay="4" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Al ser primera vez que veía este tema, y con la ayuda del docente, entendí los conceptos
+            mínimos para poder aplicarlo. Espero sacar el mayor provecho y aplicarlo en la empresa.
+          </p>
+          <p class="font-bold mt-4">Nombre Apellido</p>
+          <p class="text-sm text-slate-500">Carrera / Empresa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. PRECIO Y OFERTA
+       ============================================================ -->
+  <section id="precio" class="py-16 md:py-24 px-5 sm:px-8 bg-gradient-to-b from-brand-light to-white">
+    <div class="max-w-lg mx-auto">
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Inversión</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Empieza tu transformación hoy</h2>
+      </div>
+
+      <div data-animate data-animate-delay="2" class="mt-10 bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div class="bg-ink text-white text-center py-3">
+          <p class="pulso-urgencia inline-flex items-center gap-2 text-xs sm:text-sm font-bold">
+            <span class="w-2 h-2 rounded-full bg-brand"></span>
+            Solo quedan <span data-cupos-restantes>30</span> de <span data-cupos-totales>30</span> cupos
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-10 text-center">
+          <p class="text-slate-400 text-sm font-semibold uppercase tracking-wide">Programa completo · 33 clases en vivo</p>
+
+          <!-- TODO: precio ancla y precio final -->
+          <div class="mt-4 flex items-end justify-center gap-3">
+            <span class="text-2xl text-slate-400 line-through">S/580</span>
+            <span class="text-5xl font-extrabold text-brand">S/350</span>
+          </div>
+          <p class="text-slate-500 text-sm mt-2">Precio de lanzamiento, pago único</p>
+
+          <div class="mt-6 bg-brand-light border border-brand/30 rounded-2xl p-4">
+            <p class="text-sm text-brand-dark font-semibold">
+              🎁 Asiste a las 6 clases gratuitas de Python y obtén un cupón de <strong>S/55 de descuento</strong>
+            </p>
+            <p class="text-2xl font-extrabold text-ink mt-2">Pagas solo S/295</p>
+          </div>
+
+          <div class="w-full h-2 bg-slate-100 rounded-full mt-8 overflow-hidden">
+            <div data-cupos-barra class="h-full bg-brand" style="width: 0%"></div>
+          </div>
+          <p class="text-xs text-slate-400 mt-2">Cupo máximo: 30 personas por cohorte</p>
+
+          <ul class="mt-8 space-y-3 text-left text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> 33 clases en vivo (incluye 3 clases de Machine Learning)</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Acceso a las 7 clases gratuitas previas (bienvenida + 6 clases)</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Grabación de todas las clases</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Certificado al finalizar el proyecto integrador</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Plantillas de Sheets, SQL y notebooks de Python</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Comunidad privada de WhatsApp</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Datasets reales para tu portafolio</li>
+          </ul>
+
+          <a data-wa-cta data-cta-label="Tarjeta de precio" target="_blank" rel="noopener"
+            class="mt-8 w-full inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+            Reservar mi cupo ahora
+          </a>
+          <p class="text-xs text-slate-400 mt-3">Pago por transferencia, Yape/Plin o PayPal</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. PREGUNTAS FRECUENTES
+       ============================================================ -->
+  <section id="faq" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">Preguntas frecuentes</h2>
+
+      <div class="mt-10 space-y-4">
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Necesito experiencia previa en programación?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              No, ningún requisito previo. Empezamos desde cero en Sheets y Python, y avanzamos paso a paso
+              hasta SQL y Machine Learning con proyectos guiados.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Qué pasa si falto a una clase?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              No te preocupes, todas las clases quedan grabadas y disponibles en nuestro Classroom
+              para que las veas cuando quieras.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Las clases son en vivo o grabadas?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Son 100% en vivo por Google Meet, lunes, miércoles y viernes de 7:00 pm a 8:30 pm (hora Perú),
+              y además quedan grabadas.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Cómo es el proceso de pago?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Puedes pagar por transferencia bancaria, Yape/Plin o PayPal (si estás en el extranjero).
+              Al confirmar tu pago por WhatsApp, te enviamos el formulario de inscripción y el acceso a los grupos.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Obtengo un certificado al finalizar?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Sí, el certificado está incluido en la inversión total. Para obtenerlo necesitas presentar
+              el proyecto final integrador.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Veré Machine Learning aunque sea principiante?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Sí. Las 3 clases de Machine Learning están diseñadas para principiantes, aplicando lo aprendido
+              en Python y Pandas para que entiendas cómo funciona un modelo predictivo sin necesitar
+              conocimientos matemáticos avanzados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       11. FOOTER
+       ============================================================ -->
+  <footer class="bg-ink text-white px-5 sm:px-8 pt-16 pb-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 data-animate class="text-2xl sm:text-3xl font-extrabold">¿Listo para convertirte en Analista de Datos?</h2>
+      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Cupos limitados a 30 personas por cohorte. Reserva el tuyo hoy mismo.</p>
+
+      <a data-wa-cta data-cta-label="Footer" target="_blank" rel="noopener"
+        class="mt-8 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+        Reservar mi cupo por WhatsApp
+      </a>
+
+      <!-- TODO: reemplaza con los enlaces reales a redes sociales -->
+      <div class="mt-10 flex items-center justify-center gap-5">
+        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.39A5.87 5.87 0 0 0 .62 4.14c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.47 1.39 2.13.66.67 1.34 1.08 2.13 1.39.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.39c.67-.66 1.08-1.34 1.39-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.39-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zM18.41 4.6a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.75.02c1.3-.02 2.59-.01 3.88-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+        </a>
+        <a data-wa-cta data-cta-label="Footer redes" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 3.5c-4.9 0-8.9 4-8.9 8.9 0 1.57.42 3.1 1.2 4.45L3 21l4.28-1.32a8.9 8.9 0 0 0 4.77 1.38h.01c4.9 0 8.9-4 8.9-8.9a8.86 8.86 0 0 0-2.36-4.9z"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-white/10 text-xs text-white/40">
+        &copy; <span id="year"></span> AnalistaPro · Yoshio Rivera Agarie. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="js/script.js"></script>
+</body>
+</html>
