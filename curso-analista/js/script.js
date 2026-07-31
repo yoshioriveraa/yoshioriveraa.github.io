@@ -3,8 +3,8 @@
    Todo lo que necesitas cambiar antes de publicar está aquí arriba.
    ============================================================ */
 
-// TODO: Reemplaza con el número real de WhatsApp (formato: código de país + número, sin + ni espacios)
-const WHATSAPP_NUMBER = "51999999999";
+// Número real de WhatsApp (código de país + número, sin + ni espacios)
+const WHATSAPP_NUMBER = "51900604267";
 
 // Mensaje predefinido que se envía al hacer click en cualquier botón CTA
 const WHATSAPP_MESSAGE = "Hola, quiero mi cupo para el curso de Análisis de Datos 🚀";
@@ -12,9 +12,9 @@ const WHATSAPP_MESSAGE = "Hola, quiero mi cupo para el curso de Análisis de Dat
 // Mensaje predefinido para el CTA de las clases gratis
 const WHATSAPP_MESSAGE_GRATIS = "Hola, quiero inscribirme a las clases gratis de Python 🚀";
 
-// TODO: Fecha y hora de inicio del curso (formato ISO). Se usa para el countdown del Hero.
-// Ejemplo: 25 de agosto de 2026, 7:00 pm hora Perú (UTC-5)
-const COURSE_START_DATE = new Date("2026-08-25T19:00:00-05:00");
+// Fecha y hora de inicio del curso (formato ISO). Se usa para el countdown del Hero.
+// 31 de agosto de 2026, 7:00 pm hora Perú (UTC-5)
+const COURSE_START_DATE = new Date("2026-08-31T19:00:00-05:00");
 
 // TODO: Cupos totales y cupos restantes disponibles. Edita CUPOS_RESTANTES según inscripciones reales.
 const CUPOS_TOTALES = 30;
