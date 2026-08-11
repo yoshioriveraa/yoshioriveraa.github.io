@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de SQL con PostgreSQL desde Cero | Consultas, Joins y Bases de Datos</title>
+  <meta name="description" content="Aprende SQL con PostgreSQL en 18 sesiones 100% prácticas: instalación, consultas, joins, subconsultas y proyecto final. Miércoles y viernes en vivo + sábados de práctica. Grupos de máximo 15 estudiantes. Inicia el 21 de agosto." />
+
+  <!-- ============================================================
+       OPEN GRAPH / META TAGS PARA COMPARTIR EN WHATSAPP Y REDES
+       TODO: reemplaza og-image.jpg en /assets/img/ por una imagen real 1200x630px
+       ============================================================ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yoshioriveraa.github.io/curso-sql/" />
+  <meta property="og:title" content="Curso de SQL con PostgreSQL desde Cero | Consultas, Joins y Bases de Datos" />
+  <meta property="og:description" content="18 sesiones 100% prácticas, en grupos de máximo 15 estudiantes: instalación, consultas, joins, subconsultas y proyecto final con PostgreSQL." />
+  <meta property="og:image" content="https://yoshioriveraa.github.io/curso-sql/assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- TODO: reemplaza favicon.png en /assets/img/ por un ícono real 512x512px -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+  <!-- Tailwind CSS vía CDN (sin build process) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0F172A",      // texto principal / azul oscuro
+            brand: "#6366F1",    // índigo acento
+            "brand-dark": "#4338CA",
+            "brand-light": "#EEF2FF",
+          },
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Estilos custom (animaciones, acordeones) -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 font-extrabold text-lg">
+        <span class="w-8 h-8 rounded-lg bg-brand text-white flex items-center justify-center text-sm">PG</span>
+        SQL<span class="text-brand">·PostgreSQL</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#temario" class="hover:text-brand transition">Temario</a>
+        <a href="#para-quien" class="hover:text-brand transition">Para quién es</a>
+        <a href="#instructor" class="hover:text-brand transition">Instructor</a>
+        <a href="#precio" class="hover:text-brand transition">Precio</a>
+        <a href="#faq" class="hover:text-brand transition">FAQ</a>
+      </div>
+
+      <a data-wa-cta data-cta-label="Navbar" target="_blank" rel="noopener"
+        class="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-full transition shadow-sm shadow-brand/30">
+        Reservar mi cupo
+      </a>
+
+      <button data-menu-btn class="md:hidden p-2" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <div data-mobile-menu class="hidden md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-4 text-sm font-medium">
+      <a href="#temario" class="hover:text-brand">Temario</a>
+      <a href="#para-quien" class="hover:text-brand">Para quién es</a>
+      <a href="#instructor" class="hover:text-brand">Instructor</a>
+      <a href="#precio" class="hover:text-brand">Precio</a>
+      <a href="#faq" class="hover:text-brand">FAQ</a>
+      <a data-wa-cta data-cta-label="Menú móvil" target="_blank" rel="noopener"
+        class="inline-flex justify-center items-center bg-brand text-white font-semibold px-5 py-3 rounded-full">
+        Reservar mi cupo
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section id="top" class="relative pt-28 pb-16 md:pt-36 md:pb-24 px-5 sm:px-8 overflow-hidden">
+    <!-- Fondo decorativo sutil -->
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-light via-white to-white"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 bg-brand/10 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-4xl mx-auto text-center">
+      <div data-animate class="pulso-urgencia inline-flex items-center gap-2 bg-white border border-brand/30 text-brand-dark text-xs sm:text-sm font-bold px-4 py-2 rounded-full mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-brand"></span>
+        Inicia el 21 de agosto · grupo de solo <span data-cupos-restantes>15</span> cupos
+      </div>
+
+      <h1 data-animate class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+        Domina <span class="text-brand">SQL con PostgreSQL</span>, desde instalar tu base de datos hasta consultas avanzadas
+      </h1>
+
+      <p data-animate data-animate-delay="1" class="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        18 sesiones 100% prácticas en grupos de máximo 15 estudiantes: instalas PostgreSQL desde la primera clase,
+        resuelves <strong class="text-ink">ejercicios todos los días</strong> y rindes un
+        <strong class="text-ink">examen cada 3 clases</strong> para consolidar lo aprendido. Nada de teoría suelta —
+        programas con SQL real desde el día uno.
+      </p>
+
+      <div data-animate data-animate-delay="2" class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a data-wa-cta data-cta-label="Hero principal" target="_blank" rel="noopener"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 3.5c-4.9 0-8.9 4-8.9 8.9 0 1.57.42 3.1 1.2 4.45L3 21l4.28-1.32a8.9 8.9 0 0 0 4.77 1.38h.01c4.9 0 8.9-4 8.9-8.9a8.86 8.86 0 0 0-2.36-4.9zm-5.55 13.7a7.4 7.4 0 0 1-3.77-1.03l-.27-.16-2.8.87.86-2.73-.18-.28a7.36 7.36 0 0 1-1.13-3.94c0-4.08 3.32-7.4 7.4-7.4a7.35 7.35 0 0 1 5.24 2.17 7.35 7.35 0 0 1 2.16 5.24c0 4.08-3.32 7.4-7.4 7.4zm4.06-5.54c-.22-.11-1.3-.64-1.5-.71-.2-.07-.35-.11-.5.11-.15.22-.57.71-.7.86-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.8-1.11a6.75 6.75 0 0 1-1.24-1.55c-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.05-.11-.5-1.2-.68-1.65-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.39.05-.6.28-.2.22-.79.77-.79 1.87 0 1.1.81 2.16.92 2.31.11.15 1.6 2.44 3.87 3.42.54.23.96.37 1.29.48.54.17 1.03.15 1.42.09.43-.06 1.3-.53 1.49-1.04.18-.51.18-.95.13-1.04-.05-.09-.2-.15-.42-.26z"/></svg>
+          Reservar mi cupo
+        </a>
+        <a href="#precio"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-ink/10 hover:border-brand text-ink font-semibold text-base px-8 py-4 rounded-full transition">
+          Ver precio y beneficios
+        </a>
+      </div>
+
+      <!-- Countdown -->
+      <div data-animate data-animate-delay="3" data-countdown class="mt-12 max-w-lg mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">El curso empieza en</p>
+        <div class="grid grid-cols-4 gap-2 sm:gap-4">
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-dias class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Días</p>
+          </div>
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-horas class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Horas</p>
+          </div>
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-min class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Min</p>
+          </div>
+          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
+            <p data-cd-seg class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Seg</p>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 mt-3">Modalidad online en vivo · Miércoles y viernes 7:00 pm–8:30 pm + sábados de práctica 12:00 pm–2:00 pm (hora Perú)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. PROBLEMA / AGITACIÓN
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center max-w-2xl mx-auto">
+        ¿Te suena familiar?
+      </h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div data-animate data-animate-delay="1" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-2xl mb-4">🤔</div>
+          <p class="font-semibold text-lg">Sabes que SQL es clave, pero no sabes por dónde empezar</p>
+          <p class="text-slate-600 mt-2 text-sm leading-relaxed">Todos los trabajos de datos lo piden, pero instalar una base de datos y escribir tu primera consulta se siente como una barrera enorme.</p>
+        </div>
+        <div data-animate data-animate-delay="2" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-2xl mb-4">📋</div>
+          <p class="font-semibold text-lg">Copias consultas de internet, pero no entiendes por qué funcionan</p>
+          <p class="text-slate-600 mt-2 text-sm leading-relaxed">Puedes hacer que un SELECT funcione a fuerza de prueba y error, pero te trabas apenas cambian los datos o te piden algo distinto.</p>
+        </div>
+        <div data-animate data-animate-delay="3" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-2xl mb-4">🗄️</div>
+          <p class="font-semibold text-lg">Te piden manejar bases de datos y no tienes con qué practicar</p>
+          <p class="text-slate-600 mt-2 text-sm leading-relaxed">En el trabajo, la universidad o una entrevista te piden SQL real, pero nunca tuviste una base de datos propia para practicar con calma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. SOLUCIÓN / QUÉ APRENDERÁS
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">100% práctico</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">
+          Aprendes SQL escribiendo SQL, no memorizando teoría
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">
+          Cada clase termina con ejercicios resueltos por ti mismo, y cada 3 clases rindes un examen corto
+          para comprobar que de verdad dominas el tema antes de avanzar.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div data-animate data-animate-delay="1" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🛠️</div>
+          <p class="font-bold">Instalar y configurar PostgreSQL</p>
+          <p class="text-slate-500 text-sm mt-2">PostgreSQL y pgAdmin, paso a paso, desde la primera clase.</p>
+        </div>
+        <div data-animate data-animate-delay="2" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🔍</div>
+          <p class="font-bold">Escribir consultas desde cero</p>
+          <p class="text-slate-500 text-sm mt-2">SELECT, filtros, agregaciones — la base que usarás siempre.</p>
+        </div>
+        <div data-animate data-animate-delay="3" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🔗</div>
+          <p class="font-bold">Combinar tablas con JOINs</p>
+          <p class="text-slate-500 text-sm mt-2">INNER, LEFT, RIGHT, FULL — sin confundirte nunca más.</p>
+        </div>
+        <div data-animate data-animate-delay="4" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🧮</div>
+          <p class="font-bold">Subconsultas y funciones de ventana</p>
+          <p class="text-slate-500 text-sm mt-2">CTEs, subqueries y window functions para análisis avanzado.</p>
+        </div>
+        <div data-animate data-animate-delay="5" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">📐</div>
+          <p class="font-bold">Modelar y optimizar bases de datos</p>
+          <p class="text-slate-500 text-sm mt-2">Diseño de tablas, índices y buenas prácticas de rendimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3.5 METODOLOGÍA Y MATERIALES
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Cómo trabajamos</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">
+          Grupos reducidos, ejercicios diarios y examen cada 3 clases
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">
+          Máximo 15 estudiantes por cohorte, para que el instructor revise tu código y te dé feedback real.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-animate data-animate-delay="1" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🏫</div>
+          <p class="font-bold">Google Classroom</p>
+          <p class="text-slate-500 text-sm mt-2">Todo el material del curso organizado en un solo lugar.</p>
+        </div>
+        <div data-animate data-animate-delay="2" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🎥</div>
+          <p class="font-bold">Google Meet</p>
+          <p class="text-slate-500 text-sm mt-2">Clases en vivo, interactivas y grabadas para repasar cuando quieras.</p>
+        </div>
+        <div data-animate data-animate-delay="3" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🗄️</div>
+          <p class="font-bold">Base de datos PostgreSQL de práctica</p>
+          <p class="text-slate-500 text-sm mt-2">Datasets reales (ventas, clientes, operaciones) para practicar cada tema.</p>
+        </div>
+        <div data-animate data-animate-delay="4" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">✍️</div>
+          <p class="font-bold">Ejercicios todos los días</p>
+          <p class="text-slate-500 text-sm mt-2">Cada clase incluye práctica guiada, no solo demostración.</p>
+        </div>
+        <div data-animate data-animate-delay="1" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🧪</div>
+          <p class="font-bold">Examen cada 3 clases</p>
+          <p class="text-slate-500 text-sm mt-2">6 evaluaciones cortas para consolidar lo aprendido semana a semana.</p>
+        </div>
+        <div data-animate data-animate-delay="2" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">📄</div>
+          <p class="font-bold">Guías en PDF</p>
+          <p class="text-slate-500 text-sm mt-2">Material de repaso con la sintaxis de cada clase.</p>
+        </div>
+        <div data-animate data-animate-delay="3" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">👥</div>
+          <p class="font-bold">Grupo de máximo 15 estudiantes</p>
+          <p class="text-slate-500 text-sm mt-2">Seguimiento cercano, no una clase masiva.</p>
+        </div>
+        <div data-animate data-animate-delay="4" class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4">🏁</div>
+          <p class="font-bold">Proyecto final con datos reales</p>
+          <p class="text-slate-500 text-sm mt-2">Diseñas y consultas tu propia base de datos de principio a fin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. TEMARIO COMPLETO (acordeón)
+       ============================================================ -->
+  <section id="temario" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Plan de estudios</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Temario completo · 18 sesiones (6 semanas)</h2>
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">Miércoles y viernes, 7:00 pm a 8:30 pm · Sábados de práctica, 12:00 pm a 2:00 pm (hora Perú)</p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+
+        <!-- Sesión 1 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">1</span>
+              <span class="font-bold">Instalación de PostgreSQL y primeras consultas <span class="text-slate-400 font-normal text-sm">· Miércoles</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Instalamos PostgreSQL y pgAdmin juntos, paso a paso (Windows/Mac)</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Qué es una base de datos relacional y por qué la usa el 90% de las empresas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Recorrido por pgAdmin: bases, esquemas, tablas y el editor de consultas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Cargas tu primera base de datos de práctica</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Escribes tu primera consulta SQL en esta misma clase</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 2 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">2</span>
+              <span class="font-bold">SELECT, WHERE, ORDER BY y LIMIT <span class="text-slate-400 font-normal text-sm">· Viernes</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> SELECT: eliges exactamente las columnas que necesitas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> WHERE: filtras filas con condiciones simples y compuestas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> ORDER BY y LIMIT: ordenas resultados y controlas cuántos ver</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Alias de columnas y tablas para consultas más legibles</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios guiados con la base de datos de práctica</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 3 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">3</span>
+              <span class="font-bold">Práctica guiada + Examen 1 <span class="text-slate-400 font-normal text-sm">· Sábado</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Sesión de ejercicios resueltos en vivo, con dudas de la semana</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Retos de consultas SELECT y WHERE con datos reales</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Examen 1: sintaxis básica, filtros y ordenamiento</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Feedback individual sobre tus consultas</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 4 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">4</span>
+              <span class="font-bold">Operadores lógicos, BETWEEN, IN, LIKE y nulos <span class="text-slate-400 font-normal text-sm">· Miércoles</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> AND, OR, NOT: combinas condiciones sin confundirte</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> BETWEEN e IN para rangos y listas de valores</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> LIKE y patrones de texto (%, _)</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> IS NULL / IS NOT NULL: el error más común de los principiantes</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios de filtrado avanzado</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 5 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">5</span>
+              <span class="font-bold">Funciones de agregación, GROUP BY y HAVING <span class="text-slate-400 font-normal text-sm">· Viernes</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> COUNT, SUM, AVG, MIN y MAX: resumes datos en una línea</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> GROUP BY: agrupas filas para calcular por categoría</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> HAVING vs. WHERE: filtras antes o después de agrupar</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Construyes reportes tipo "ventas por mes" o "clientes por región"</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios con datos de ventas reales</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 6 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">6</span>
+              <span class="font-bold">Práctica guiada + Examen 2 <span class="text-slate-400 font-normal text-sm">· Sábado</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios de filtros avanzados y agregaciones combinadas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Armas reportes agrupados de principio a fin</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Examen 2: operadores lógicos, agregaciones y agrupamiento</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Feedback individual sobre tu avance</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 7 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">7</span>
+              <span class="font-bold">INNER JOIN y LEFT JOIN <span class="text-slate-400 font-normal text-sm">· Miércoles</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Por qué los datos reales viven repartidos en varias tablas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> INNER JOIN: combinas solo lo que coincide en ambas tablas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> LEFT JOIN: conservas todo de una tabla aunque no haya coincidencia</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Llaves primarias y foráneas: la lógica detrás de cada JOIN</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios combinando clientes, pedidos y productos</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 8 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">8</span>
+              <span class="font-bold">RIGHT JOIN, FULL JOIN y self joins <span class="text-slate-400 font-normal text-sm">· Viernes</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> RIGHT JOIN y FULL JOIN: cuándo usarlos y por qué son raros en la práctica</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Self join: relacionas una tabla consigo misma (ej. empleado-jefe)</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> JOINs con más de dos tablas a la vez</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Errores comunes que duplican o pierden filas al combinar tablas</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios con un modelo de datos de varias tablas</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 9 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">9</span>
+              <span class="font-bold">Práctica guiada + Examen 3 <span class="text-slate-400 font-normal text-sm">· Sábado</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Retos de JOINs con un modelo de datos de e-commerce</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Combinas agregaciones con JOINs en la misma consulta</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Examen 3: todos los tipos de JOIN vistos hasta ahora</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Feedback individual y repaso de dudas frecuentes</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 10 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">10</span>
+              <span class="font-bold">Subconsultas, EXISTS y ANY/ALL <span class="text-slate-400 font-normal text-sm">· Miércoles</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Subconsultas en el WHERE, el FROM y el SELECT</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> EXISTS y NOT EXISTS: verificas si hay resultados relacionados</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> ANY / ALL para comparar contra un conjunto de valores</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Cuándo una subconsulta es más clara que un JOIN (y viceversa)</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios de subconsultas con datos reales</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 11 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">11</span>
+              <span class="font-bold">CTEs (WITH) y funciones de ventana <span class="text-slate-400 font-normal text-sm">· Viernes</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> CTEs con WITH: ordenas consultas complejas en pasos legibles</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Introducción a funciones de ventana: ROW_NUMBER, RANK</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> PARTITION BY: cálculos "por grupo" sin perder el detalle de cada fila</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Casos reales: top N por categoría, rankings, acumulados</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios de CTEs y funciones de ventana</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 12 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">12</span>
+              <span class="font-bold">Práctica guiada + Examen 4 <span class="text-slate-400 font-normal text-sm">· Sábado</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Retos combinando subconsultas, CTEs y funciones de ventana</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Resuelves un caso de ranking de ventas por vendedor y mes</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Examen 4: subconsultas, CTEs y funciones de ventana</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Feedback individual sobre tu avance</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 13 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">13</span>
+              <span class="font-bold">INSERT, UPDATE, DELETE y transacciones <span class="text-slate-400 font-normal text-sm">· Miércoles</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> INSERT: agregas filas nuevas a una tabla</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> UPDATE y DELETE: modificas datos existentes sin romper nada</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Transacciones: BEGIN, COMMIT y ROLLBACK para operar con seguridad</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Por qué siempre debes probar un UPDATE/DELETE con un SELECT antes</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios de modificación de datos sobre tu propia base</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 14 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">14</span>
+              <span class="font-bold">Diseño de bases de datos: CREATE TABLE y constraints <span class="text-slate-400 font-normal text-sm">· Viernes</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> CREATE TABLE: diseñas tus propias tablas desde cero</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Llaves primarias, foráneas y tipos de datos correctos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Constraints: NOT NULL, UNIQUE, CHECK, DEFAULT</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Normalización básica: por qué no todo va en una sola tabla</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Diseñas el modelo de datos de tu proyecto final</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 15 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">15</span>
+              <span class="font-bold">Práctica guiada + Examen 5 <span class="text-slate-400 font-normal text-sm">· Sábado</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Construyes tus tablas y cargas datos de prueba</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Ejercicios de INSERT/UPDATE/DELETE con transacciones</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Examen 5: modelado, constraints y modificación de datos</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Feedback individual sobre el diseño de tu proyecto</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 16 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">16</span>
+              <span class="font-bold">Índices, EXPLAIN ANALYZE y rendimiento <span class="text-slate-400 font-normal text-sm">· Miércoles</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Qué es un índice y cuándo hace que una consulta sea más rápida</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> EXPLAIN ANALYZE: lees el plan de ejecución de una consulta</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Errores comunes que hacen lentas las consultas (y cómo evitarlos)</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Buenas prácticas de rendimiento para bases de datos reales</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Optimizas una consulta lenta en vivo</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 17 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">17</span>
+              <span class="font-bold">Funciones, procedimientos y triggers básicos <span class="text-slate-400 font-normal text-sm">· Viernes</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Funciones propias en PostgreSQL (PL/pgSQL) para reutilizar lógica</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Procedimientos almacenados: cuándo automatizar tareas dentro de la base</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Triggers básicos: acciones automáticas ante INSERT/UPDATE/DELETE</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Conectar tu base de datos con Python o Google Sheets (introducción)</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Terminas de armar tu proyecto final</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sesión 18 -->
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-full bg-ink text-white text-xs font-bold flex items-center justify-center">18</span>
+              <span class="font-bold">Proyecto final + Examen final <span class="text-slate-400 font-normal text-sm">· Sábado</span></span>
+            </span>
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <ul class="pb-5 space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Presentas tu proyecto final: base de datos propia + consultas reales</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Examen final: repaso integral de todo el curso</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Feedback individual y cierre del curso</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Cómo armar tu portafolio con este proyecto</li>
+              <li class="flex gap-2"><span class="text-brand font-bold">•</span> Qué aprender después para seguir creciendo con SQL</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. SOBRE EL INSTRUCTOR
+       ============================================================ -->
+  <section id="instructor" class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-[220px_1fr] gap-10 items-start">
+      <!-- TODO: reemplaza con foto real del instructor en /assets/img/instructor.jpg -->
+      <div data-animate class="mx-auto md:mx-0">
+        <div class="w-40 h-40 md:w-52 md:h-52 rounded-3xl bg-brand-light border-4 border-white shadow-xl flex items-center justify-center text-5xl font-extrabold text-brand overflow-hidden">
+          <img src="assets/img/instructor.jpg" alt="Foto del instructor" class="w-full h-full object-cover"
+            onerror="this.style.display='none'; this.parentElement.textContent='YR';" />
+        </div>
+      </div>
+
+      <div>
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Tu instructor</span>
+        <div data-animate data-animate-delay="1" class="flex items-center gap-3 mt-2">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Yoshio Rivera Agarie</h2>
+          <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" rel="noopener" aria-label="LinkedIn de Yoshio Rivera Agarie"
+            class="w-8 h-8 rounded-full bg-[#0A66C2] text-white flex items-center justify-center shrink-0 hover:opacity-80 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
+        <p data-animate data-animate-delay="1" class="text-brand font-semibold">Analista de Datos & CEO de Perú Python</p>
+
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4 leading-relaxed">
+          Más de 5 años de experiencia enseñando programación y análisis de datos a estudiantes universitarios
+          y profesionales de distintos sectores. Trabaja a diario con bases de datos SQL y PostgreSQL para
+          construir reportes, dashboards y automatizaciones. Ha liderado grupos de estudio en cursos intensivos
+          de análisis de datos y cuenta con certificaciones en Data Science y Python.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div data-animate data-animate-delay="1" class="text-center">
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+5</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Años de experiencia enseñando</p>
+          </div>
+          <div data-animate data-animate-delay="2" class="text-center">
+            <!-- TODO: ajusta esta cifra a un número real -->
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+30</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Bases de datos implementadas</p>
+          </div>
+          <div data-animate data-animate-delay="3" class="text-center">
+            <!-- TODO: ajusta esta cifra a un número real -->
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+500</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Estudiantes formados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. PARA QUIÉN ES / NO ES
+       ============================================================ -->
+  <section id="para-quien" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">¿Es este curso para ti?</h2>
+      <p data-animate data-animate-delay="1" class="text-slate-600 text-center mt-4 max-w-2xl mx-auto">
+        Ideal para quienes quieren dominar SQL desde cero, con práctica diaria y un grupo pequeño
+        que sí recibe seguimiento del instructor.
+      </p>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div data-animate data-animate-delay="1" class="bg-white border-2 border-brand/20 rounded-2xl p-6 sm:p-8">
+          <p class="font-extrabold text-lg text-brand-dark flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center text-sm">✓</span>
+            Este curso es para ti si...
+          </p>
+          <ul class="mt-5 space-y-3 text-slate-600 text-sm">
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Quieres aprender SQL desde cero, sin experiencia previa en bases de datos</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Ya usas Excel/Sheets y quieres dar el salto a bases de datos reales</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Necesitas SQL para tu trabajo, tu tesis o tu portafolio como analista de datos</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Puedes practicar todos los días — el curso es 100% práctico</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Puedes asistir en vivo miércoles y viernes (7:00–8:30 pm) y sábados (12:00–2:00 pm)</li>
+          </ul>
+        </div>
+
+        <div data-animate data-animate-delay="2" class="bg-white border-2 border-red-100 rounded-2xl p-6 sm:p-8">
+          <p class="font-extrabold text-lg text-red-500 flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-red-400 text-white flex items-center justify-center text-sm">✕</span>
+            Este curso NO es para ti si...
+          </p>
+          <ul class="mt-5 space-y-3 text-slate-600 text-sm">
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> Buscas aprobar sin hacer los ejercicios diarios ni rendir los exámenes</li>
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> Ya manejas SQL avanzado y optimización de bases de datos a diario</li>
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> No puedes asistir en vivo ni revisar las grabaciones durante la semana</li>
+            <li class="flex gap-2"><span class="text-red-400 font-bold">✕</span> Solo quieres un certificado sin aplicar lo aprendido</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. TESTIMONIOS
+       ============================================================ -->
+  <!-- Testimonios de exalumnos de cursos previos con el mismo instructor -->
+  <section class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">Lo que dicen nuestros estudiantes</h2>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        <div data-animate data-animate-delay="1" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Excelente experiencia, muy buena forma de enseñar sus conocimientos de parte del profesor,
+            pedagógicamente entendible y ojalá se dé la oportunidad de seguir aprendiendo acerca del
+            tema de programación.
+          </p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <p class="font-bold">Manuel Bocanegra Peréz</p>
+              <p class="text-sm text-slate-500">Ingeniero de Sistemas - U. Simón Bolívar</p>
+            </div>
+            <span class="text-2xl" aria-label="Colombia">🇨🇴</span>
+          </div>
+        </div>
+
+        <div data-animate data-animate-delay="2" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Me ha gustado bastante la dinámica de las clases, he aprendido poco a poco el manejo del
+            lenguaje de programación. Me gusta la disposición del docente que tiene frente a cada clase.
+          </p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <p class="font-bold">Paula López Peña</p>
+              <p class="text-sm text-slate-500">Contaduría Pública - Universidad de Manizales</p>
+            </div>
+            <span class="text-2xl" aria-label="Colombia">🇨🇴</span>
+          </div>
+        </div>
+
+        <div data-animate data-animate-delay="3" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Ha sido de las mejores experiencias en el aprendizaje de la lógica de programación y con un
+            excelente profesor el cual no deja ninguna duda y lo explica de diferente manera.
+          </p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <p class="font-bold">Jose Luis Castañeda</p>
+              <p class="text-sm text-slate-500">Ingeniero Civil - Grupo City</p>
+            </div>
+            <span class="text-2xl" aria-label="México">🇲🇽</span>
+          </div>
+        </div>
+
+        <div data-animate data-animate-delay="4" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            El profesor explica bien, es muy didáctico, y explica con ejemplos para poder adquirir los
+            conocimientos planteados. Desde la primera clase se inició desde lo básico hasta ir
+            aprendiendo nuevas herramientas del lenguaje.
+          </p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <p class="font-bold">Ruben Cabezas Huanio</p>
+              <p class="text-sm text-slate-500">Ingeniería de Sistemas - ULADECH</p>
+            </div>
+            <span class="text-2xl" aria-label="Perú">🇵🇪</span>
+          </div>
+        </div>
+
+        <div data-animate data-animate-delay="5" class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Estoy muy satisfecho con el curso de Python. Las clases son prácticas y claras, y el
+            profesor siempre está dispuesto a ayudar. He aprendido mucho y puedo aplicar lo aprendido
+            en mis proyectos. Lo recomiendo a todos.
+          </p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <p class="font-bold">Javier Peñaloza Aguirre</p>
+              <p class="text-sm text-slate-500">Ingeniería Mecánica Electricista - UNSLG</p>
+            </div>
+            <span class="text-2xl" aria-label="Perú">🇵🇪</span>
+          </div>
+        </div>
+
+        <div data-animate class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+          <p class="text-3xl text-brand">"</p>
+          <p class="text-slate-700 leading-relaxed">
+            Al ser primera vez que veo programación y con la ayuda del docente, estoy entendiendo los
+            conceptos mínimos para poder aplicarlo. Espero al final del curso sacar el mayor provecho
+            y aplicarlo en la empresa.
+          </p>
+          <div class="flex items-center justify-between mt-4">
+            <div>
+              <p class="font-bold">Robert Tocre Tello</p>
+              <p class="text-sm text-slate-500">Ingeniería Electricista - UNAC</p>
+            </div>
+            <span class="text-2xl" aria-label="Perú">🇵🇪</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. PRECIO Y OFERTA
+       ============================================================ -->
+  <section id="precio" class="py-16 md:py-24 px-5 sm:px-8 bg-gradient-to-b from-brand-light to-white">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Inversión</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Empieza a dominar SQL hoy</h2>
+      </div>
+
+      <div data-animate data-animate-delay="2" class="mt-10 bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div class="bg-ink text-white text-center py-3">
+          <p class="pulso-urgencia inline-flex items-center gap-2 text-xs sm:text-sm font-bold">
+            <span class="w-2 h-2 rounded-full bg-brand"></span>
+            Grupo de solo <span data-cupos-totales>15</span> cupos · quedan <span data-cupos-restantes>15</span>
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-10 text-center">
+          <p class="text-slate-400 text-sm font-semibold uppercase tracking-wide">Programa completo · 18 clases en 6 semanas</p>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Precio regular</p>
+              <p class="text-3xl font-extrabold text-ink mt-1">S/ 150</p>
+              <p class="text-xs text-slate-400 mt-1">Cualquier persona</p>
+            </div>
+            <div class="bg-brand-light border border-brand/30 rounded-2xl p-5">
+              <p class="text-xs font-semibold text-brand-dark uppercase tracking-wide">Estudiantes anteriores</p>
+              <p class="text-3xl font-extrabold text-brand mt-1">S/ 99.90</p>
+              <p class="text-xs text-brand-dark mt-1">Si ya llevaste el curso de Data Studio u otro curso</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mt-3">¿Ya llevaste el curso de Data Studio (inicia el 18 de agosto) u otro curso con nosotros? Escríbenos por WhatsApp para validar tu precio de S/ 99.90.</p>
+
+          <div class="w-full h-2 bg-slate-100 rounded-full mt-8 overflow-hidden">
+            <div data-cupos-barra class="h-full bg-brand" style="width: 0%"></div>
+          </div>
+          <p class="text-xs text-slate-400 mt-2">Grupo de máximo 15 estudiantes por cohorte</p>
+
+          <ul class="mt-8 space-y-3 text-left text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> 18 sesiones en vivo (6 semanas): miércoles y viernes 7:00–8:30 pm + sábados de práctica 12:00–2:00 pm (hora Perú)</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Instalación de PostgreSQL y pgAdmin guiada en la primera clase</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Ejercicios prácticos todos los días, con datasets reales</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Examen cada 3 clases (6 evaluaciones) + proyecto final</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Grabación de todas las clases</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Certificado al finalizar el proyecto final</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Grupo reducido de máximo 15 estudiantes</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Comunidad privada de WhatsApp</li>
+          </ul>
+
+          <a data-wa-cta data-cta-label="Tarjeta de precio" target="_blank" rel="noopener"
+            class="mt-8 w-full inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+            Reservar mi cupo ahora
+          </a>
+          <p class="text-xs text-slate-400 mt-3">Pago por transferencia, Yape/Plin o PayPal</p>
+          <p class="text-xs text-slate-400 mt-1">Al pagar, reservas tu vacante · No hay devoluciones</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. PREGUNTAS FRECUENTES
+       ============================================================ -->
+  <section id="faq" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">Preguntas frecuentes</h2>
+
+      <div class="mt-10 space-y-4">
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Necesito experiencia previa en programación o bases de datos?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              No. El curso empieza desde cero, incluyendo la instalación de PostgreSQL en la primera clase.
+              Solo necesitas una laptop y ganas de practicar todos los días.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Qué necesito instalar antes de empezar?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Nada todavía. En la primera clase instalamos juntos PostgreSQL y pgAdmin, paso a paso,
+              tanto en Windows como en Mac.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Cómo funcionan los exámenes?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Cada 3 clases (aproximadamente cada semana) rindes un examen corto para consolidar lo aprendido.
+              En total son 5 exámenes de progreso más un examen final con tu proyecto de base de datos.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Cómo accedo al precio de S/ 99.90 de estudiante anterior?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Si ya llevaste el curso de Data Studio (inicia el 18 de agosto) u otro curso con nosotros,
+              escríbenos por WhatsApp para validar tu inscripción anterior y te confirmamos el precio de S/ 99.90.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Por qué el grupo es de solo 15 estudiantes?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Para poder revisar tu código, corregir tus ejercicios y darte feedback real en cada clase.
+              Con grupos grandes eso no es posible.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Qué pasa si falto a una clase?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              No te preocupes, todas las clases quedan grabadas y disponibles en nuestro Classroom
+              para que las veas cuando quieras. Aun así, recomendamos no faltar a los exámenes.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Cómo es el proceso de pago?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Puedes pagar por transferencia bancaria, Yape/Plin o PayPal (si estás en el extranjero).
+              Al confirmar tu pago por WhatsApp, te enviamos el formulario de inscripción y el acceso al grupo.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Obtengo un certificado al finalizar?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              Sí, el certificado está incluido en la inversión total. Para obtenerlo necesitas presentar
+              tu proyecto final y aprobar el examen final.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Hay devoluciones si me arrepiento después de pagar?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              No hay devoluciones. Al confirmar tu pago, se reserva tu vacante y se le retira el cupo a otras
+              personas interesadas, por lo que el pago no es reembolsable. Antes de inscribirte, resuelve todas
+              tus dudas por WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+          <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
+            ¿Hay clases los días feriados?
+            <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div data-accordion-panel class="px-5">
+            <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">
+              No. No dictamos clases en los feriados oficiales del calendario peruano, según el listado publicado
+              en
+              <a href="https://www.gob.pe/feriados" target="_blank" rel="noopener" class="text-brand font-semibold underline">gob.pe/feriados</a>.
+              Esas fechas se reprograman o se compensan con el material grabado en Classroom.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. FOOTER
+       ============================================================ -->
+  <footer class="bg-ink text-white px-5 sm:px-8 pt-16 pb-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 data-animate class="text-2xl sm:text-3xl font-extrabold">¿Listo para dominar SQL con PostgreSQL?</h2>
+      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Grupo de solo 15 estudiantes por cohorte. Reserva tu cupo hoy mismo.</p>
+
+      <a data-wa-cta data-cta-label="Footer" target="_blank" rel="noopener"
+        class="mt-8 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+        Reservar mi cupo por WhatsApp
+      </a>
+
+      <div class="mt-10 flex items-center justify-center gap-5">
+        <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://instagram.com/yoshioagarie" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.39A5.87 5.87 0 0 0 .62 4.14c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.47 1.39 2.13.66.67 1.34 1.08 2.13 1.39.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.39c.67-.66 1.08-1.34 1.39-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.39-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zM18.41 4.6a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@yoshioagarie" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.75.02c1.3-.02 2.59-.01 3.88-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a href="https://youtube.com/@yoshioagarie" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+        </a>
+        <a data-wa-cta data-cta-label="Footer redes" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 3.5c-4.9 0-8.9 4-8.9 8.9 0 1.57.42 3.1 1.2 4.45L3 21l4.28-1.32a8.9 8.9 0 0 0 4.77 1.38h.01c4.9 0 8.9-4 8.9-8.9a8.86 8.86 0 0 0-2.36-4.9z"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-white/10 text-xs text-white/40">
+        &copy; <span id="year"></span> Curso de SQL con PostgreSQL · Yoshio Rivera Agarie. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="js/script.js"></script>
+</body>
+</html>

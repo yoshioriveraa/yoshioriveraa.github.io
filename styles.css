@@ -711,7 +711,7 @@ img { display: block; max-width: 100%; }
 /* ─── COURSES GRID ─── */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 1rem;
 }
@@ -1380,7 +1380,7 @@ img { display: block; max-width: 100%; }
   .stack-grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .edu-grid { grid-template-columns: repeat(2, 1fr); }
-  .courses-grid { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
 
@@ -1391,6 +1391,7 @@ img { display: block; max-width: 100%; }
   .stack-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .edu-grid { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
   .hero-stats { gap: 1.5rem; }
   .stat-divider { display: none; }
