@@ -10,8 +10,8 @@ const WHATSAPP_NUMBER = "51900604267";
 const WHATSAPP_MESSAGE = "Hola, quiero mi cupo para el curso de Looker Studio 🚀";
 
 // Fecha y hora de inicio del curso (formato ISO). Se usa para el countdown del Hero.
-// 11 de agosto de 2026, 7:00 pm hora Perú (UTC-5)
-const COURSE_START_DATE = new Date("2026-08-11T19:00:00-05:00");
+// 18 de agosto de 2026, 7:00 pm hora Perú (UTC-5)
+const COURSE_START_DATE = new Date("2026-08-18T19:00:00-05:00");
 
 // TODO: Cupos totales y cupos restantes disponibles. Edita CUPOS_RESTANTES según inscripciones reales.
 const CUPOS_TOTALES = 25;

@@ -33,7 +33,7 @@ Busca los comentarios `<!-- TODO -->` y `// TODO` en el código:
 
 - **`js/script.js`** (arriba del archivo):
   - `WHATSAPP_NUMBER`: número real de WhatsApp (código de país + número, sin `+` ni espacios).
-  - `COURSE_START_DATE`: fecha y hora real de inicio del curso (actualmente 11 de agosto de 2026, 7:00 pm hora Perú).
+  - `COURSE_START_DATE`: fecha y hora real de inicio del curso (actualmente 18 de agosto de 2026, 7:00 pm hora Perú).
   - `CUPOS_TOTALES` / `CUPOS_RESTANTES`: cupos disponibles, para actualizar según inscripciones.
 - **`index.html`**:
   - Meta tags Open Graph (`og:image`) → agrega `assets/img/og-image.jpg`.
