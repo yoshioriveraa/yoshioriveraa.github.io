@@ -26,13 +26,23 @@ const waLink = (mensaje) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  initWhatsAppLinks();
-  initCupos();
-  initCountdown();
-  initAccordion();
-  initScrollAnimations();
-  initMobileMenu();
+  safeRun(initWhatsAppLinks);
+  safeRun(initCupos);
+  safeRun(initCountdown);
+  safeRun(initAccordion);
+  safeRun(initScrollAnimations);
+  safeRun(initMobileMenu);
 });
+
+// Aísla cada init: si uno falla, no bloquea a los demás (evita que un error
+// deje el resto de la página sin inicializar).
+function safeRun(fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`[error] Falló ${fn.name}:`, err);
+  }
+}
 
 /* ---------- Links de WhatsApp ---------- */
 function initWhatsAppLinks() {
@@ -139,6 +149,11 @@ function initScrollAnimations() {
     return;
   }
 
+  // Solo a partir de aquí el CSS oculta los elementos para animarlos.
+  // Si el script no llega a ejecutar esta función, el contenido queda
+  // visible por defecto (ver css/style.css).
+  document.documentElement.classList.add("js-animate-ready");
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -152,6 +167,13 @@ function initScrollAnimations() {
   );
 
   elementos.forEach((el) => observer.observe(el));
+
+  // Red de seguridad: algunos navegadores internos (WhatsApp, Instagram, TikTok)
+  // no disparan el IntersectionObserver de forma confiable. Si algo se quedó
+  // sin revelar, se muestra igual pasado un momento.
+  setTimeout(() => {
+    elementos.forEach((el) => el.classList.add("is-visible"));
+  }, 2500);
 }
 
 /* ---------- Menú móvil ---------- */

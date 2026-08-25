@@ -13,20 +13,27 @@ body {
   font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-/* Elementos animados al entrar en viewport (ver script.js -> initScrollAnimations) */
+/* Elementos animados al entrar en viewport (ver script.js -> initScrollAnimations).
+   Visibles por defecto: si el JS no llega a ejecutarse (bloqueado, error,
+   webview de WhatsApp/Instagram, red lenta, etc.) el contenido igual se ve completo. */
 [data-animate] {
+  opacity: 1;
+  transform: none;
+}
+
+.js-animate-ready [data-animate] {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   will-change: opacity, transform;
 }
 
-[data-animate].is-visible {
+.js-animate-ready [data-animate].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-[data-animate="fade"] {
+.js-animate-ready [data-animate="fade"] {
   transform: translateY(0);
 }
 
