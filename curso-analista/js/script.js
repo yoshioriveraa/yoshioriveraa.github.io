@@ -13,8 +13,8 @@ const WHATSAPP_MESSAGE = "Hola, quiero mi cupo para el curso de Análisis de Dat
 const WHATSAPP_MESSAGE_GRATIS = "Hola, quiero inscribirme a las clases gratis de Python 🚀";
 
 // Fecha y hora de inicio del curso (formato ISO). Se usa para el countdown del Hero.
-// 10 de setiembre de 2026, 7:00 pm hora Perú (UTC-5)
-const COURSE_START_DATE = new Date("2026-09-10T19:00:00-05:00");
+// 17 de setiembre de 2026, 7:00 pm hora Perú (UTC-5)
+const COURSE_START_DATE = new Date("2026-09-17T19:00:00-05:00");
 
 // TODO: Cupos totales y cupos restantes disponibles. Edita CUPOS_RESTANTES según inscripciones reales.
 const CUPOS_TOTALES = 30;
