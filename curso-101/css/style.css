@@ -52,17 +52,6 @@ html.js-animate-ready [data-animate].is-visible {
   color: #fff;
 }
 
-/* ---------- Honeypot (campo trampa anti-spam, oculto para humanos) ---------- */
-.hp-field {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
-  left: -9999px;
-}
-
 /* ---------- Urgencia (badge de cupos) ---------- */
 .pulso-urgencia {
   animation: pulso 2.4s ease-in-out infinite;

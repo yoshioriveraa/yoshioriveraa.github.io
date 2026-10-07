@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   safeRun(initPricing);
   safeRun(initFaq);
   safeRun(initAccordionGeneric);
-  safeRun(initForm);
+  safeRun(initWhatsAppLinks);
   safeRun(initWhatsAppTracking);
   safeRun(initScrollAnimations);
   safeRun(initMobileMenu);
@@ -238,127 +238,15 @@ function initAccordionGeneric() {
   });
 }
 
-/* ---------- Formulario de registro ---------- */
-function initForm() {
-  const form = document.querySelector("[data-registro-form]");
-  if (!form) return;
-
-  const nombreEl = form.querySelector("[name=nombre]");
-  const whatsappEl = form.querySelector("[name=whatsapp]");
-  const correoEl = form.querySelector("[name=correo]");
-  const honeypotEl = form.querySelector("[name=website]");
-  const submitBtn = form.querySelector("[data-submit-btn]");
-  const errorBox = form.querySelector("[data-form-error]");
-  const successBox = document.querySelector("[data-form-success]");
-  const waBtn = document.querySelector("[data-wa-success-btn]");
-
-  // Rate limit básico en el navegador: evita reenvíos repetidos en pocos segundos
-  const RATE_LIMIT_MS = 15000;
-  let lastSubmitAt = 0;
-
-  const NAME_REGEX = /^[a-zA-ZÀ-ÿ\s]{2,60}$/;
-  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const PHONE_REGEX = /^9\d{8}$/; // celular peruano: 9 dígitos, empieza en 9
-
-  function showError(msg) {
-    if (!errorBox) return;
-    errorBox.textContent = msg;
-    errorBox.classList.remove("hidden");
-  }
-
-  function clearError() {
-    if (!errorBox) return;
-    errorBox.textContent = "";
-    errorBox.classList.add("hidden");
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    clearError();
-
-    // Honeypot: si un bot llenó este campo invisible, se descarta en silencio
-    if (honeypotEl && honeypotEl.value.trim() !== "") {
-      return;
-    }
-
-    const ahora = Date.now();
-    if (ahora - lastSubmitAt < RATE_LIMIT_MS) {
-      showError("Espera unos segundos antes de volver a intentarlo.");
-      return;
-    }
-
-    const nombre = nombreEl.value.trim();
-    const whatsapp = whatsappEl.value.trim().replace(/\s|-/g, "");
-    const correo = correoEl.value.trim();
-
-    if (!NAME_REGEX.test(nombre)) {
-      showError("Escribe tu nombre completo (solo letras).");
-      nombreEl.focus();
-      return;
-    }
-    if (!PHONE_REGEX.test(whatsapp)) {
-      showError("Ingresa un número de WhatsApp válido (9 dígitos, ej. 987654321).");
-      whatsappEl.focus();
-      return;
-    }
-    if (!EMAIL_REGEX.test(correo)) {
-      showError("Ingresa un correo electrónico válido.");
-      correoEl.focus();
-      return;
-    }
-
-    lastSubmitAt = ahora;
-    submitBtn.disabled = true;
-    submitBtn.dataset.originalText = submitBtn.textContent;
-    submitBtn.textContent = "Enviando...";
-
-    // Evento de analítica (listo para conectar Meta Pixel / GA4)
-    trackEvent("generate_lead", { form: "clases-gratis", cta: "Formulario de registro" });
-
-    function finish() {
-      submitBtn.disabled = false;
-      submitBtn.textContent = submitBtn.dataset.originalText;
-      form.classList.add("hidden");
-      if (successBox) successBox.classList.remove("hidden");
-      if (waBtn) {
-        waBtn.href = waLink(WHATSAPP_MESSAGE_REGISTRO(nombre));
-      }
-      successBox?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-
-    if (GOOGLE_FORM_ACTION_URL && GOOGLE_FORM_ENTRY_IDS.nombre) {
-      // Google Forms no permite leer la respuesta vía fetch desde otro origen
-      // (CORS), así que se envía en modo "no-cors": no sabemos si llegó, pero
-      // es el método estándar y documentado para enviar un Google Form desde
-      // un sitio externo sin backend propio.
-      const body = new URLSearchParams({
-        [GOOGLE_FORM_ENTRY_IDS.nombre]: nombre,
-        [GOOGLE_FORM_ENTRY_IDS.whatsapp]: whatsapp,
-        [GOOGLE_FORM_ENTRY_IDS.correo]: correo,
-      });
-
-      fetch(GOOGLE_FORM_ACTION_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
-      })
-        .catch((err) => console.error("[google-forms] No se pudo enviar:", err))
-        .finally(finish);
-    } else {
-      // Sin Google Form configurado: no se guarda el registro en ningún
-      // servidor, solo se invita a confirmar por WhatsApp.
-      setTimeout(finish, 500);
-    }
+/* ---------- Botón único de WhatsApp (sin formulario: no se guarda ningún dato) ---------- */
+function initWhatsAppLinks() {
+  document.querySelectorAll("[data-wa-cta]").forEach((el) => {
+    el.href = waLink(WHATSAPP_MESSAGE);
   });
 }
 
 /* ---------- Tracking de clicks a WhatsApp + eventos de analítica ---------- */
 function initWhatsAppTracking() {
-  document.querySelectorAll("[data-wa-cursos]").forEach((el) => {
-    el.href = waLink(WHATSAPP_MESSAGE_CURSOS);
-  });
-
   document.querySelectorAll("a[href*='wa.me']").forEach((el) => {
     el.addEventListener("click", () => {
       const label = el.dataset.ctaLabel || el.textContent.trim();
@@ -374,7 +262,7 @@ function initWhatsAppTracking() {
 function trackEvent(name, params = {}) {
   console.log(`[tracking] ${name}`, params);
   // TODO: cuando tengas Meta Pixel instalado:
-  // if (typeof fbq === "function") fbq("track", name === "generate_lead" ? "Lead" : "Contact", params);
+  // if (typeof fbq === "function") fbq("track", "Contact", params);
   // TODO: cuando tengas Google Analytics (gtag.js) instalado:
   // if (typeof gtag === "function") gtag("event", name, params);
 }

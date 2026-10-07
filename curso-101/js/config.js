@@ -34,30 +34,6 @@
 // Número real de WhatsApp (código de país + número, sin + ni espacios)
 const WHATSAPP_NUMBER = "51900604267";
 
-// Mensaje prellenado para el botón de WhatsApp tras registrarse en las clases gratis
-const WHATSAPP_MESSAGE_REGISTRO = (nombre) =>
-  `Hola, me registré en las clases gratis y quiero más información${nombre ? ` (soy ${nombre})` : ""}`;
-
-// Mensaje prellenado para el CTA de "Ver cursos y precio"
-const WHATSAPP_MESSAGE_CURSOS = "Hola, quiero más información sobre la suscripción con acceso a todos los cursos 🚀";
-
-// ---------- Google Forms (backend de leads) ----------
-// TODO: reemplaza con tu propio formulario de Google.
-// 1. Crea un Google Form con 3 preguntas de texto corto: Nombre, WhatsApp, Correo.
-// 2. Publícalo y ábrelo como lo vería un estudiante (no en modo edición).
-// 3. Click derecho → "Ver código fuente de la página" (o F12 → pestaña Elements) y busca
-//    "entry." — cada <input> de pregunta tiene un atributo name="entry.123456789".
-//    Copia esos 3 números abajo, en el mismo orden que tus preguntas.
-// 4. La URL de envío es la misma del formulario, cambiando "/viewform" por "/formResponse".
-// Mientras GOOGLE_FORM_ACTION_URL esté vacío, el formulario de esta página NO intenta
-// guardar nada en Google Forms: solo valida y abre WhatsApp (comportamiento actual).
-const GOOGLE_FORM_ACTION_URL = ""; // ej: "https://docs.google.com/forms/d/e/TU_ID_AQUI/formResponse"
-const GOOGLE_FORM_ENTRY_IDS = {
-  nombre: "", // ej: "entry.123456789"
-  whatsapp: "", // ej: "entry.987654321"
-  correo: "", // ej: "entry.456789123"
-};
-
 // Inicio de las clases gratis en vivo: 12 de octubre de 2026, 9:00 am (hora de Lima, UTC-5)
 const FREE_CLASSES_START = new Date("2026-10-12T09:00:00-05:00");
 
@@ -74,6 +50,10 @@ const CERTIFICATE_PRICE = 30;
 // Precio regular (ancla) y precio de lanzamiento con 50% de descuento
 const PRICE_REGULAR = 200;
 const PRICE_LAUNCH = 100;
+
+// Mensaje prellenado del único botón de WhatsApp de la página (no hay formulario:
+// todo el sitio usa este mismo mensaje para inscribirse y pagar)
+const WHATSAPP_MESSAGE = `Hola, quiero inscribirme y pagar mis S/ ${PRICE_LAUNCH} 🚀`;
 
 // Cupos totales de lanzamiento con el precio de S/100
 const CUPOS_LANZAMIENTO_TOTALES = 50;
