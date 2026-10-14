@@ -49,6 +49,7 @@
         <a href="#aprenderas" class="hover:text-brand transition">Qué aprenderás</a>
         <a href="#precio" class="hover:text-brand transition">Precio</a>
         <a href="#sobre-mi" class="hover:text-brand transition">Sobre mí</a>
+        <a href="#inscripcion" class="hover:text-brand transition">Inscripción</a>
         <a href="#faq" class="hover:text-brand transition">FAQ</a>
       </div>
 
@@ -109,28 +110,25 @@
         </a>
       </div>
 
-      <!-- Temporizador del descuento (se reinicia solo al llegar a cero) -->
-      <div data-animate data-animate-delay="3" data-discount-timer class="mt-12 max-w-lg mx-auto">
-        <p class="text-xs font-bold uppercase tracking-widest text-red-500 mb-3 pulso-urgencia">🔥 El descuento termina en</p>
-        <div class="grid grid-cols-4 gap-2 sm:gap-4">
-          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-dt-d class="text-2xl sm:text-4xl font-extrabold">00</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Días</p>
+      <!-- Oferta del día: el temporizador termina a las 11:59 pm (hora de Lima) y se reinicia solo -->
+      <div data-animate data-animate-delay="3" data-discount-timer class="mt-12 max-w-md mx-auto rounded-3xl bg-gradient-to-br from-red-600 to-orange-500 text-white p-5 sm:p-6 shadow-2xl shadow-red-500/30 text-center">
+        <p class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1 text-xs font-extrabold uppercase tracking-widest pulso-urgencia">🔥 Oferta de hoy</p>
+        <p class="mt-3 text-lg sm:text-xl font-extrabold leading-tight">El descuento termina hoy a las 11:59 pm</p>
+        <div class="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
+          <div class="bg-white text-ink rounded-2xl py-3">
+            <p data-dt-h class="text-3xl sm:text-4xl font-extrabold tabular-nums text-red-600">00</p>
+            <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-slate-400 mt-1">Horas</p>
           </div>
-          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-dt-h class="text-2xl sm:text-4xl font-extrabold">00</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Horas</p>
+          <div class="bg-white text-ink rounded-2xl py-3">
+            <p data-dt-m class="text-3xl sm:text-4xl font-extrabold tabular-nums text-red-600">00</p>
+            <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-slate-400 mt-1">Min</p>
           </div>
-          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-dt-m class="text-2xl sm:text-4xl font-extrabold">00</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Min</p>
-          </div>
-          <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-dt-s class="text-2xl sm:text-4xl font-extrabold">00</p>
-            <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Seg</p>
+          <div class="bg-white text-ink rounded-2xl py-3">
+            <p data-dt-s class="text-3xl sm:text-4xl font-extrabold tabular-nums text-red-600">00</p>
+            <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-slate-400 mt-1">Seg</p>
           </div>
         </div>
-        <p class="text-sm font-bold text-ink mt-4">⚠️ Solo quedan <span data-cupos-restantes>5</span> vacantes disponibles</p>
+        <p class="mt-4 text-sm font-bold bg-black/20 rounded-full py-2 px-4 inline-block">⚠️ Solo quedan <span data-cupos-restantes>6</span> vacantes · S/ <span data-price-launch>99</span> en vez de S/ <span data-price-regular>200</span></p>
       </div>
     </div>
   </section>
@@ -178,7 +176,7 @@
           class="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-ink font-extrabold text-lg px-10 py-4 rounded-full transition shadow-xl shadow-amber-500/30">
           Quiero todos los cursos por S/ <span data-price-launch>99</span> →
         </a>
-        <p class="text-white/50 text-xs mt-3">Pago por Yape, Plin o transferencia · Acceso hasta el 20 de marzo de 2027</p>
+        <p class="text-white/50 text-xs mt-3">Pago por Yape o PayPal · Acceso hasta el 20 de marzo de 2027</p>
       </div>
     </div>
   </section>
@@ -248,17 +246,18 @@
           </div>
           <p class="text-slate-500 text-sm mt-2">Pago único. Acceso hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span>.</p>
 
-          <div data-discount-timer class="mt-6 rounded-2xl bg-red-50 border border-red-100 p-4">
-            <p class="text-xs font-bold uppercase tracking-widest text-red-500">🔥 El descuento termina en</p>
-            <p class="text-3xl font-extrabold text-ink mt-1 tabular-nums">
-              <span data-dt-d>00</span>d : <span data-dt-h>00</span>h : <span data-dt-m>00</span>m : <span data-dt-s>00</span>s
+          <div data-discount-timer class="mt-6 rounded-2xl bg-gradient-to-br from-red-600 to-orange-500 text-white p-4 shadow-lg shadow-red-500/20">
+            <p class="text-xs font-extrabold uppercase tracking-widest">🔥 El descuento termina hoy a las 11:59 pm</p>
+            <p class="text-4xl font-extrabold mt-2 tabular-nums">
+              <span data-dt-h>00</span><span class="opacity-60">:</span><span data-dt-m>00</span><span class="opacity-60">:</span><span data-dt-s>00</span>
             </p>
+            <p class="text-[11px] opacity-80 mt-1">Mañana vuelve el precio normal de S/ <span data-price-regular>200</span></p>
           </div>
 
           <div class="w-full h-2 bg-slate-100 rounded-full mt-6 overflow-hidden" data-bloque-cupos>
             <div data-cupos-barra class="h-full bg-red-500" style="width: 0%"></div>
           </div>
-          <p data-bloque-cupos class="text-sm font-bold text-red-600 mt-2">Para asegurar tu vacante: solo quedan <span data-cupos-restantes>5</span> disponibles</p>
+          <p data-bloque-cupos class="text-sm font-bold text-red-600 mt-2">Asegura tu vacante: solo quedan <span data-cupos-restantes>6</span> disponibles</p>
 
           <ul class="mt-8 space-y-3 text-left text-sm text-slate-600">
             <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Acceso a todos los cursos hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span></li>
@@ -268,39 +267,99 @@
             <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Cursos nuevos incluidos mientras dure tu suscripción</li>
           </ul>
 
-          <a href="#" data-wa-cta data-cta-label="Tarjeta de precio" target="_blank" rel="noopener"
+          <a href="#inscripcion" data-cta-label="Tarjeta de precio"
             class="mt-8 w-full inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
             Quiero inscribirme y pagar
           </a>
-          <p class="text-xs text-slate-400 mt-3">Pago por Yape, Plin o transferencia</p>
+          <p class="text-xs text-slate-400 mt-3">Pago por Yape o PayPal</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       6. CÓMO INSCRIBIRTE (3 pasos)
+       6. CÓMO INSCRIBIRTE: pago + formulario
        ============================================================ -->
-  <section class="py-16 md:py-24 px-5 sm:px-8">
+  <section id="inscripcion" class="py-16 md:py-24 px-5 sm:px-8">
     <div class="max-w-4xl mx-auto">
-      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">Cómo inscribirte</h2>
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Inscripción</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Cómo inscribirte en 3 pasos</h2>
+      </div>
 
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        <div data-animate data-animate-delay="1" class="rounded-2xl border border-slate-100 p-6 sm:p-8 text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-brand text-white font-extrabold flex items-center justify-center mb-4">1</div>
-          <p class="font-bold">Escríbenos por WhatsApp</p>
-          <p class="text-slate-500 text-sm mt-2">Toca cualquier botón de esta página para abrir WhatsApp y reservar tu lugar.</p>
+      <!-- Paso 1: pagar -->
+      <div data-animate class="mt-10 rounded-3xl border border-slate-100 shadow-lg p-6 sm:p-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand text-white font-extrabold flex items-center justify-center">1</div>
+          <h3 class="text-xl font-extrabold">Realiza tu pago de S/ <span data-price-launch>99</span></h3>
         </div>
-        <div data-animate data-animate-delay="2" class="rounded-2xl border border-slate-100 p-6 sm:p-8 text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-brand text-white font-extrabold flex items-center justify-center mb-4">2</div>
-          <p class="font-bold">Asegura tu vacante</p>
-          <p class="text-slate-500 text-sm mt-2">Quedan pocas vacantes: confirma tu pago por Yape, Plin o transferencia antes de que termine el descuento.</p>
+        <p class="text-slate-600 text-sm mt-2">Si quieres pagar rápido, elige una opción:</p>
+
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl p-5 text-white" style="background:linear-gradient(135deg,#6c1fa8,#9b3fd1)">
+            <p class="text-xs font-extrabold uppercase tracking-widest opacity-80">💜 Yape</p>
+            <p class="mt-1 text-2xl font-extrabold tabular-nums">+51 900 604 267</p>
+            <button type="button" data-copy="+51900604267" class="mt-3 text-xs font-bold bg-white/20 hover:bg-white/30 rounded-full px-4 py-1.5 transition">Copiar número</button>
+          </div>
+          <div class="rounded-2xl p-5 text-white" style="background:linear-gradient(135deg,#003087,#0070e0)">
+            <p class="text-xs font-extrabold uppercase tracking-widest opacity-80">🅿️ PayPal</p>
+            <p class="mt-1 text-xl font-extrabold break-all">paypal.me/yoshioriveraa</p>
+            <a href="https://paypal.me/yoshioriveraa" target="_blank" rel="noopener" class="mt-3 inline-block text-xs font-bold bg-white/20 hover:bg-white/30 rounded-full px-4 py-1.5 transition">Pagar con PayPal</a>
+          </div>
         </div>
-        <div data-animate data-animate-delay="3" class="rounded-2xl border border-slate-100 p-6 sm:p-8 text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-brand text-white font-extrabold flex items-center justify-center mb-4">3</div>
-          <p class="font-bold">Empieza tus clases</p>
-          <p class="text-slate-500 text-sm mt-2">Te damos acceso a tus cursos y a la comunidad. Todas las clases quedan grabadas.</p>
+      </div>
+
+      <!-- Paso 2: enviar captura -->
+      <div data-animate class="mt-6 rounded-3xl border border-slate-100 shadow-lg p-6 sm:p-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand text-white font-extrabold flex items-center justify-center">2</div>
+          <h3 class="text-xl font-extrabold">Envía la captura de tu pago por WhatsApp</h3>
         </div>
+        <p class="text-slate-600 text-sm mt-2">Así confirmamos tu pago y reservamos tu vacante.</p>
+        <a href="#" data-wa-proof data-cta-label="Enviar captura" target="_blank" rel="noopener"
+          class="mt-4 inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full transition shadow-lg shadow-green-500/30">
+          📲 Enviar captura por WhatsApp
+        </a>
+      </div>
+
+      <!-- Paso 3: formulario -->
+      <div data-animate class="mt-6 rounded-3xl border border-slate-100 shadow-lg p-6 sm:p-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand text-white font-extrabold flex items-center justify-center">3</div>
+          <h3 class="text-xl font-extrabold">Rellena el formulario de inscripción</h3>
+        </div>
+        <p class="text-slate-600 text-sm mt-2">Complétalo después de pagar. Al enviarlo se abre WhatsApp con tus datos listos para mandarlos.</p>
+
+        <form data-enroll-form class="mt-5 grid gap-4 sm:grid-cols-2">
+          <label class="block text-sm font-semibold">Nombres y apellidos
+            <input name="nombre" required autocomplete="name" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal" />
+          </label>
+          <label class="block text-sm font-semibold">WhatsApp
+            <input name="whatsapp" required type="tel" autocomplete="tel" placeholder="+51 9XX XXX XXX" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal" />
+          </label>
+          <label class="block text-sm font-semibold">Correo electrónico
+            <input name="correo" required type="email" autocomplete="email" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal" />
+          </label>
+          <label class="block text-sm font-semibold">País / ciudad
+            <input name="pais" required autocomplete="country-name" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal" />
+          </label>
+          <label class="block text-sm font-semibold">¿Cómo pagaste?
+            <select name="metodo" required class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal bg-white">
+              <option value="">Elige una opción</option>
+              <option>Yape</option>
+              <option>PayPal</option>
+            </select>
+          </label>
+          <label class="block text-sm font-semibold">¿Qué cursos quieres empezar primero?
+            <input name="cursos" placeholder="Ej. Python Básico 1, SQL Básico 1" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal" />
+          </label>
+          <div class="sm:col-span-2">
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+              Enviar mi inscripción
+            </button>
+            <p class="text-xs text-slate-400 mt-3 text-center">No guardamos tus datos en esta página: se envían por WhatsApp.</p>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -386,7 +445,7 @@
   <footer class="bg-ink text-white px-5 sm:px-8 pt-16 pb-8">
     <div class="max-w-4xl mx-auto text-center">
       <h2 data-animate class="text-2xl sm:text-3xl font-extrabold">¿Listo para aprender Análisis de Datos?</h2>
-      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases empiezan el 26 de octubre y solo quedan <span data-cupos-restantes>5</span> vacantes. Escríbenos hoy.</p>
+      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases empiezan el 26 de octubre y solo quedan <span data-cupos-restantes>6</span> vacantes. Inscríbete hoy.</p>
 
       <a href="#" data-wa-cta data-cta-label="Footer: inscribirme" target="_blank" rel="noopener"
         class="mt-8 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">

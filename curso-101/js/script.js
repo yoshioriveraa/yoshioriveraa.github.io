@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   safeRun(initFaq);
   safeRun(initAccordionGeneric);
   safeRun(initWhatsAppLinks);
+  safeRun(initEnrollment);
   safeRun(initWhatsAppTracking);
   safeRun(initScrollAnimations);
   safeRun(initMobileMenu);
@@ -30,30 +31,13 @@ function safeRun(fn) {
   }
 }
 
-/* ---------- Temporizador del descuento: dura DISCOUNT_HOURS y se reinicia solo al llegar a cero ---------- */
+/* ---------- Temporizador del descuento: termina a las 11:59 pm de Lima y se reinicia cada día ---------- */
 function initDiscountTimer() {
   const boxes = document.querySelectorAll("[data-discount-timer]");
   if (!boxes.length) return;
 
-  const DURACION = DISCOUNT_HOURS * 60 * 60 * 1000;
-  const KEY = "curso101_descuento_fin";
-
-  // El cierre se guarda por visitante para que el reloj no vuelva a 3 días al recargar
-  let fin = 0;
-  try {
-    fin = Number(localStorage.getItem(KEY)) || 0;
-  } catch (e) {}
-
-  const reiniciar = () => {
-    fin = Date.now() + DURACION;
-    try {
-      localStorage.setItem(KEY, String(fin));
-    } catch (e) {}
-  };
-  if (fin - Date.now() <= 0 || fin - Date.now() > DURACION) reiniciar();
-
+  const DIA = 24 * 60 * 60 * 1000;
   const refs = [...boxes].map((box) => ({
-    d: box.querySelector("[data-dt-d]"),
     h: box.querySelector("[data-dt-h]"),
     m: box.querySelector("[data-dt-m]"),
     s: box.querySelector("[data-dt-s]"),
@@ -61,18 +45,10 @@ function initDiscountTimer() {
   const dos = (n) => String(n).padStart(2, "0");
 
   function tick() {
-    let resto = fin - Date.now();
-    if (resto <= 0) {
-      reiniciar();
-      resto = DURACION;
-    }
-    const total = Math.floor(resto / 1000);
-    const vals = {
-      d: Math.floor(total / 86400),
-      h: Math.floor((total % 86400) / 3600),
-      m: Math.floor((total % 3600) / 60),
-      s: total % 60,
-    };
+    // Hora "de pared" de Lima: lo que falta hasta la próxima medianoche allí
+    const ahoraLima = Date.now() + DISCOUNT_UTC_OFFSET_HOURS * 60 * 60 * 1000;
+    const total = Math.min(Math.floor((DIA - (ahoraLima % DIA)) / 1000), 86399);
+    const vals = { h: Math.floor(total / 3600), m: Math.floor((total % 3600) / 60), s: total % 60 };
     refs.forEach((r) => {
       for (const k in vals) if (r[k]) r[k].textContent = dos(vals[k]);
     });
@@ -273,6 +249,44 @@ function initAccordionGeneric() {
 function initWhatsAppLinks() {
   document.querySelectorAll("[data-wa-cta]").forEach((el) => {
     el.href = waLink(WHATSAPP_MESSAGE);
+  });
+  document.querySelectorAll("[data-wa-proof]").forEach((el) => {
+    el.href = waLink(WHATSAPP_PROOF_MESSAGE);
+  });
+}
+
+/* ---------- Inscripción: copiar Yape + formulario que se envía por WhatsApp ---------- */
+function initEnrollment() {
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        btn.textContent = "¡Copiado!";
+      } catch (e) {
+        btn.textContent = btn.dataset.copy;
+      }
+      setTimeout(() => (btn.textContent = "Copiar número"), 2500);
+    });
+  });
+
+  const form = document.querySelector("[data-enroll-form]");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(form).entries());
+    const msg = [
+      "Hola, ya pagué y quiero completar mi inscripción 📝",
+      "• Nombre: " + d.nombre,
+      "• WhatsApp: " + d.whatsapp,
+      "• Correo: " + d.correo,
+      "• País/ciudad: " + d.pais,
+      "• Pagué con: " + d.metodo,
+      d.cursos ? "• Cursos que quiero empezar: " + d.cursos : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    trackEvent("enroll_form_submit", { metodo: d.metodo });
+    window.open(waLink(msg), "_blank", "noopener");
   });
 }
 

@@ -36,11 +36,14 @@ const WHATSAPP_MESSAGE = `Hola, quiero inscribirme y pagar mis S/ ${PRICE_LAUNCH
 const CUPOS_LANZAMIENTO_TOTALES = 50;
 
 // Vacantes que se muestran como disponibles (la página dice "solo quedan N vacantes").
-const VACANTES_DISPONIBLES = 5;
+const VACANTES_DISPONIBLES = 6;
 const CUPOS_LANZAMIENTO_VENDIDOS = CUPOS_LANZAMIENTO_TOTALES - VACANTES_DISPONIBLES;
 
-// Duración del descuento en horas. Al llegar a cero el temporizador se reinicia solo.
-const DISCOUNT_HOURS = 72;
+// El descuento termina cada día a las 11:59 pm (hora de Lima, UTC-5) y se reinicia solo a medianoche.
+const DISCOUNT_UTC_OFFSET_HOURS = -5;
+
+// Mensaje prellenado para enviar la captura del pago
+const WHATSAPP_PROOF_MESSAGE = `Hola, ya pagué mis S/ ${PRICE_LAUNCH}. Te envío la captura de mi pago 🧾`;
 
 // Aviso sobre los horarios de los cursos de la suscripción
 const SUBSCRIPTION_SCHEDULE_NOTE =
@@ -171,7 +174,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿Cómo pago?",
-    a: "Por Yape, Plin o transferencia bancaria. Escríbenos por WhatsApp con la palabra INSCRIPCIÓN y te enviamos los datos para pagar.",
+    a: "Yapea al +51 900 604 267 o paga por PayPal en paypal.me/yoshioriveraa. Luego envía la captura de tu pago por WhatsApp y rellena el formulario de inscripción que está en esta página.",
   },
   {
     q: "¿Qué pasa después del 20 de marzo?",

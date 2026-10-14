@@ -37,7 +37,7 @@ en los JS, vuelve a compilarlo con Tailwind 3: `npx tailwindcss@3 -c tailwind.co
 - **`js/config.js`** (todo lo editable está arriba del archivo):
   - `VACANTES_DISPONIBLES`: vacantes que muestra la página (hoy 5). Cuando llegue a 0 la tarjeta
     de precio cambia sola a S/200.
-  - `DISCOUNT_HOURS`: duración del descuento (72 h). El temporizador se reinicia solo al llegar a cero.
+  - El descuento termina cada día a las 11:59 pm (hora de Lima) y se reinicia solo (`DISCOUNT_UTC_OFFSET_HOURS`).
   - `WHATSAPP_NUMBER`: ya tiene el número real del sitio; cámbialo si usarás otro.
 - **`index.html`**:
   - `og:image` → agrega `assets/img/og-image.jpg` (1200×630px).
@@ -48,11 +48,10 @@ en los JS, vuelve a compilarlo con Tailwind 3: `npx tailwindcss@3 -c tailwind.co
 
 ## Sobre la inscripción
 
-No hay formulario de registro: la página no guarda nombre, WhatsApp ni correo de nadie en
-ningún lado. Todos los botones de la página (`data-wa-cta`) abren WhatsApp directo con el mismo
-mensaje prellenado — "Hola, quiero inscribirme y pagar mis S/ 99 🚀" — definido en
-`WHATSAPP_MESSAGE` dentro de `js/config.js`. Si cambias `PRICE_LAUNCH`, el mensaje se actualiza
-solo porque usa esa misma variable.
+La sección `#inscripcion` explica 3 pasos: pagar (Yape +51 900 604 267 o paypal.me/yoshioriveraa),
+enviar la captura por WhatsApp (`data-wa-proof`, mensaje en `WHATSAPP_PROOF_MESSAGE`) y rellenar
+el formulario. El formulario no guarda nada: al enviarlo abre WhatsApp con los datos ya escritos
+(`initEnrollment()` en `js/script.js`). Los demás botones (`data-wa-cta`) usan `WHATSAPP_MESSAGE`.
 
 ## Analítica
 
