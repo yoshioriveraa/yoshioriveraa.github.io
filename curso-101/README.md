@@ -49,9 +49,9 @@ en los JS, vuelve a compilarlo con Tailwind 3: `npx tailwindcss@3 -c tailwind.co
 ## Sobre la inscripción
 
 La sección `#inscripcion` explica 3 pasos: pagar (Yape +51 900 604 267 o paypal.me/yoshioriveraa),
-enviar la captura por WhatsApp (`data-wa-proof`, mensaje en `WHATSAPP_PROOF_MESSAGE`) y rellenar
-el formulario. El formulario no guarda nada: al enviarlo abre WhatsApp con los datos ya escritos
-(`initEnrollment()` en `js/script.js`). Los demás botones (`data-wa-cta`) usan `WHATSAPP_MESSAGE`.
+enviar la captura por WhatsApp (`data-wa-proof`, mensaje en `WHATSAPP_PROOF_MESSAGE`) y recibir
+por WhatsApp el formulario de inscripción, que se envía a mano. No hay formulario en la página
+ni se guarda ningún dato. Los demás botones (`data-wa-cta`) usan `WHATSAPP_MESSAGE`.
 
 ## Analítica
 

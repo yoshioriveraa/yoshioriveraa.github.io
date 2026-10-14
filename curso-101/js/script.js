@@ -255,7 +255,7 @@ function initWhatsAppLinks() {
   });
 }
 
-/* ---------- Inscripción: copiar Yape + formulario que se envía por WhatsApp ---------- */
+/* ---------- Inscripción: copiar el número de Yape ---------- */
 function initEnrollment() {
   document.querySelectorAll("[data-copy]").forEach((btn) => {
     btn.addEventListener("click", async () => {
@@ -269,25 +269,6 @@ function initEnrollment() {
     });
   });
 
-  const form = document.querySelector("[data-enroll-form]");
-  if (!form) return;
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const d = Object.fromEntries(new FormData(form).entries());
-    const msg = [
-      "Hola, ya pagué y quiero completar mi inscripción 📝",
-      "• Nombre: " + d.nombre,
-      "• WhatsApp: " + d.whatsapp,
-      "• Correo: " + d.correo,
-      "• País/ciudad: " + d.pais,
-      "• Pagué con: " + d.metodo,
-      d.cursos ? "• Cursos que quiero empezar: " + d.cursos : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-    trackEvent("enroll_form_submit", { metodo: d.metodo });
-    window.open(waLink(msg), "_blank", "noopener");
-  });
 }
 
 /* ---------- Tracking de clicks a WhatsApp + eventos de analítica ---------- */
