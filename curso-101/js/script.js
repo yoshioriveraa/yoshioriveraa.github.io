@@ -11,6 +11,7 @@ const waLink = (mensaje) =>
 document.addEventListener("DOMContentLoaded", () => {
   safeRun(initCountdown);
   safeRun(initSchedule);
+  safeRun(initCourses);
   safeRun(initLearnCards);
   safeRun(initIncludes);
   safeRun(initPricing);
@@ -128,6 +129,85 @@ function initSchedule() {
       el.classList.toggle("hidden", el.dataset.weekPanel !== id);
     });
   });
+}
+
+/* ---------- Cursos que abren en octubre y noviembre (agrupados por ciclo) ---------- */
+function initCourses() {
+  const el = document.querySelector("[data-courses-list]");
+  if (!el) return;
+
+  document.querySelectorAll("[data-price-launch]").forEach((n) => (n.textContent = PRICE_LAUNCH));
+  document.querySelectorAll("[data-price-regular]").forEach((n) => (n.textContent = PRICE_REGULAR));
+
+  const meses = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+  const fechaCorta = (dmy) => {
+    const [d, m] = dmy.split("/");
+    return { dia: String(Number(d)), mes: meses[Number(m) - 1] };
+  };
+
+  const cycles = [
+    { id: "1", title: "Ciclo 1", sub: "Arranca el 26 de octubre" },
+    { id: "2", title: "Ciclo 2", sub: "Arranca el 23 de noviembre" },
+  ];
+  // Los cursos "1–2" (Excel) abren en el ciclo 1
+  const groupOf = (c) => (c.cycle === "2" ? "2" : "1");
+
+  el.innerHTML = cycles
+    .map((cy) => {
+      const courses = OFFICIAL_COURSES.filter((c) => groupOf(c) === cy.id);
+      if (courses.length === 0) return "";
+      const cards = courses
+        .map((c) => {
+          const color = ROUTE_COLORS[c.route] || "#1e3a5f";
+          const icon = ROUTE_ICONS[c.route] || "📘";
+          const ini = fechaCorta(c.start);
+          const fin = fechaCorta(c.end);
+          return `
+        <article data-animate class="relative bg-white text-ink rounded-3xl overflow-hidden flex flex-col shadow-xl hover:-translate-y-1.5 hover:shadow-2xl transition duration-300">
+          <div class="relative px-5 pt-5 pb-8 text-white overflow-hidden" style="background:linear-gradient(135deg, ${color}, ${color}cc)">
+            <span class="absolute -right-3 -bottom-6 text-8xl opacity-20 select-none" aria-hidden="true">${icon}</span>
+            <div class="flex items-start justify-between gap-3 relative">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest bg-white/20 rounded-full px-3 py-1">${icon} ${c.route}</span>
+              <div class="bg-white text-ink rounded-2xl text-center px-3 py-1.5 leading-none shadow-lg">
+                <p class="text-[10px] font-bold text-slate-400">INICIA</p>
+                <p class="text-2xl font-extrabold" style="color:${color}">${ini.dia}</p>
+                <p class="text-[11px] font-extrabold">${ini.mes}</p>
+              </div>
+            </div>
+            <h3 class="relative font-extrabold text-lg leading-snug mt-4 pr-16">${c.name}</h3>
+          </div>
+          <div class="p-5 flex-1 flex flex-col">
+            <p class="text-sm text-slate-600">${c.learn}</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex items-center gap-2"><span aria-hidden="true">📅</span><strong>${c.days}</strong></li>
+              <li class="flex items-center gap-2"><span aria-hidden="true">🕒</span><span><strong>${c.time}</strong> <span class="text-slate-400">(Lima)</span></span></li>
+              <li class="flex items-center gap-2"><span aria-hidden="true">🎬</span><span>${c.classes} clases · termina ${fin.dia} ${fin.mes.toLowerCase()}</span></li>
+              <li class="flex items-center gap-2"><span aria-hidden="true">✅</span><span>Requisito: <strong>${c.requirement}</strong></span></li>
+            </ul>
+            <div class="mt-auto pt-4">
+              <div class="border-t border-dashed border-slate-200 pt-4 flex items-center justify-between text-xs font-bold">
+                <span class="text-slate-400">Incluido en tu suscripción</span>
+                <span class="rounded-full px-3 py-1 text-white" style="background:${color}">Todo S/ ${PRICE_LAUNCH}</span>
+              </div>
+            </div>
+          </div>
+        </article>`;
+        })
+        .join("");
+      return `
+      <div>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="shrink-0 w-14 h-14 rounded-2xl bg-amber-400 text-ink flex items-center justify-center text-3xl font-extrabold shadow-lg shadow-amber-500/30">${cy.id}</div>
+          <div>
+            <h3 class="text-2xl font-extrabold leading-tight">${cy.title}</h3>
+            <p class="text-amber-300 text-sm font-semibold">${cy.sub}</p>
+          </div>
+          <div class="hidden sm:block flex-1 h-px bg-white/15 ml-2"></div>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">${cards}</div>
+      </div>`;
+    })
+    .join("");
 }
 
 /* ---------- Tarjetas "Qué vas a aprender" ---------- */

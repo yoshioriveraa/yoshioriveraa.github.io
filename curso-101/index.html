@@ -63,6 +63,7 @@
 
       <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
         <a href="#horario" class="hover:text-brand transition">Horario</a>
+        <a href="#cursos" class="hover:text-brand transition">Cursos</a>
         <a href="#aprenderas" class="hover:text-brand transition">Qué aprenderás</a>
         <a href="#precio" class="hover:text-brand transition">Precio</a>
         <a href="#sobre-mi" class="hover:text-brand transition">Sobre mí</a>
@@ -83,6 +84,7 @@
 
     <div data-mobile-menu class="hidden md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-4 text-sm font-medium">
       <a href="#horario" class="hover:text-brand">Horario</a>
+      <a href="#cursos" class="hover:text-brand">Cursos</a>
       <a href="#aprenderas" class="hover:text-brand">Qué aprenderás</a>
       <a href="#precio" class="hover:text-brand">Precio</a>
       <a href="#sobre-mi" class="hover:text-brand">Sobre mí</a>
@@ -199,6 +201,54 @@
   </section>
 
   <!-- ============================================================
+       2b. CURSOS QUE ABREN EN OCTUBRE Y NOVIEMBRE
+       ============================================================ -->
+  <section id="cursos" class="py-16 md:py-24 px-5 sm:px-8 bg-ink text-white relative overflow-hidden">
+    <div class="absolute -top-32 -left-24 w-96 h-96 bg-brand/30 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -right-24 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px"></div>
+
+    <div class="max-w-6xl mx-auto relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <span data-animate class="inline-block bg-amber-400 text-ink text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full">
+          🚀 Próximas aperturas
+        </span>
+        <h2 data-animate data-animate-delay="1" class="text-3xl sm:text-5xl font-extrabold mt-5 leading-tight">
+          Cursos que se abren en <span class="text-amber-300">octubre</span> y <span class="text-amber-300">noviembre</span>
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-white/70 mt-4">
+          Cada tarjeta es un grupo con su fecha de inicio. Horarios en <strong class="text-white">hora de Lima (UTC-5)</strong>.
+          <strong class="text-white">Todas las clases quedan grabadas.</strong>
+        </p>
+      </div>
+
+      <!-- Banner de precio -->
+      <div data-animate class="mt-10 max-w-3xl mx-auto rounded-3xl bg-gradient-to-r from-amber-400 to-orange-400 text-ink p-6 sm:p-8 shadow-2xl shadow-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-widest">Todos estos cursos incluidos</p>
+          <p class="text-2xl sm:text-3xl font-extrabold leading-tight mt-1">Todo por un pago único de</p>
+        </div>
+        <div class="flex items-end gap-3">
+          <span class="text-xl line-through opacity-60 font-bold">S/ <span data-price-regular>200</span></span>
+          <span class="text-6xl font-extrabold leading-none">S/ <span data-price-launch>99</span></span>
+        </div>
+      </div>
+
+      <div class="mt-12 space-y-14" data-courses-list>
+        <!-- Generado por js/script.js a partir de js/config.js -->
+      </div>
+
+      <div class="mt-14 text-center">
+        <a href="#" data-wa-cta data-cta-label="Cursos: inscribirme" target="_blank" rel="noopener"
+          class="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-ink font-extrabold text-lg px-10 py-4 rounded-full transition shadow-xl shadow-amber-500/30">
+          Quiero todos los cursos por S/ <span data-price-launch>99</span> →
+        </a>
+        <p class="text-white/50 text-xs mt-3">Pago por Yape, Plin o transferencia · Acceso hasta el 20 de marzo de 2027</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        3. QUÉ VAS A APRENDER (clases oficiales desde el 26 de octubre)
        ============================================================ -->
   <section id="aprenderas" class="py-16 md:py-24 px-5 sm:px-8">
@@ -259,7 +309,7 @@
 
           <div class="mt-4 flex items-end justify-center gap-3">
             <span data-precio-ancla class="text-2xl text-slate-400 line-through">S/ 200</span>
-            <span data-precio-final class="text-5xl font-extrabold text-brand">S/ 100</span>
+            <span data-precio-final class="text-5xl font-extrabold text-brand">S/ 99</span>
           </div>
           <p class="text-slate-500 text-sm mt-2">Pago único. Acceso hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span>.</p>
 

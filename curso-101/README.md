@@ -46,7 +46,7 @@ No hay proceso de build: basta con abrir `index.html`, porque Tailwind se carga 
 
 No hay formulario de registro: la página no guarda nombre, WhatsApp ni correo de nadie en
 ningún lado. Todos los botones de la página (`data-wa-cta`) abren WhatsApp directo con el mismo
-mensaje prellenado — "Hola, quiero inscribirme y pagar mis S/ 100 🚀" — definido en
+mensaje prellenado — "Hola, quiero inscribirme y pagar mis S/ 99 🚀" — definido en
 `WHATSAPP_MESSAGE` dentro de `js/config.js`. Si cambias `PRICE_LAUNCH`, el mensaje se actualiza
 solo porque usa esa misma variable.
 

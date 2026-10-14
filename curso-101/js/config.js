@@ -44,18 +44,18 @@ const OFFICIAL_CLASSES_START_LABEL = "26 de octubre de 2026";
 const SUBSCRIPTION_ACCESS_UNTIL_LABEL = "20 de marzo de 2027";
 
 // Costo del certificado de finalización, por cada curso completado (no está incluido en la suscripción)
-const CERTIFICATE_PRICE = 30;
+const CERTIFICATE_PRICE = 10;
 
 // ---------- Precio y cupos de lanzamiento ----------
 // Precio regular (ancla) y precio de lanzamiento con 50% de descuento
 const PRICE_REGULAR = 200;
-const PRICE_LAUNCH = 100;
+const PRICE_LAUNCH = 99;
 
 // Mensaje prellenado del único botón de WhatsApp de la página (no hay formulario:
 // todo el sitio usa este mismo mensaje para inscribirse y pagar)
 const WHATSAPP_MESSAGE = `Hola, quiero inscribirme y pagar mis S/ ${PRICE_LAUNCH} 🚀`;
 
-// Cupos totales de lanzamiento con el precio de S/100
+// Cupos totales de lanzamiento con el precio de S/99
 const CUPOS_LANZAMIENTO_TOTALES = 50;
 
 // TODO: actualiza este número según las inscripciones reales confirmadas.
@@ -169,6 +169,85 @@ const FREE_WEEKS = [
 // Aviso sobre los horarios de los cursos de la suscripción
 const SUBSCRIPTION_SCHEDULE_NOTE =
   "Cada curso tiene su propio horario (no todos se dictan al mismo tiempo), así que puedes ir sumando cursos según tu disponibilidad.";
+
+/**
+ * @typedef {Object} OfficialCourse
+ * @property {string} cycle        - Ciclo ("1", "2", "1–2")
+ * @property {string} route        - Ruta / herramienta (clave de ROUTE_COLORS)
+ * @property {string} name
+ * @property {string} days
+ * @property {string} time         - Hora de Lima (UTC-5)
+ * @property {number} classes      - Número de clases
+ * @property {string} start        - Inicio, dd/mm/aaaa
+ * @property {string} end          - Fin, dd/mm/aaaa
+ * @property {string} requirement
+ * @property {string} learn        - Qué aprenderás
+ */
+
+/** Color de la etiqueta de cada ruta */
+const ROUTE_COLORS = {
+  "Matemática y Estadística": "#c9573f",
+  Python: "#1f5fa8",
+  SQL: "#2e7d32",
+  Excel: "#00796b",
+};
+
+/** Ícono grande de cada ruta */
+const ROUTE_ICONS = {
+  "Matemática y Estadística": "🧮",
+  Python: "🐍",
+  SQL: "🗄️",
+  Excel: "📊",
+};
+
+/** @type {OfficialCourse[]} Cursos que abren en octubre y noviembre (cada fila es un grupo) */
+const OFFICIAL_COURSES = [
+  {
+    cycle: "1", route: "Matemática y Estadística", name: "Matemática aplicada 1",
+    days: "Lun a vie", time: "4:30 – 5:30 pm", classes: 10, start: "26/10/2026", end: "06/11/2026",
+    requirement: "Ninguno", learn: "Álgebra, funciones y porcentajes aplicados a datos y negocios.",
+  },
+  {
+    cycle: "1", route: "Python", name: "Python Básico 1 · Tu primer programa desde cero",
+    days: "Lun, mar y jue", time: "6:00 – 7:00 pm", classes: 12, start: "26/10/2026", end: "19/11/2026",
+    requirement: "Ninguno", learn: "Variables, condicionales y bucles. Resuelves ejercicios reales desde la primera clase.",
+  },
+  {
+    cycle: "1", route: "SQL", name: "SQL Básico 1 · Consultas con PostgreSQL",
+    days: "Lun, mar y jue", time: "7:30 – 8:30 pm", classes: 12, start: "26/10/2026", end: "19/11/2026",
+    requirement: "Ninguno", learn: "SELECT, filtros, orden y funciones. Instalas PostgreSQL y consultas datos reales.",
+  },
+  {
+    cycle: "1–2", route: "Excel", name: "Excel Básico · Tablas, fórmulas y gráficos",
+    days: "Mié y vie", time: "9:00 – 10:00 am", classes: 16, start: "28/10/2026", end: "23/12/2026",
+    requirement: "Ninguno", learn: "Fórmulas, formatos, tablas y gráficos para trabajar con orden y rapidez.",
+  },
+  {
+    cycle: "1", route: "Matemática y Estadística", name: "Introducción a la Estadística",
+    days: "Lun a vie", time: "4:30 – 5:30 pm", classes: 10, start: "09/11/2026", end: "20/11/2026",
+    requirement: "Ninguno", learn: "Promedios, dispersión, probabilidad básica y cómo leer datos sin que te engañen.",
+  },
+  {
+    cycle: "2", route: "Python", name: "Python Básico 1 · Tu primer programa desde cero",
+    days: "Lun, mar y jue", time: "6:00 – 7:00 pm", classes: 12, start: "23/11/2026", end: "21/12/2026",
+    requirement: "Ninguno", learn: "Variables, condicionales y bucles. Resuelves ejercicios reales desde la primera clase.",
+  },
+  {
+    cycle: "2", route: "SQL", name: "SQL Básico 1 · Consultas con PostgreSQL",
+    days: "Lun, mar y jue", time: "7:30 – 8:30 pm", classes: 12, start: "23/11/2026", end: "21/12/2026",
+    requirement: "Ninguno", learn: "SELECT, filtros, orden y funciones. Instalas PostgreSQL y consultas datos reales.",
+  },
+  {
+    cycle: "2", route: "Python", name: "Python Básico 2 · Funciones, listas y diccionarios",
+    days: "Mié y vie", time: "5:30 – 7:00 pm", classes: 8, start: "25/11/2026", end: "23/12/2026",
+    requirement: "Python Básico 1", learn: "Funciones, estructuras de datos y manejo de archivos para automatizar tareas.",
+  },
+  {
+    cycle: "2", route: "SQL", name: "SQL Básico 2 · JOINs y agrupaciones",
+    days: "Mié y vie", time: "7:15 – 8:45 pm", classes: 8, start: "25/11/2026", end: "23/12/2026",
+    requirement: "SQL Básico 1", learn: "Unes tablas y resumes datos de un negocio: ventas, inventario y clientes.",
+  },
+];
 
 /** Temas oficiales que entran con la suscripción (desde el 26 de octubre) — cada uno en su propio horario */
 const SUBSCRIPTION_TOPICS = [
