@@ -1,8 +1,8 @@
 # curso-101
 
-Landing page estática (HTML + Tailwind CSS vía CDN + JS vanilla) para las **clases gratis de
-Análisis de Datos** (12 al 23 de octubre) y para dirigir a WhatsApp a quien quiera inscribirse
-a la suscripción de pago único a todos los cursos.
+Landing page estática (HTML + Tailwind CSS compilado + JS vanilla) con los cursos que abren en
+octubre y noviembre, y para dirigir a WhatsApp a quien quiera inscribirse a la suscripción de
+pago único (S/ 99) a todos los cursos.
 
 Esta carpeta vive dentro del repositorio principal `yoshioriveraa.github.io`, que ya se
 publica desde la raíz en GitHub Pages. Al hacer push a `main`, esta página queda disponible
@@ -18,22 +18,26 @@ https://yoshioriveraa.github.io/curso-101/
 curso-101/
 ├── index.html          <- página principal
 ├── css/
-│   └── style.css       <- animaciones, acordeones, tabs (lo que Tailwind CDN no cubre)
+│   ├── style.css       <- animaciones y acordeones (a mano)
+│   └── tailwind.css    <- Tailwind ya compilado (generado, no editar a mano)
 ├── js/
-│   ├── config.js        <- TODA la info editable: fechas, precio, cupos, WhatsApp, horario de clases, FAQ
-│   └── script.js        <- countdown, tabs de semanas, acordeones, botón de WhatsApp, tracking
+│   ├── config.js        <- TODA la info editable: fechas, precio, cupos, WhatsApp, cursos (OFFICIAL_COURSES), vacantes, duración del descuento, FAQ
+│   └── script.js        <- temporizador del descuento, tarjetas de cursos, acordeones, botón de WhatsApp, tracking
 └── assets/
     └── img/              <- favicon.png, og-image.jpg, instructor.jpg (ver TODOs abajo)
 ```
 
-No hay proceso de build: basta con abrir `index.html`, porque Tailwind se carga desde su CDN.
+Para ver la página basta con abrir `index.html`. El CSS de Tailwind está precompilado en
+`css/tailwind.css` (más rápido que el CDN). Si agregas clases nuevas de Tailwind en el HTML o
+en los JS, vuelve a compilarlo con Tailwind 3: `npx tailwindcss@3 -c tailwind.config.js -i in.css -o css/tailwind.css --minify`
+(el config usa los colores `ink`, `brand`, `brand-dark`, `brand-light` y escanea `index.html` y `js/*.js`).
 
 ## Antes de publicar: contenido a reemplazar
 
 - **`js/config.js`** (todo lo editable está arriba del archivo):
-  - `CUPOS_LANZAMIENTO_VENDIDOS`: empieza en `0`. Actualízalo según las inscripciones reales
-    confirmadas. Cuando llegue a `CUPOS_LANZAMIENTO_TOTALES` (50), la tarjeta de precio cambia
-    sola a S/200.
+  - `VACANTES_DISPONIBLES`: vacantes que muestra la página (hoy 5). Cuando llegue a 0 la tarjeta
+    de precio cambia sola a S/200.
+  - `DISCOUNT_HOURS`: duración del descuento (72 h). El temporizador se reinicia solo al llegar a cero.
   - `WHATSAPP_NUMBER`: ya tiene el número real del sitio; cámbialo si usarás otro.
 - **`index.html`**:
   - `og:image` → agrega `assets/img/og-image.jpg` (1200×630px).

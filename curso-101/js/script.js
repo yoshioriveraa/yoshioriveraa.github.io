@@ -9,8 +9,7 @@ const waLink = (mensaje) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  safeRun(initCountdown);
-  safeRun(initSchedule);
+  safeRun(initDiscountTimer);
   safeRun(initCourses);
   safeRun(initLearnCards);
   safeRun(initIncludes);
@@ -31,104 +30,56 @@ function safeRun(fn) {
   }
 }
 
-/* ---------- Countdown al inicio de las clases gratis ---------- */
-function initCountdown() {
-  const elDias = document.querySelector("[data-cd-dias]");
-  const elHoras = document.querySelector("[data-cd-horas]");
-  const elMin = document.querySelector("[data-cd-min]");
-  const elSeg = document.querySelector("[data-cd-seg]");
-  const contenedor = document.querySelector("[data-countdown]");
+/* ---------- Temporizador del descuento: dura DISCOUNT_HOURS y se reinicia solo al llegar a cero ---------- */
+function initDiscountTimer() {
+  const boxes = document.querySelectorAll("[data-discount-timer]");
+  if (!boxes.length) return;
 
-  if (!elDias || !elHoras || !elMin || !elSeg) return;
+  const DURACION = DISCOUNT_HOURS * 60 * 60 * 1000;
+  const KEY = "curso101_descuento_fin";
+
+  // El cierre se guarda por visitante para que el reloj no vuelva a 3 días al recargar
+  let fin = 0;
+  try {
+    fin = Number(localStorage.getItem(KEY)) || 0;
+  } catch (e) {}
+
+  const reiniciar = () => {
+    fin = Date.now() + DURACION;
+    try {
+      localStorage.setItem(KEY, String(fin));
+    } catch (e) {}
+  };
+  if (fin - Date.now() <= 0 || fin - Date.now() > DURACION) reiniciar();
+
+  const refs = [...boxes].map((box) => ({
+    d: box.querySelector("[data-dt-d]"),
+    h: box.querySelector("[data-dt-h]"),
+    m: box.querySelector("[data-dt-m]"),
+    s: box.querySelector("[data-dt-s]"),
+  }));
+  const dos = (n) => String(n).padStart(2, "0");
 
   function tick() {
-    const ahora = new Date().getTime();
-    const distancia = FREE_CLASSES_START.getTime() - ahora;
-
-    if (distancia <= 0) {
-      if (contenedor) {
-        contenedor.innerHTML =
-          '<p class="text-lg font-semibold text-brand-dark">¡Las clases gratis ya empezaron! Escríbenos para saber cómo unirte 🚀</p>';
-      }
-      clearInterval(intervalo);
-      return;
+    let resto = fin - Date.now();
+    if (resto <= 0) {
+      reiniciar();
+      resto = DURACION;
     }
-
-    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-    elDias.textContent = String(dias).padStart(2, "0");
-    elHoras.textContent = String(horas).padStart(2, "0");
-    elMin.textContent = String(minutos).padStart(2, "0");
-    elSeg.textContent = String(segundos).padStart(2, "0");
+    const total = Math.floor(resto / 1000);
+    const vals = {
+      d: Math.floor(total / 86400),
+      h: Math.floor((total % 86400) / 3600),
+      m: Math.floor((total % 3600) / 60),
+      s: total % 60,
+    };
+    refs.forEach((r) => {
+      for (const k in vals) if (r[k]) r[k].textContent = dos(vals[k]);
+    });
   }
 
   tick();
-  const intervalo = setInterval(tick, 1000);
-}
-
-/* ---------- Cuadro de clases gratis (tabs por semana) ---------- */
-function initSchedule() {
-  const tabsEl = document.querySelector("[data-week-tabs]");
-  const panelsEl = document.querySelector("[data-week-panels]");
-  if (!tabsEl || !panelsEl) return;
-
-  tabsEl.innerHTML = "";
-  panelsEl.innerHTML = "";
-
-  FREE_WEEKS.forEach((week, index) => {
-    const isActive = index === 0;
-
-    const tabBtn = document.createElement("button");
-    tabBtn.type = "button";
-    tabBtn.dataset.weekTab = week.id;
-    tabBtn.setAttribute("aria-selected", String(isActive));
-    tabBtn.className = `week-tab ${isActive ? "week-tab-active" : ""}`;
-    tabBtn.innerHTML = `${week.title}<span class="block text-xs font-normal opacity-80 mt-0.5">${week.dateRange}</span>`;
-    tabsEl.appendChild(tabBtn);
-
-    const panel = document.createElement("div");
-    panel.dataset.weekPanel = week.id;
-    panel.className = isActive ? "" : "hidden";
-    panel.innerHTML = week.days
-      .map(
-        (day) => `
-        <div class="bg-white rounded-2xl border border-slate-100 p-5 sm:p-6">
-          <p class="font-bold text-ink mb-3">${day.day}</p>
-          <ul class="space-y-2">
-            ${day.slots
-              .map(
-                (slot) => `
-              <li class="flex gap-3 text-sm">
-                <span class="shrink-0 font-mono text-xs text-brand-dark bg-brand-light rounded-lg px-2 py-1 whitespace-nowrap">${slot.time}</span>
-                <span class="text-slate-600">${slot.topic}</span>
-              </li>`
-              )
-              .join("")}
-          </ul>
-        </div>`
-      )
-      .join("");
-    panel.className += " grid gap-4 sm:grid-cols-2";
-    panelsEl.appendChild(panel);
-  });
-
-  tabsEl.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-week-tab]");
-    if (!btn) return;
-    const id = btn.dataset.weekTab;
-
-    tabsEl.querySelectorAll("[data-week-tab]").forEach((el) => {
-      const active = el.dataset.weekTab === id;
-      el.classList.toggle("week-tab-active", active);
-      el.setAttribute("aria-selected", String(active));
-    });
-    panelsEl.querySelectorAll("[data-week-panel]").forEach((el) => {
-      el.classList.toggle("hidden", el.dataset.weekPanel !== id);
-    });
-  });
+  setInterval(tick, 1000);
 }
 
 /* ---------- Cursos que abren en octubre y noviembre (agrupados por ciclo) ---------- */

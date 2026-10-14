@@ -28,30 +28,6 @@ html.js-animate-ready [data-animate].is-visible {
   transition: transform 0.3s ease;
 }
 
-/* ---------- Tabs de semanas ---------- */
-.week-tab {
-  padding: 0.9rem 1.1rem;
-  border-radius: 1rem;
-  border: 1px solid rgb(226 232 240);
-  background: #fff;
-  color: #475569;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.week-tab:hover {
-  border-color: rgba(37, 99, 235, 0.4);
-}
-
-.week-tab-active {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #fff;
-}
-
 /* ---------- Urgencia (badge de cupos) ---------- */
 .pulso-urgencia {
   animation: pulso 2.4s ease-in-out infinite;

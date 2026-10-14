@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clases Gratis de Análisis de Datos en Vivo | Yoshio Rivera Agarie</title>
-  <meta name="description" content="Clases gratis en vivo del 12 al 23 de octubre: aprende Excel, SQL, Python, Power BI y Machine Learning desde cero. Si te gusta cómo enseño, accede a todos los cursos por un pago único hasta el 20 de marzo." />
+  <title>Cursos de Análisis de Datos en Vivo | Yoshio Rivera Agarie</title>
+  <meta name="description" content="Aprende Excel, SQL, Python, Power BI y Machine Learning desde cero con clases en vivo. Todos los cursos por un pago único de S/ 99 hasta el 20 de marzo." />
 
   <!-- ============================================================
        OPEN GRAPH / META TAGS PARA COMPARTIR EN WHATSAPP Y REDES
@@ -12,38 +12,21 @@
        ============================================================ -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yoshioriveraa.github.io/curso-101/" />
-  <meta property="og:title" content="Clases Gratis de Análisis de Datos en Vivo | Yoshio Rivera Agarie" />
-  <meta property="og:description" content="Aprende Análisis de Datos desde cero: clases gratis en vivo del 12 al 23 de octubre. Excel, SQL, Python, Power BI y Machine Learning." />
+  <meta property="og:title" content="Cursos de Análisis de Datos en Vivo | Yoshio Rivera Agarie" />
+  <meta property="og:description" content="Aprende Análisis de Datos desde cero. Excel, SQL, Python, Power BI y Machine Learning. Todos los cursos por S/ 99." />
   <meta property="og:image" content="https://yoshioriveraa.github.io/curso-101/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- TODO: reemplaza favicon.png en /assets/img/ por un ícono real 512x512px -->
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
-  <!-- Tailwind CSS vía CDN (sin build process, igual que /curso-analista) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: "#0F172A",
-            brand: "#2563EB",
-            "brand-dark": "#1D4ED8",
-            "brand-light": "#EFF6FF",
-          },
-          fontFamily: {
-            sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-          },
-        },
-      },
-    };
-  </script>
+  <!-- Tailwind compilado (css/tailwind.css): sin runtime en el navegador -->
+  <link rel="stylesheet" href="css/tailwind.css" />
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Estilos custom (animaciones, acordeones, tabs) -->
   <link rel="stylesheet" href="css/style.css" />
@@ -57,12 +40,11 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
     <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-2 font-extrabold text-lg">
-        <span class="w-8 h-8 rounded-lg bg-brand text-white flex items-center justify-center text-sm">D</span>
-        Clases<span class="text-brand">Gratis</span>
+        <span class="h-8 px-2 rounded-lg bg-brand text-white flex items-center justify-center text-sm font-black tracking-tight">101</span>
+        Yoshio <span class="text-brand">Agarie</span>
       </a>
 
       <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
-        <a href="#horario" class="hover:text-brand transition">Horario</a>
         <a href="#cursos" class="hover:text-brand transition">Cursos</a>
         <a href="#aprenderas" class="hover:text-brand transition">Qué aprenderás</a>
         <a href="#precio" class="hover:text-brand transition">Precio</a>
@@ -83,7 +65,6 @@
     </nav>
 
     <div data-mobile-menu class="hidden md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-4 text-sm font-medium">
-      <a href="#horario" class="hover:text-brand">Horario</a>
       <a href="#cursos" class="hover:text-brand">Cursos</a>
       <a href="#aprenderas" class="hover:text-brand">Qué aprenderás</a>
       <a href="#precio" class="hover:text-brand">Precio</a>
@@ -100,21 +81,21 @@
        ============================================================ -->
   <section id="top" class="relative pt-28 pb-16 md:pt-36 md:pb-24 px-5 sm:px-8 overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-light via-white to-white"></div>
-    <div class="absolute -top-24 -right-24 w-72 h-72 bg-brand/10 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full -z-10" style="background:radial-gradient(closest-side,rgba(37,99,235,.10),transparent)"></div>
 
     <div class="max-w-4xl mx-auto text-center">
       <div data-animate class="inline-flex items-center gap-2 bg-white border border-brand/30 text-brand-dark text-xs sm:text-sm font-bold px-4 py-2 rounded-full mb-6 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-brand"></span>
-        100% en vivo y gratis · Hora de Lima (UTC-5)
+        Clases en vivo · Hora de Lima (UTC-5)
       </div>
 
       <h1 data-animate class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-        Aprende <span class="text-brand">Análisis de Datos</span> desde cero: clases gratis en vivo del 12 al 23 de octubre
+        Aprende <span class="text-brand">Análisis de Datos</span> desde cero con clases en vivo
       </h1>
 
       <p data-animate data-animate-delay="1" class="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
-        Prueba cómo enseño, y si te gusta, accede a todos mis cursos por un
-        <strong class="text-ink">pago único hasta el 20 de marzo</strong>.
+        Accede a todos mis cursos por un
+        <strong class="text-ink">pago único de S/ <span data-price-launch>99</span> hasta el 20 de marzo</strong>.
       </p>
 
       <div data-animate data-animate-delay="2" class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -128,75 +109,29 @@
         </a>
       </div>
 
-      <!-- Countdown -->
-      <div data-animate data-animate-delay="3" data-countdown class="mt-12 max-w-lg mx-auto">
-        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Las clases gratis empiezan en</p>
+      <!-- Temporizador del descuento (se reinicia solo al llegar a cero) -->
+      <div data-animate data-animate-delay="3" data-discount-timer class="mt-12 max-w-lg mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-red-500 mb-3 pulso-urgencia">🔥 El descuento termina en</p>
         <div class="grid grid-cols-4 gap-2 sm:gap-4">
           <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-cd-dias class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p data-dt-d class="text-2xl sm:text-4xl font-extrabold">00</p>
             <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Días</p>
           </div>
           <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-cd-horas class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p data-dt-h class="text-2xl sm:text-4xl font-extrabold">00</p>
             <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Horas</p>
           </div>
           <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-cd-min class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p data-dt-m class="text-2xl sm:text-4xl font-extrabold">00</p>
             <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Min</p>
           </div>
           <div class="bg-ink text-white rounded-2xl py-3 sm:py-4">
-            <p data-cd-seg class="text-2xl sm:text-4xl font-extrabold">00</p>
+            <p data-dt-s class="text-2xl sm:text-4xl font-extrabold">00</p>
             <p class="text-[10px] sm:text-xs uppercase tracking-wide text-white/60 mt-1">Seg</p>
           </div>
         </div>
-        <p class="text-xs text-slate-400 mt-3">Lunes 12 de octubre de 2026, 9:00 am · Hora de Lima (UTC-5) · Todas las clases quedan grabadas</p>
+        <p class="text-sm font-bold text-ink mt-4">⚠️ Solo quedan <span data-cupos-restantes>5</span> vacantes disponibles</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       2. CUADRO DE CLASES GRATUITAS (tabs por semana)
-       ============================================================ -->
-  <section id="horario" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto">
-        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Horario de clases gratis</span>
-        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">
-          Dos semanas de clases en vivo, totalmente gratis
-        </h2>
-        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">
-          Todos los horarios son en <strong class="text-ink">hora de Lima, Perú (UTC-5)</strong>.
-          <strong class="text-ink">Todas las clases quedan grabadas</strong>, así que si no llegas en vivo, no te
-          pierdes nada.
-        </p>
-      </div>
-
-      <div data-animate data-animate-delay="2b" class="mt-8 grid gap-3 sm:grid-cols-3">
-        <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-start gap-3">
-          <span class="text-xl shrink-0" aria-hidden="true">🎓</span>
-          <p class="text-sm text-slate-600"><strong class="text-ink">30% teoría, 70% práctica</strong>, con ejercicios de práctica diarios.</p>
-        </div>
-        <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-start gap-3">
-          <span class="text-xl shrink-0" aria-hidden="true">🔴</span>
-          <p class="text-sm text-slate-600">Las sesiones de aprendizaje son <strong class="text-ink">100% sincrónicas</strong> (en vivo).</p>
-        </div>
-        <div class="bg-white border border-slate-100 rounded-2xl p-4 flex items-start gap-3">
-          <span class="text-xl shrink-0" aria-hidden="true">💻</span>
-          <p class="text-sm text-slate-600">Solo instalas <strong class="text-ink">Excel y Power BI</strong>, de forma asincrónica y a tu ritmo.</p>
-        </div>
-      </div>
-
-      <div data-animate data-animate-delay="3" class="mt-8 flex flex-col sm:flex-row gap-3" data-week-tabs role="tablist">
-        <!-- Tabs generados por js/script.js a partir de js/config.js -->
-      </div>
-
-      <div class="mt-6" data-week-panels>
-        <!-- Paneles generados por js/script.js a partir de js/config.js -->
-      </div>
-
-      <p data-animate class="text-xs text-slate-400 mt-6 text-center">
-        Nota: el bloque de 7:00 - 8:00 pm solo existe en la Semana 2 (clases prácticas).
-      </p>
     </div>
   </section>
 
@@ -204,8 +139,8 @@
        2b. CURSOS QUE ABREN EN OCTUBRE Y NOVIEMBRE
        ============================================================ -->
   <section id="cursos" class="py-16 md:py-24 px-5 sm:px-8 bg-ink text-white relative overflow-hidden">
-    <div class="absolute -top-32 -left-24 w-96 h-96 bg-brand/30 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-32 -right-24 w-96 h-96 bg-amber-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute -top-32 -left-24 w-96 h-96 rounded-full" style="background:radial-gradient(closest-side,rgba(37,99,235,.30),transparent)"></div>
+    <div class="absolute -bottom-32 -right-24 w-96 h-96 rounded-full" style="background:radial-gradient(closest-side,rgba(251,191,36,.20),transparent)"></div>
     <div class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px"></div>
 
     <div class="max-w-6xl mx-auto relative">
@@ -275,7 +210,7 @@
        4. QUÉ INCLUYE TU SUSCRIPCIÓN
        ============================================================ -->
   <section class="py-16 md:py-24 px-5 sm:px-8 bg-ink text-white relative overflow-hidden">
-    <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-brand/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full" style="background:radial-gradient(closest-side,rgba(37,99,235,.20),transparent)"></div>
 
     <div class="max-w-3xl mx-auto relative">
       <div class="text-center">
@@ -313,10 +248,17 @@
           </div>
           <p class="text-slate-500 text-sm mt-2">Pago único. Acceso hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span>.</p>
 
-          <div class="w-full h-2 bg-slate-100 rounded-full mt-8 overflow-hidden" data-bloque-cupos>
-            <div data-cupos-barra class="h-full bg-brand" style="width: 0%"></div>
+          <div data-discount-timer class="mt-6 rounded-2xl bg-red-50 border border-red-100 p-4">
+            <p class="text-xs font-bold uppercase tracking-widest text-red-500">🔥 El descuento termina en</p>
+            <p class="text-3xl font-extrabold text-ink mt-1 tabular-nums">
+              <span data-dt-d>00</span>d : <span data-dt-h>00</span>h : <span data-dt-m>00</span>m : <span data-dt-s>00</span>s
+            </p>
           </div>
-          <p data-bloque-cupos class="text-xs text-slate-400 mt-2">Cupos de lanzamiento limitados</p>
+
+          <div class="w-full h-2 bg-slate-100 rounded-full mt-6 overflow-hidden" data-bloque-cupos>
+            <div data-cupos-barra class="h-full bg-red-500" style="width: 0%"></div>
+          </div>
+          <p data-bloque-cupos class="text-sm font-bold text-red-600 mt-2">Para asegurar tu vacante: solo quedan <span data-cupos-restantes>5</span> disponibles</p>
 
           <ul class="mt-8 space-y-3 text-left text-sm text-slate-600">
             <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Acceso a todos los cursos hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span></li>
@@ -351,13 +293,13 @@
         </div>
         <div data-animate data-animate-delay="2" class="rounded-2xl border border-slate-100 p-6 sm:p-8 text-center">
           <div class="w-12 h-12 mx-auto rounded-full bg-brand text-white font-extrabold flex items-center justify-center mb-4">2</div>
-          <p class="font-bold">Entra a las clases y mira cómo enseño</p>
-          <p class="text-slate-500 text-sm mt-2">Participa en las clases gratis del 12 al 23 de octubre, en vivo o grabadas.</p>
+          <p class="font-bold">Asegura tu vacante</p>
+          <p class="text-slate-500 text-sm mt-2">Quedan pocas vacantes: confirma tu pago por Yape, Plin o transferencia antes de que termine el descuento.</p>
         </div>
         <div data-animate data-animate-delay="3" class="rounded-2xl border border-slate-100 p-6 sm:p-8 text-center">
           <div class="w-12 h-12 mx-auto rounded-full bg-brand text-white font-extrabold flex items-center justify-center mb-4">3</div>
-          <p class="font-bold">Inscríbete y paga</p>
-          <p class="text-slate-500 text-sm mt-2">Si te gustó, dinos que quieres inscribirte y paga por Yape, Plin o transferencia.</p>
+          <p class="font-bold">Empieza tus clases</p>
+          <p class="text-slate-500 text-sm mt-2">Te damos acceso a tus cursos y a la comunidad. Todas las clases quedan grabadas.</p>
         </div>
       </div>
     </div>
@@ -371,7 +313,7 @@
       <!-- TODO: reemplaza con foto real del instructor en /assets/img/instructor.jpg -->
       <div data-animate class="mx-auto md:mx-0">
         <div class="w-40 h-40 md:w-52 md:h-52 rounded-3xl bg-brand-light border-4 border-white shadow-xl flex items-center justify-center text-5xl font-extrabold text-brand overflow-hidden">
-          <img src="assets/img/instructor.jpg" alt="Foto de Yoshio Rivera Agarie" class="w-full h-full object-cover"
+          <img src="assets/img/instructor.jpg" loading="lazy" decoding="async" alt="Foto de Yoshio Rivera Agarie" class="w-full h-full object-cover"
             onerror="this.style.display='none'; this.parentElement.textContent='YR';" />
         </div>
       </div>
@@ -444,7 +386,7 @@
   <footer class="bg-ink text-white px-5 sm:px-8 pt-16 pb-8">
     <div class="max-w-4xl mx-auto text-center">
       <h2 data-animate class="text-2xl sm:text-3xl font-extrabold">¿Listo para aprender Análisis de Datos?</h2>
-      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases gratis empiezan el 12 de octubre. Escríbenos hoy.</p>
+      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases empiezan el 26 de octubre y solo quedan <span data-cupos-restantes>5</span> vacantes. Escríbenos hoy.</p>
 
       <a href="#" data-wa-cta data-cta-label="Footer: inscribirme" target="_blank" rel="noopener"
         class="mt-8 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
@@ -473,7 +415,7 @@
   </footer>
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="js/config.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
