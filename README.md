@@ -65,7 +65,7 @@ instales esos scripts.
 No requiere instalación. Abre `index.html` en el navegador, o sírvelo con un servidor estático:
 
 ```bash
-cd curso-101
+cd .  # raíz del repo
 python -m http.server 8080
 ```
 
