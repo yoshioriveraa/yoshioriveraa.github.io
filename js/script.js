@@ -287,7 +287,7 @@ function initWhatsAppTracking() {
  */
 function trackEvent(name, params = {}) {
   console.log(`[tracking] ${name}`, params);
-  if (typeof fbq === "function" && name === "cta_click") fbq("track", "Contact", params);
+  if (typeof fbq === "function" && name === "cta_click") fbq("track", "Lead", params);
   // TODO: cuando tengas Google Analytics (gtag.js) instalado:
   // if (typeof gtag === "function") gtag("event", name, params);
 }
