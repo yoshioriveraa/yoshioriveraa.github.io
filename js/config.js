@@ -26,13 +26,13 @@ const CERTIFICATE_PRICE = 10;
 // ---------- Precio y cupos de lanzamiento ----------
 // Precio regular (ancla) y precio de lanzamiento con 50% de descuento
 const PRICE_REGULAR = 200;
-const PRICE_LAUNCH = 99;
+const PRICE_LAUNCH = 100;
 
 // Mensaje prellenado del único botón de WhatsApp de la página (no hay formulario:
 // todo el sitio usa este mismo mensaje para inscribirse y pagar)
 const WHATSAPP_MESSAGE = `Hola, quiero inscribirme y pagar mis S/ ${PRICE_LAUNCH} 🚀`;
 
-// Cupos totales de lanzamiento con el precio de S/99
+// Cupos totales de lanzamiento con el precio de S/100
 const CUPOS_LANZAMIENTO_TOTALES = 50;
 
 // Vacantes que se muestran como disponibles (la página dice "solo quedan N vacantes").

@@ -1,4 +1,4 @@
-# curso-101
+# Programa con Café
 
 Landing page estática (HTML + Tailwind CSS compilado + JS vanilla) con los cursos que abren en
 octubre y noviembre, y para dirigir a WhatsApp a quien quiera inscribirse a la suscripción de
@@ -9,7 +9,7 @@ publica desde la raíz en GitHub Pages. Al hacer push a `main`, esta página que
 automáticamente en:
 
 ```
-https://yoshioriveraa.github.io/curso-101/
+https://programaconcafe.com/
 ```
 
 ## Estructura

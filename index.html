@@ -3,1019 +3,456 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consultoría & Análisis de Datos — Leonardo Rivera Agarie</title>
-  <meta name="description" content="Consultoría y análisis de datos para empresas. Convierto tus datos en insights accionables: análisis exploratorio, dashboards, automatización de reportes y modelado de datos en Lima, Perú." />
-  <meta name="keywords" content="consultoría de datos, análisis de datos, python, sql, automatización, dashboards, business intelligence, Lima, Perú, data analyst" />
-  <meta name="author" content="Leonardo Rivera Agarie" />
+  <title>Programa con Café | Cursos de Análisis de Datos en Vivo</title>
+  <meta name="description" content="Aprende Excel, SQL, Python, Power BI y Machine Learning desde cero con clases en vivo. Todos los cursos por un pago único de S/ 100 hasta el 20 de marzo." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Consultoría & Análisis de Datos — Leonardo Rivera Agarie" />
-  <meta property="og:description" content="Convierto datos en decisiones rentables. Análisis, dashboards, automatización y modelado de datos para empresas." />
+  <!-- ============================================================
+       OPEN GRAPH / META TAGS PARA COMPARTIR EN WHATSAPP Y REDES
+       TODO: reemplaza og-image.jpg en /assets/img/ por una imagen real 1200x630px
+       ============================================================ -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://programaconcafe.com/" />
+  <meta property="og:title" content="Programa con Café | Cursos de Análisis de Datos en Vivo" />
+  <meta property="og:description" content="Aprende Análisis de Datos desde cero. Excel, SQL, Python, Power BI y Machine Learning. Todos los cursos por S/ 100." />
+  <meta property="og:image" content="https://programaconcafe.com/assets/img/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts -->
+  <!-- TODO: reemplaza favicon.png en /assets/img/ por un ícono real 512x512px -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+  <!-- Tailwind compilado (css/tailwind.css): sin runtime en el navegador -->
+  <link rel="stylesheet" href="css/tailwind.css" />
+
+  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Estilos custom (animaciones, acordeones, tabs) -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1027478133586603');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1027478133586603&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
-<body>
 
-  <!-- Custom cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
+<body class="bg-white text-ink antialiased">
 
-  <!-- ─── NAV ─── -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">LRA<span class="dot">.</span></a>
-      <ul class="nav-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#projects">Proyectos</a></li>
-        <li><a href="#diseno-web">Diseño Web</a></li>
-        <li><a href="#experience">Experiencia</a></li>
-        <li><a href="#cursos">Cursos</a></li>
-        <li><a href="#tutorias">Tutorías</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-      <a href="#cursos" class="btn-nav">Ver cursos</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menú">
-        <span></span><span></span><span></span>
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center" aria-label="Programa con Café"><img src="assets/img/logo.png" alt="Programa con Café" class="h-12 w-auto" /></a>
+
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+        <a href="#cursos" class="hover:text-brand transition">Cursos</a>
+        <a href="#aprenderas" class="hover:text-brand transition">Qué aprenderás</a>
+        <a href="#precio" class="hover:text-brand transition">Precio</a>
+        <a href="#sobre-mi" class="hover:text-brand transition">Sobre mí</a>
+        <a href="#inscripcion" class="hover:text-brand transition">Inscripción</a>
+        <a href="#faq" class="hover:text-brand transition">FAQ</a>
+      </div>
+
+      <a href="#" data-wa-cta data-cta-label="Navbar" target="_blank" rel="noopener"
+        class="hidden md:inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-5 py-2.5 rounded-full transition shadow-sm shadow-brand/30">
+        Quiero inscribirme
+      </a>
+
+      <button data-menu-btn class="md:hidden p-2" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
+    </nav>
+
+    <div data-mobile-menu class="hidden md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-4 text-sm font-medium">
+      <a href="#cursos" class="hover:text-brand">Cursos</a>
+      <a href="#aprenderas" class="hover:text-brand">Qué aprenderás</a>
+      <a href="#precio" class="hover:text-brand">Precio</a>
+      <a href="#sobre-mi" class="hover:text-brand">Sobre mí</a>
+      <a href="#faq" class="hover:text-brand">FAQ</a>
+      <a href="#" data-wa-cta data-cta-label="Menú móvil" target="_blank" rel="noopener" class="inline-flex justify-center items-center bg-brand text-white font-semibold px-5 py-3 rounded-full">
+        Quiero inscribirme
+      </a>
     </div>
-    <!-- Mobile menu -->
-    <div class="nav-mobile" id="navMobile">
-      <ul>
-        <li><a href="#servicios" class="mobile-link">Servicios</a></li>
-        <li><a href="#stack" class="mobile-link">Stack</a></li>
-        <li><a href="#projects" class="mobile-link">Proyectos</a></li>
-        <li><a href="#diseno-web" class="mobile-link">Diseño Web</a></li>
-        <li><a href="#experience" class="mobile-link">Experiencia</a></li>
-        <li><a href="#cursos" class="mobile-link">Cursos</a></li>
-        <li><a href="#tutorias" class="mobile-link">Tutorías</a></li>
-        <li><a href="#contact" class="mobile-link">Contacto</a></li>
-        <li><a href="#cursos" class="mobile-link">Ver cursos</a></li>
+  </header>
+
+  <!-- ============================================================
+       1. HERO
+       ============================================================ -->
+  <section id="top" class="relative pt-28 pb-16 md:pt-36 md:pb-24 px-5 sm:px-8 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-light via-white to-white"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full -z-10" style="background:radial-gradient(closest-side,rgba(37,99,235,.10),transparent)"></div>
+
+    <div class="max-w-4xl mx-auto text-center">
+      <div data-animate class="inline-flex items-center gap-2 bg-white border border-brand/30 text-brand-dark text-xs sm:text-sm font-bold px-4 py-2 rounded-full mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-brand"></span>
+        Clases en vivo · Hora de Lima (UTC-5)
+      </div>
+
+      <h1 data-animate class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+        Aprende <span class="text-brand">Análisis de Datos</span> desde cero con clases en vivo
+      </h1>
+
+      <p data-animate data-animate-delay="1" class="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+        Accede a todos mis cursos por un
+        <strong class="text-ink">pago único de S/ <span data-price-launch>100</span> hasta el 20 de marzo</strong>.
+      </p>
+
+      <div data-animate data-animate-delay="2" class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#" data-wa-cta data-cta-label="Hero: inscribirme" target="_blank" rel="noopener"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+          Quiero inscribirme
+        </a>
+        <a href="#precio"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-ink/10 hover:border-brand text-ink font-semibold text-base px-8 py-4 rounded-full transition">
+          Ver cursos y precio
+        </a>
+      </div>
+
+      <!-- Oferta del día: termina a las 11:59 pm (hora de Lima) y se reinicia solo -->
+      <div data-animate data-animate-delay="3" data-discount-timer class="mt-10 max-w-2xl mx-auto rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 text-white px-5 py-5 shadow-xl shadow-red-500/25">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-center sm:text-left">
+            <p class="text-[11px] font-extrabold uppercase tracking-widest opacity-90 pulso-urgencia">🔥 Oferta de hoy</p>
+            <p class="text-lg font-extrabold leading-tight mt-1">El descuento termina en</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="bg-white text-ink rounded-xl w-16 sm:w-[4.5rem] py-2 text-center shadow">
+              <p data-dt-h class="text-2xl sm:text-3xl font-extrabold tabular-nums text-red-600 leading-none">00</p>
+              <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mt-1">Horas</p>
+            </div><span class="text-2xl font-extrabold -mt-4">:</span>
+            <div class="bg-white text-ink rounded-xl w-16 sm:w-[4.5rem] py-2 text-center shadow">
+              <p data-dt-m class="text-2xl sm:text-3xl font-extrabold tabular-nums text-red-600 leading-none">00</p>
+              <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mt-1">Min</p>
+            </div><span class="text-2xl font-extrabold -mt-4">:</span>
+            <div class="bg-white text-ink rounded-xl w-16 sm:w-[4.5rem] py-2 text-center shadow">
+              <p data-dt-s class="text-2xl sm:text-3xl font-extrabold tabular-nums text-red-600 leading-none">00</p>
+              <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mt-1">Seg</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-4 text-center text-sm font-bold bg-black/20 rounded-full py-2 px-4">⚠️ Solo quedan <span data-cupos-restantes>6</span> vacantes · S/ <span data-price-launch>100</span> en vez de S/ <span data-price-regular>200</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2b. CURSOS QUE ABREN EN OCTUBRE Y NOVIEMBRE
+       ============================================================ -->
+  <section id="cursos" class="py-16 md:py-24 px-5 sm:px-8 bg-ink text-white relative overflow-hidden">
+    <div class="absolute -top-32 -left-24 w-96 h-96 rounded-full" style="background:radial-gradient(closest-side,rgba(37,99,235,.30),transparent)"></div>
+    <div class="absolute -bottom-32 -right-24 w-96 h-96 rounded-full" style="background:radial-gradient(closest-side,rgba(251,191,36,.20),transparent)"></div>
+    <div class="absolute inset-0 opacity-[0.06]" style="background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px"></div>
+
+    <div class="max-w-6xl mx-auto relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <span data-animate class="inline-block bg-amber-400 text-ink text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full">
+          🚀 Próximas aperturas
+        </span>
+        <h2 data-animate data-animate-delay="1" class="text-3xl sm:text-5xl font-extrabold mt-5 leading-tight">
+          Cursos que se abren en <span class="text-amber-300">octubre</span> y <span class="text-amber-300">noviembre</span>
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-white/70 mt-4">
+          Cada tarjeta es un grupo con su fecha de inicio. Horarios en <strong class="text-white">hora de Lima (UTC-5)</strong>.
+          <strong class="text-white">Todas las clases quedan grabadas.</strong>
+        </p>
+      </div>
+
+      <!-- Banner de precio -->
+      <div data-animate class="mt-10 max-w-3xl mx-auto rounded-3xl bg-gradient-to-r from-amber-400 to-orange-400 text-ink p-6 sm:p-8 shadow-2xl shadow-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-widest">Todos estos cursos incluidos</p>
+          <p class="text-2xl sm:text-3xl font-extrabold leading-tight mt-1">Todo por un pago único de</p>
+        </div>
+        <div class="flex items-end gap-3">
+          <span class="text-xl line-through opacity-60 font-bold">S/ <span data-price-regular>200</span></span>
+          <span class="text-6xl font-extrabold leading-none">S/ <span data-price-launch>100</span></span>
+        </div>
+      </div>
+
+      <div class="mt-12 space-y-14" data-courses-list>
+        <!-- Generado por js/script.js a partir de js/config.js -->
+      </div>
+
+      <div class="mt-14 text-center">
+        <a href="#" data-wa-cta data-cta-label="Cursos: inscribirme" target="_blank" rel="noopener"
+          class="inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-ink font-extrabold text-lg px-10 py-4 rounded-full transition shadow-xl shadow-amber-500/30">
+          Quiero todos los cursos por S/ <span data-price-launch>100</span> →
+        </a>
+        <p class="text-white/50 text-xs mt-3">Pago por Yape o PayPal · Acceso hasta el 20 de marzo de 2027</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. QUÉ VAS A APRENDER (clases oficiales desde el 26 de octubre)
+       ============================================================ -->
+  <section id="aprenderas" class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Programa completo</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">
+          Qué vas a aprender en las clases oficiales
+        </h2>
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4">
+          Las clases oficiales empiezan el <strong data-clases-oficiales-desde class="text-ink">26 de octubre de 2026</strong>
+          e incluyen todo esto:
+        </p>
+        <p data-animate data-animate-delay="2b" data-subscription-schedule-note class="text-slate-500 mt-3 text-sm"></p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-learn-cards>
+        <!-- Tarjetas generadas por js/script.js a partir de js/config.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. QUÉ INCLUYE TU SUSCRIPCIÓN
+       ============================================================ -->
+  <section class="py-16 md:py-24 px-5 sm:px-8 bg-ink text-white relative overflow-hidden">
+    <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full" style="background:radial-gradient(closest-side,rgba(37,99,235,.20),transparent)"></div>
+
+    <div class="max-w-3xl mx-auto relative">
+      <div class="text-center">
+        <span data-animate class="inline-block bg-brand text-white text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full">
+          Suscripción
+        </span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-5">
+          Qué incluye tu suscripción
+        </h2>
+      </div>
+
+      <ul class="mt-10 grid gap-4 sm:grid-cols-2" data-includes-list>
+        <!-- Lista generada por js/script.js a partir de js/config.js -->
       </ul>
     </div>
-  </nav>
-
-  <!-- ─── HERO ─── -->
-  <section class="hero" id="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="container hero-content">
-      <div class="hero-badge reveal">Lima, Perú · Consultoría de datos para empresas</div>
-      <h1 class="hero-name reveal">Consultoría &amp;<br /><em>Análisis de Datos</em></h1>
-      <p class="hero-title reveal">
-        <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
-      </p>
-      <p class="hero-desc reveal">
-        Ayudo a empresas a convertir sus datos en decisiones rentables. Diseño análisis accionables, dashboards claros y automatizaciones que eliminan el trabajo manual — insights que mueven el negocio, no solo reportes bonitos.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#servicios" class="btn-primary">Ver Servicios</a>
-        <a href="#cursos" class="btn-secondary">Ver cursos <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" class="btn-icon" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/yoshioriveraa" target="_blank" class="btn-icon" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://youtube.com/@yoshioagarie" target="_blank" class="btn-icon" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-      </div>
-      <div class="hero-stats reveal">
-        <div class="stat">
-          <span class="stat-num">1+</span>
-          <span class="stat-label">Año de experiencia</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">6+</span>
-          <span class="stat-label">Proyectos entregados</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">10+</span>
-          <span class="stat-label">Tecnologías dominadas</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
   </section>
 
-  <!-- ─── SERVICIOS ─── -->
-  <section class="about section-pad" id="servicios">
-    <div class="container">
-      <div class="section-label reveal">01 — Servicios</div>
-      <h2 class="section-title reveal">Soluciones de datos<br /><em>de punta a punta</em></h2>
-      <p class="section-sub reveal">Acompaño a tu empresa en todo el ciclo del dato: desde la limpieza hasta el insight que impulsa decisiones.</p>
+  <!-- ============================================================
+       5. PRECIO
+       ============================================================ -->
+  <section id="precio" class="py-16 md:py-24 px-5 sm:px-8 bg-gradient-to-b from-brand-light to-white">
+    <div class="max-w-lg mx-auto">
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Inversión</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Accede a todos los cursos</h2>
+      </div>
 
-      <div class="edu-grid">
+      <div data-animate data-animate-delay="2" class="mt-10 bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div class="p-6 sm:p-10 text-center">
+          <p class="text-slate-400 text-sm font-semibold uppercase tracking-wide">Pago único · acceso a todos los cursos</p>
 
-        <div class="edu-card edu-card--blue reveal">
-          <div class="edu-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-          <div class="edu-body">
-            <h3>Análisis Exploratorio</h3>
-            <p>Descubro patrones, tendencias y anomalías ocultas en tus datos para responder las preguntas clave del negocio y orientar la toma de decisiones.</p>
+          <div class="mt-4 flex items-end justify-center gap-3">
+            <span data-precio-ancla class="text-2xl text-slate-400 line-through">S/ 200</span>
+            <span data-precio-final class="text-5xl font-extrabold text-brand">S/ 100</span>
           </div>
-        </div>
+          <p class="text-slate-500 text-sm mt-2">Pago único. Acceso hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span>.</p>
 
-        <div class="edu-card edu-card--purple reveal">
-          <div class="edu-icon"><i class="fa-solid fa-chart-pie"></i></div>
-          <div class="edu-body">
-            <h3>Dashboards & Visualización</h3>
-            <p>Diseño dashboards interactivos en Looker Studio y Power BI que directivos realmente entienden, con KPIs claros y storytelling con datos.</p>
+          <div data-discount-timer class="mt-6 rounded-2xl bg-gradient-to-br from-red-600 to-orange-500 text-white p-4 shadow-lg shadow-red-500/20">
+            <p class="text-xs font-extrabold uppercase tracking-widest">🔥 El descuento termina en</p>
+            <p class="text-4xl font-extrabold mt-2 tabular-nums">
+              <span data-dt-h>00</span><span class="opacity-60">:</span><span data-dt-m>00</span><span class="opacity-60">:</span><span data-dt-s>00</span>
+            </p>
+            <p class="text-[11px] opacity-80 mt-1">Mañana vuelve el precio normal de S/ <span data-price-regular>200</span></p>
           </div>
-        </div>
 
-        <div class="edu-card edu-card--orange reveal">
-          <div class="edu-icon"><i class="fa-solid fa-robot"></i></div>
-          <div class="edu-body">
-            <h3>Automatización de Reportes</h3>
-            <p>Automatizo la extracción, el procesamiento y el envío de reportes con Python — de procesos manuales de horas a cero intervención humana.</p>
+          <div class="w-full h-2 bg-slate-100 rounded-full mt-6 overflow-hidden" data-bloque-cupos>
+            <div data-cupos-barra class="h-full bg-red-500" style="width: 0%"></div>
           </div>
-        </div>
+          <p data-bloque-cupos class="text-sm font-bold text-red-600 mt-2">Asegura tu vacante: solo quedan <span data-cupos-restantes>6</span> disponibles</p>
 
-        <div class="edu-card edu-card--green reveal">
-          <div class="edu-icon"><i class="fa-solid fa-broom"></i></div>
-          <div class="edu-body">
-            <h3>Limpieza y Modelado de Datos</h3>
-            <p>Transformo datos dispersos y desordenados en bases limpias, estructuradas y confiables, listas para analizar y escalar.</p>
-          </div>
-        </div>
+          <ul class="mt-8 space-y-3 text-left text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Acceso a todos los cursos hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span></li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Todas las clases grabadas</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Comunidad privada de estudiantes</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Material y ejercicios</li>
+            <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Cursos nuevos incluidos mientras dure tu suscripción</li>
+          </ul>
 
+          <a href="#inscripcion" data-cta-label="Tarjeta de precio"
+            class="mt-8 w-full inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+            Quiero inscribirme y pagar
+          </a>
+          <p class="text-xs text-slate-400 mt-3">Pago por Yape o PayPal</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── STACK TECNOLÓGICO ─── -->
-  <section class="stack section-pad" id="stack">
-    <div class="container">
-      <div class="section-label reveal">02 — Stack tecnológico</div>
-      <h2 class="section-title reveal">Herramientas que<br /><em>uso en producción</em></h2>
-      <p class="section-sub reveal">No teoría. Estas son las tecnologías con las que entrego resultados.</p>
-
-      <div class="stack-grid reveal">
-
-        <div class="stack-group stack-group--python">
-          <div class="stack-group-label"><i class="fa-brands fa-python"></i> Lenguajes & Datos</div>
-          <div class="stack-items">
-            <div class="stack-item">
-              <i class="fa-brands fa-python"></i>
-              <span>Python</span>
-            </div>
-            <div class="stack-item">
-              <i class="fa-solid fa-database"></i>
-              <span>SQL</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">pd</span>
-              <span>Pandas</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">np</span>
-              <span>NumPy</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">plt</span>
-              <span>Matplotlib</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">sb</span>
-              <span>Seaborn</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="stack-group stack-group--bi">
-          <div class="stack-group-label"><i class="fa-solid fa-chart-bar"></i> Visualización & BI</div>
-          <div class="stack-items">
-            <div class="stack-item">
-              <i class="fa-solid fa-chart-bar"></i>
-              <span>Looker Studio</span>
-            </div>
-            <div class="stack-item">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>Power BI</span>
-            </div>
-            <div class="stack-item">
-              <i class="fa-solid fa-file-excel"></i>
-              <span>Excel</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">pq</span>
-              <span>Power Query</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="stack-group stack-group--etl">
-          <div class="stack-group-label"><i class="fa-solid fa-gears"></i> Procesos & ETL</div>
-          <div class="stack-items">
-            <div class="stack-item">
-              <i class="fa-solid fa-arrows-spin"></i>
-              <span>ETL Pipelines</span>
-            </div>
-            <div class="stack-item">
-              <i class="fa-solid fa-robot"></i>
-              <span>Automatización</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">sq</span>
-              <span>SQLite</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">pg</span>
-              <span>PostgreSQL</span>
-            </div>
-            <div class="stack-item">
-              <span class="tech-icon">⚡</span>
-              <span>PySpark <span class="badge-learning">Aprendiendo</span></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="stack-group stack-group--tools">
-          <div class="stack-group-label"><i class="fa-brands fa-git-alt"></i> Herramientas</div>
-          <div class="stack-items">
-            <div class="stack-item">
-              <i class="fa-brands fa-git-alt"></i>
-              <span>Git</span>
-            </div>
-
-            <div class="stack-item">
-              <i class="fa-brands fa-github"></i>
-              <span>GitHub</span>
-            </div>
-
-            <div class="stack-item">
-              <i class="fa-brands fa-html5"></i>
-              <span>HTML/CSS/JS</span>
-            </div>
-          </div>
-        </div>
-
+  <!-- ============================================================
+       6. CÓMO INSCRIBIRTE: pago + captura por WhatsApp
+       ============================================================ -->
+  <section id="inscripcion" class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center">
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Inscripción</span>
+        <h2 data-animate data-animate-delay="1" class="text-2xl sm:text-4xl font-extrabold mt-3">Cómo inscribirte en 2 pasos</h2>
       </div>
-    </div>
-  </section>
 
-  <!-- ─── PROYECTOS ─── -->
-  <section class="projects section-pad" id="projects">
-    <div class="container">
-      <div class="section-label reveal">03 — Proyectos</div>
-      <div class="projects-header">
-        <h2 class="section-title reveal">Trabajo real,<br /><em>resultados medibles</em></h2>
-        <div class="filter-bar reveal">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="analysis">Data Analysis</button>
-          <button class="filter-btn" data-filter="automation">Automatización</button>
-          <button class="filter-btn" data-filter="dashboard">Dashboards</button>
-          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+      <!-- Paso 1: pagar -->
+      <div data-animate class="mt-10 rounded-3xl border border-slate-100 shadow-lg p-6 sm:p-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand text-white font-extrabold flex items-center justify-center">1</div>
+          <h3 class="text-xl font-extrabold">Realiza tu pago de S/ <span data-price-launch>100</span></h3>
+        </div>
+        <p class="text-slate-600 text-sm mt-2">Si quieres pagar rápido, elige una opción:</p>
+
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl p-5 text-white" style="background:linear-gradient(135deg,#6c1fa8,#9b3fd1)">
+            <p class="text-xs font-extrabold uppercase tracking-widest opacity-80">💜 Yape</p>
+            <p class="mt-1 text-2xl font-extrabold tabular-nums">+51 900 604 267</p>
+            <button type="button" data-copy="+51900604267" class="mt-3 text-xs font-bold bg-white/20 hover:bg-white/30 rounded-full px-4 py-1.5 transition">Copiar número</button>
+          </div>
+          <div class="rounded-2xl p-5 text-white" style="background:linear-gradient(135deg,#003087,#0070e0)">
+            <p class="text-xs font-extrabold uppercase tracking-widest opacity-80">🅿️ PayPal</p>
+            <p class="mt-1 text-xl font-extrabold break-all">paypal.me/yoshioriveraa</p>
+            <a href="https://paypal.me/yoshioriveraa" target="_blank" rel="noopener" class="mt-3 inline-block text-xs font-bold bg-white/20 hover:bg-white/30 rounded-full px-4 py-1.5 transition">Pagar con PayPal</a>
+          </div>
         </div>
       </div>
 
-      <div class="projects-grid" id="projectsGrid">
-
-        <!-- Proyecto 1 — Gasto COVID Perú -->
-        <article class="project-card reveal" data-category="analysis">
-          <div class="project-img project-img--teal">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-landmark"></i>
-            </div>
-            <div class="project-tag">Data Analysis · ETL</div>
-          </div>
-          <div class="project-body">
-            <h3>Análisis del Gasto COVID-19 en Perú (2020–2026)</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> Sin visibilidad clara sobre cómo el Estado peruano distribuyó los recursos COVID — datos dispersos en 456,000+ registros del SIAF.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Pipeline ETL completo + EDA con 9 visualizaciones. Eficiencia presupuestal del 91.6%, con hallazgos sobre concentración en Lima (81%) y los 3 sectores que absorbieron el 69% del gasto.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>SQLite</span>
-              <span>SQL</span>
-              <span>Matplotlib</span>
-              <span>Seaborn</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/yoshioriveraa/gasto_covid_peru" target="_blank" class="btn-project-demo">Ver Proyecto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="https://github.com/yoshioriveraa/gasto_covid_peru" target="_blank" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 2 — Shopify E-Commerce Analytics -->
-        <article class="project-card reveal" data-category="analysis">
-          <div class="project-img project-img--purple">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <div class="project-tag">E-Commerce Analytics</div>
-          </div>
-          <div class="project-body">
-            <h3>Shopify E-Commerce Analytics — Revenue & Retención</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> Tienda Shopify multi-país con revenue estancado, tasa de devolución del 14.8% y descuentos sin estrategia en 31,000+ clientes.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Análisis end-to-end con segmentación RFM, dashboard Power BI y recomendaciones accionables para aumentar revenue recurrente 15%. Revenue total analizado: $50.8M en 51,113 órdenes.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>SQL</span>
-              <span>Power BI</span>
-              <span>Matplotlib</span>
-              <span>PostgreSQL</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/yoshioriveraa/shopify-ecommerce-analysis" target="_blank" class="btn-project-demo">Ver Proyecto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="https://github.com/yoshioriveraa/shopify-ecommerce-analysis" target="_blank" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 3 — Docentes Perú -->
-        <article class="project-card reveal" data-category="analysis">
-          <div class="project-img project-img--orange">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-chalkboard-teacher"></i>
-            </div>
-            <div class="project-tag">Sector Público · EDA</div>
-          </div>
-          <div class="project-body">
-            <h3>Análisis de Docentes — IIEE Públicas del Perú</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> Sin análisis estructurado sobre 405,000 docentes en 66,000+ instituciones para identificar brechas de formación y género.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Pipeline ETL modular + 8 visualizaciones + reporte PDF ejecutivo. Hallazgos: 61.6% docentes mujeres, 77% IEs rurales, brecha crítica en Loreto y Ucayali con 10%+ sin título.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>SQLite</span>
-              <span>Seaborn</span>
-              <span>ReportLab</span>
-              <span>Jupyter</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/yoshioriveraa/docentes_peru_analisis" target="_blank" class="btn-project-demo">Ver Proyecto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="https://github.com/yoshioriveraa/docentes_peru_analisis" target="_blank" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 4 — Dashboard KPIs -->
-        <article class="project-card reveal" data-category="dashboard">
-          <div class="project-img project-img--blue">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div class="project-tag">Dashboard</div>
-          </div>
-          <div class="project-body">
-            <h3>Dashboard de KPIs Gerenciales</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> El equipo directivo tardaba horas en consolidar reportes de Excel para reuniones semanales.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Dashboard en tiempo real que redujo el tiempo de reporte de 4 horas a 15 minutos.
-            </p>
-            <div class="project-tech">
-              <span>Looker Studio</span>
-              <span>SQL</span>
-              <span>BigQuery</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 5 — Automatización Reportes -->
-        <article class="project-card reveal" data-category="automation">
-          <div class="project-img project-img--green">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-robot"></i>
-            </div>
-            <div class="project-tag">Automatización</div>
-          </div>
-          <div class="project-body">
-            <h3>Automatización de Reportes con Python</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> Un proceso manual de 3 horas diarias para generar y enviar reportes por correo.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Script Python que automatiza extracción, procesamiento y envío — 0 intervención humana.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>SMTP</span>
-              <span>Cron</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto 6 — ETL Pipeline -->
-        <article class="project-card reveal" data-category="automation">
-          <div class="project-img project-img--red">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-gears"></i>
-            </div>
-            <div class="project-tag">Automatización · ETL</div>
-          </div>
-          <div class="project-body">
-            <h3>Pipeline ETL para Base de Datos Empresarial</h3>
-            <p class="project-problem">
-              <strong>Problema:</strong> Datos dispersos en múltiples fuentes sin estandarización ni trazabilidad.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Pipeline ETL que unifica, limpia y carga datos automáticamente con logs de auditoría.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>ETL</span>
-              <span>PostgreSQL</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn-project-demo">Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-              <a href="#" class="btn-project-gh"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── DISEÑO WEB ─── -->
-  <section class="webdesign section-pad" id="diseno-web">
-    <div class="container">
-      <div class="section-label reveal">04 — Diseño Web</div>
-      <h2 class="section-title reveal">También diseño y<br /><em>construyo páginas web</em></h2>
-      <p class="section-sub reveal">Landing pages rápidas, responsivas y pensadas para convertir — del boceto al sitio publicado.</p>
-
-      <div class="projects-grid">
-
-        <!-- Landing 1 — Analista de Datos Pro -->
-        <article class="project-card reveal">
-          <div class="project-img project-img--green">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div class="project-tag">Landing en producción</div>
-          </div>
-          <div class="project-body">
-            <h3>Landing — Analista de Datos Pro</h3>
-            <p class="project-problem">
-              <strong>Objetivo:</strong> Vender un curso de 40 clases en vivo y capturar leads por WhatsApp con una página rápida y persuasiva.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Landing con countdown, contador de cupos, temario interactivo y sección de precios — 100% responsive.
-            </p>
-            <div class="project-tech">
-              <span>HTML</span>
-              <span>Tailwind CSS</span>
-              <span>JavaScript</span>
-            </div>
-            <div class="project-actions">
-              <a href="curso-analista/index.html" target="_blank" class="btn-project-demo">Ver sitio <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Landing 2 — Looker Studio desde Cero -->
-        <article class="project-card reveal">
-          <div class="project-img project-img--blue">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-chart-pie"></i>
-            </div>
-            <div class="project-tag">Landing en producción</div>
-          </div>
-          <div class="project-body">
-            <h3>Landing — Looker Studio desde Cero</h3>
-            <p class="project-problem">
-              <strong>Objetivo:</strong> Promocionar un curso corto de dashboards con countdown al inicio de cohorte y FAQ persuasivo.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> Landing enfocada en conversión, con acordeones, testimonios y CTA directo a WhatsApp.
-            </p>
-            <div class="project-tech">
-              <span>HTML</span>
-              <span>Tailwind CSS</span>
-              <span>JavaScript</span>
-            </div>
-            <div class="project-actions">
-              <a href="curso-datastudio/index.html" target="_blank" class="btn-project-demo">Ver sitio <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Bocetos — Marinera Norte -->
-        <article class="project-card reveal">
-          <div class="project-img project-img--orange">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-swatchbook"></i>
-            </div>
-            <div class="project-tag">5 propuestas de diseño</div>
-          </div>
-          <div class="project-body">
-            <h3>Bocetos de Landing Page — Marinera Norte</h3>
-            <p class="project-problem">
-              <strong>Objetivo:</strong> Explorar distintas direcciones visuales para una marca antes de construir la versión final.
-            </p>
-            <p class="project-result">
-              <strong>Resultado:</strong> 5 propuestas completas y funcionales — de lujo editorial a artesanal peruano — para elegir el estilo que mejor represente la marca.
-            </p>
-            <div class="project-tech">
-              <span>Diseño UI</span>
-              <span>HTML/CSS</span>
-              <span>Branding</span>
-            </div>
-            <div class="project-actions">
-              <a href="bocetos/index.html" target="_blank" class="btn-project-demo">Ver los 5 bocetos <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── EXPERIENCIA ─── -->
-  <section class="experience section-pad" id="experience">
-    <div class="container">
-      <div class="section-label reveal">05 — Experiencia</div>
-      <h2 class="section-title reveal">Proyectos de datos<br /><em>con impacto real</em></h2>
-
-      <div class="timeline">
-
-        <!-- Import Porlles -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Junio 2026 — Agosto 2026 · 3 meses</div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Analista de Datos y Performance Marketing</h3>
-              <span class="timeline-company">Import Porlles · Lince, Perú · Híbrido</span>
-            </div>
-            <ul class="timeline-achievements">
-              <li>Consolidación y análisis de datos de ventas, marketing, operaciones y canales digitales para la generación de insights estratégicos.</li>
-              <li>Desarrollo de dashboards e indicadores de gestión con Google Sheets, Looker Studio y Power BI, facilitando el monitoreo del desempeño del negocio en tiempo real.</li>
-              <li>Elaboración de reportes ejecutivos para gerencia y apoyo en la toma de decisiones basadas en datos.</li>
-              <li>Diseño, implementación y seguimiento de KPIs comerciales, operativos y de marketing.</li>
-              <li>Análisis y optimización del rendimiento de campañas digitales en Meta Ads y TikTok Ads mediante el seguimiento de métricas y resultados.</li>
-              <li>Automatización de reportes y procesos analíticos con hojas de cálculo y flujos ETL para reducir tareas manuales.</li>
-              <li>Diseño y desarrollo de aplicaciones y reportes interactivos con Streamlit para la visualización y exploración de datos.</li>
-              <li>Configuración, implementación y administración del CRM GoHighLevel (GHL): automatizaciones, embudos de venta, pipelines, formularios y seguimiento comercial.</li>
-              <li>Comunicación de hallazgos, recomendaciones y estrategias a equipos no técnicos y directivos mediante visualizaciones y reportes ejecutivos.</li>
-            </ul>
-            <div class="timeline-tech">
-              <span>Power BI</span>
-              <span>Looker Studio</span>
-              <span>Python</span>
-              <span>Streamlit</span>
-              <span>Meta Ads</span>
-              <span>TikTok Ads</span>
-              <span>GoHighLevel</span>
-              <span>ETL</span>
-            </div>
-          </div>
+      <!-- Paso 2: enviar captura -->
+      <div data-animate class="mt-6 rounded-3xl border border-slate-100 shadow-lg p-6 sm:p-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brand text-white font-extrabold flex items-center justify-center">2</div>
+          <h3 class="text-xl font-extrabold">Envía la captura de tu pago por WhatsApp</h3>
         </div>
-
-        <!-- Men Graph -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Diciembre 2025 — Mayo 2026</div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Infraestructura de Datos & Automatización</h3>
-              <span class="timeline-company">Men Graph S.A.C · Lima, Perú</span>
-            </div>
-            <ul class="timeline-achievements">
-              <li>Diseñé e implementé una infraestructura de base de datos desde cero, digitalizando procesos que se gestionaban en papel y archivos PDF en Google Drive.</li>
-              <li>Desarrollé automatizaciones para la generación y procesamiento de facturas con scripts en Python, reduciendo tiempos operativos y minimizando errores manuales.</li>
-              <li>Realicé análisis de datos orientados a la toma de decisiones gerenciales, identificando tendencias clave y presentando reportes visuales con indicadores de desempeño.</li>
-              <li>Organicé y centralicé bases de datos documentales previamente dispersas, estableciendo flujos de trabajo estandarizados para el equipo.</li>
-            </ul>
-            <div class="timeline-tech">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>ETL</span>
-              <span>Automatización</span>
-              <span>Looker Studio</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Veterinaria Animal Friends -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Enero 2025 — Mayo 2025</div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Análisis de Datos & Dashboards</h3>
-              <span class="timeline-company">Veterinaria Animal Friends · Lima, Perú</span>
-            </div>
-            <ul class="timeline-achievements">
-              <li>Realicé análisis, limpieza y procesamiento de datos con Python, aplicando Pandas, NumPy, Matplotlib y Seaborn para generar informes y reportes clave.</li>
-              <li>Desarrollé y optimicé consultas SQL para extraer, transformar y combinar datos de distintas fuentes de forma eficiente.</li>
-              <li>Diseñé y mantuve dashboards interactivos y reportes visuales en Looker Studio, facilitando la visualización de indicadores para la toma de decisiones.</li>
-              <li>Colaboré con distintas áreas para identificar necesidades de información, generar insights relevantes y proponer soluciones orientadas a resultados.</li>
-            </ul>
-            <div class="timeline-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>NumPy</span>
-              <span>SQL</span>
-              <span>Looker Studio</span>
-              <span>Matplotlib</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Divulgador -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Enero 2024 — Actualidad</div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Formación & Divulgación en Datos</h3>
-              <span class="timeline-company">Freelance · YouTube & TikTok</span>
-            </div>
-            <ul class="timeline-achievements">
-              <li>Creo contenido educativo accesible para principiantes, enseñando Python desde cero enfocado en análisis de datos.</li>
-              <li>Desarrollé tutoriales prácticos para resolución de problemas y automatización de tareas con Python, aplicados a casos reales.</li>
-              <li>Promuevo el aprendizaje autónomo y la curiosidad por la programación en la comunidad hispanohablante.</li>
-            </ul>
-            <div class="timeline-tech">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>Educación técnica</span>
-              <span>Contenido digital</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── EDUCACIÓN ─── -->
-  <section class="education section-pad" id="education">
-    <div class="container">
-      <div class="section-label reveal">06 — Formación</div>
-      <h2 class="section-title reveal">Educación y<br /><em>certificaciones</em></h2>
-
-      <div class="edu-grid">
-
-        <div class="edu-card edu-card--blue reveal">
-          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">2025 — Actualidad</span>
-            <h3>Bachiller en Desarrollo de Sistemas Frontend y Backend</h3>
-            <p class="edu-place">IDAT · Lima, Perú</p>
-            <p>Formación en desarrollo de sistemas con enfoque en frontend, backend, bases de datos y programación orientada a producción.</p>
-          </div>
-        </div>
-
-        <div class="edu-card edu-card--purple reveal">
-          <div class="edu-icon"><i class="fa-solid fa-certificate"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">Marzo 2020 — Diciembre 2022</span>
-            <h3>Programa de Especialización en Data Science</h3>
-            <p class="edu-place">Social Data Consulting Learning · Lima, Perú</p>
-            <p>100 horas académicas. Python para Data Science, análisis estadístico, visualización y machine learning aplicado a casos reales.</p>
-          </div>
-        </div>
-
-        <div class="edu-card edu-card--orange reveal">
-          <div class="edu-icon"><i class="fa-brands fa-python"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">Mayo 2021</span>
-            <h3>Python Specialization Program</h3>
-            <p class="edu-place">Umaker S.A.C · Lima, Perú</p>
-            <p>42 horas de clase. Especialización en Python aplicado: automatización, manejo de datos, POO y resolución de problemas reales con código.</p>
-          </div>
-        </div>
-
-        <div class="edu-card edu-card--green reveal">
-          <div class="edu-icon"><i class="fa-solid fa-medal"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">Diciembre 2020 — Febrero 2021</span>
-            <h3>Voluntariado Vacaciones Re-Útiles</h3>
-            <p class="edu-place">Perú Te Quiero Aprendiendo & PROA</p>
-            <p>44 horas de voluntariado. Acompañamiento personalizado a estudiantes en programas de recuperación académica del Ministerio de Educación.</p>
-          </div>
-        </div>
-
-        <div class="edu-card edu-card--teal reveal">
-          <div class="edu-icon"><i class="fa-brands fa-linkedin"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">Marzo 2023</span>
-            <h3>Introducción a las habilidades profesionales en análisis de datos</h3>
-            <p class="edu-place">LinkedIn Learning</p>
-            <p>Certificación completada en análisis de datos profesional: metodologías, herramientas y comunicación efectiva de resultados para equipos de negocio.</p>
-          </div>
-        </div>
-
-        <div class="edu-card edu-card--red reveal">
-          <div class="edu-icon"><i class="fa-solid fa-chart-bar"></i></div>
-          <div class="edu-body">
-            <span class="edu-date">2023 — 2024</span>
-            <h3>Business Intelligence & Dashboards</h3>
-            <p class="edu-place">Google Looker Studio</p>
-            <p>Diseño de dashboards ejecutivos, definición de KPIs, storytelling con datos y visualización interactiva orientada a la toma de decisiones gerenciales.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── MIS CURSOS ─── -->
-  <section class="stack section-pad" id="cursos">
-    <div class="container">
-      <div class="section-label reveal">07 — Mis Cursos</div>
-      <h2 class="section-title reveal">Aprende a pensar<br /><em>como analista</em></h2>
-      <p class="section-sub reveal">Cursos 100% prácticos y en vivo donde aprendes las habilidades reales del análisis de datos. Sin relleno teórico: ejercicios, casos reales y proyectos desde la primera clase.</p>
-
-      <div class="courses-grid">
-
-        <!-- Curso 1 — Analista de Datos Pro -->
-        <a href="curso-analista/index.html" target="_blank" class="project-card reveal">
-          <div class="project-img project-img--flyer">
-            <img src="assets/cursos/analista-datos-pro.png" alt="Conviértete en Analista de Datos — nivel Senior: PostgreSQL, Python, Power BI, IA y Excel" class="project-img-photo" loading="lazy" />
-            <div class="project-tag">66 sesiones · Inicia 17 set</div>
-          </div>
-          <div class="project-body">
-            <h3>Analista de Datos Pro</h3>
-            <p class="project-problem">
-              <strong>Programa completo:</strong> Excel, Power BI, SQL con PostgreSQL, Python y Machine Learning con proyectos reales.
-            </p>
-            <p class="project-result">
-              <strong>Incluye:</strong> 40 clases en vivo + 26 de práctica (66 sesiones). Pago único: <strong>S/479.90</strong>.
-            </p>
-            <div class="project-tech">
-              <span>Excel</span>
-              <span>PostgreSQL</span>
-              <span>Python</span>
-              <span>Power BI</span>
-              <span>Machine Learning</span>
-            </div>
-            <div class="project-actions">
-              <span class="btn-project-demo">Ver curso <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Curso 2 — Looker Studio desde Cero -->
-        <a href="curso-datastudio/index.html" target="_blank" class="project-card reveal">
-          <div class="project-img project-img--flyer">
-            <img src="assets/cursos/looker-studio.jpg" alt="Curso de Data Studio — nivel Junior: visualiza, conecta y automatiza reportes" class="project-img-photo" loading="lazy" />
-            <div class="project-tag">10 clases · Inicia 18 ago</div>
-          </div>
-          <div class="project-body">
-            <h3>Looker Studio desde Cero</h3>
-            <p class="project-problem">
-              <strong>Para cualquier industria:</strong> conecta y ordena datos desde Sheets, SQL y Python, y conviértelos en dashboards profesionales.
-            </p>
-            <p class="project-result">
-              <strong>Incluye:</strong> 10 clases en vivo, martes y jueves. Antes S/79.90, ahora <strong>S/49.90</strong>.
-            </p>
-            <div class="project-tech">
-              <span>Looker Studio</span>
-              <span>Sheets</span>
-              <span>SQL</span>
-              <span>Dashboards</span>
-            </div>
-            <div class="project-actions">
-              <span class="btn-project-demo">Ver curso <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Curso 3 — SQL con PostgreSQL -->
-        <a href="curso-sql/index.html" target="_blank" class="project-card reveal">
-          <div class="project-img project-img--purple">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-database"></i>
-            </div>
-            <div class="project-tag">18 clases · Inicia 21 ago</div>
-          </div>
-          <div class="project-body">
-            <h3>SQL con PostgreSQL desde Cero</h3>
-            <p class="project-problem">
-              <strong>100% práctico:</strong> instalación, consultas, JOINs, subconsultas y modelado, con ejercicios cada día y examen cada 3 clases.
-            </p>
-            <p class="project-result">
-              <strong>Incluye:</strong> 18 sesiones en 6 semanas, grupo de máximo 15 estudiantes. S/150 · S/99.90 estudiantes anteriores.
-            </p>
-            <div class="project-tech">
-              <span>SQL</span>
-              <span>PostgreSQL</span>
-              <span>JOINs</span>
-              <span>Subconsultas</span>
-            </div>
-            <div class="project-actions">
-              <span class="btn-project-demo">Ver curso <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Curso 4 — Python para Análisis de Datos -->
-        <a href="curso-python/index.html" target="_blank" class="project-card reveal">
-          <div class="project-img project-img--blue">
-            <div class="project-img-placeholder">
-              <i class="fa-brands fa-python"></i>
-            </div>
-            <div class="project-tag">10 clases · Inicia 5 set</div>
-          </div>
-          <div class="project-body">
-            <h3>Python para Análisis de Datos</h3>
-            <p class="project-problem">
-              <strong>100% en Google Colab:</strong> de tu primer <code>print()</code> a Pandas, NumPy y visualización, sin instalar nada.
-            </p>
-            <p class="project-result">
-              <strong>Incluye:</strong> 10 clases (20 h) sábados y domingos + proyecto final publicado en GitHub. S/170 · S/99.90 los primeros 5.
-            </p>
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>NumPy</span>
-              <span>Matplotlib</span>
-              <span>Seaborn</span>
-            </div>
-            <div class="project-actions">
-              <span class="btn-project-demo">Ver curso <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── TUTORÍAS 1 A 1 ─── -->
-  <section class="about section-pad" id="tutorias">
-    <div class="container">
-      <div class="section-label reveal">08 — Tutorías 1 a 1</div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <h2 class="section-title">Clases personalizadas,<br /><em>a tu propio ritmo</em></h2>
-          <p>
-            ¿Necesitas ayuda puntual con Power BI, Looker Studio, SQL, Python, Pandas, NumPy, Matplotlib, Seaborn, análisis de datos o Google Sheets + Apps Script? Dicto clases 1 a 1, 100% adaptadas a tu nivel y tu objetivo.
-          </p>
-          <p>
-            Incluyen material de apoyo (PPT y PDF con prácticas) y soporte de lunes a sábado — ideales para tareas, trabajos universitarios y preparación de exámenes.
-          </p>
-          <div class="about-tags">
-            <span>Power BI</span>
-            <span>SQL</span>
-            <span>Python</span>
-            <span>Google Sheets</span>
-            <span>Soporte 24/7</span>
-          </div>
-          <div class="hero-actions">
-            <a href="tutorias.html" class="btn-primary">Ver tutorías y precios <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <a href="tutorias.html" class="project-card reveal">
-          <div class="project-img project-img--purple">
-            <div class="project-img-placeholder">
-              <i class="fa-solid fa-user-gear"></i>
-            </div>
-            <div class="project-tag">1 a 1 · Personalizado</div>
-          </div>
-          <div class="project-body">
-            <h3>Clases Personalizadas 1 a 1</h3>
-            <p class="project-problem">
-              <strong>Para ti:</strong> estudiantes y profesionales que necesitan avanzar rápido con acompañamiento directo.
-            </p>
-            <p class="project-result">
-              <strong>Precio:</strong> S/40 la hora · S/70 las 2 horas. Incluye material y soporte 24/7 (lun–sáb).
-            </p>
-            <div class="project-tech">
-              <span>Power BI</span>
-              <span>Python</span>
-              <span>SQL</span>
-              <span>Sheets</span>
-            </div>
-            <div class="project-actions">
-              <span class="btn-project-demo">Ver detalles <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-            </div>
-          </div>
+        <p class="text-slate-600 text-sm mt-2">Así confirmamos tu pago y reservamos tu vacante. Por el mismo WhatsApp te enviamos lo que sigue para tu inscripción.</p>
+        <a href="#" data-wa-proof data-cta-label="Enviar captura" target="_blank" rel="noopener"
+          class="mt-4 inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full transition shadow-lg shadow-green-500/30">
+          📲 Enviar captura por WhatsApp
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ─── CONTACTO ─── -->
-  <section class="contact section-pad" id="contact">
-    <div class="container">
-      <div class="section-label reveal">09 — Contacto</div>
-      <div class="contact-grid">
-        <div class="contact-left reveal">
-          <h2 class="section-title">¿Tienes un proyecto<br /><em>con datos?</em></h2>
-          <p>
-            Estoy disponible para proyectos de análisis de datos, automatización, dashboards y consultoría. Conversamos sin compromiso.
-          </p>
-          <div class="contact-links">
-            <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" class="contact-link contact-link--linkedin">
-              <i class="fa-brands fa-linkedin-in"></i>
-              <div>
-                <strong>LinkedIn</strong>
-                <small>linkedin.com/in/yoshioagarie</small>
-              </div>
-            </a>
-            <a href="https://github.com/yoshioriveraa" target="_blank" class="contact-link contact-link--github">
-              <i class="fa-brands fa-github"></i>
-              <div>
-                <strong>GitHub</strong>
-                <small>github.com/yoshioriveraa</small>
-              </div>
-            </a>
-            <a href="mailto:leonardo.yoshio@hotmail.com" class="contact-link contact-link--email">
-              <i class="fa-solid fa-envelope"></i>
-              <div>
-                <strong>Email</strong>
-                <small>leonardo.yoshio@hotmail.com</small>
-              </div>
-            </a>
-            <a href="https://youtube.com/@yoshioagarie" target="_blank" class="contact-link contact-link--youtube">
-              <i class="fa-brands fa-youtube"></i>
-              <div>
-                <strong>YouTube</strong>
-                <small>Contenido sobre Python & Data</small>
-              </div>
-            </a>
-          </div>
+  <!-- ============================================================
+       7. SOBRE MÍ
+       ============================================================ -->
+  <section id="sobre-mi" class="py-16 md:py-24 px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-[220px_1fr] gap-10 items-start">
+      <!-- TODO: reemplaza con foto real del instructor en /assets/img/instructor.jpg -->
+      <div data-animate class="mx-auto md:mx-0">
+        <div class="w-40 h-40 md:w-52 md:h-52 rounded-3xl bg-brand-light border-4 border-white shadow-xl flex items-center justify-center text-5xl font-extrabold text-brand overflow-hidden">
+          <img src="assets/img/instructor.jpg" loading="lazy" decoding="async" alt="Foto de Yoshio Rivera Agarie" class="w-full h-full object-cover"
+            onerror="this.style.display='none'; this.parentElement.textContent='YR';" />
         </div>
-        <div class="contact-right reveal">
-          <div class="contact-form-wrapper">
-            <div class="form-group">
-              <label for="name">Nombre</label>
-              <input type="text" id="name" placeholder="Tu nombre completo" />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="tu@email.com" />
-            </div>
-            <div class="form-group">
-              <label for="subject">Asunto</label>
-              <input type="text" id="subject" placeholder="¿En qué te puedo ayudar?" />
-            </div>
-            <div class="form-group">
-              <label for="message">Mensaje</label>
-              <textarea id="message" rows="5" placeholder="Cuéntame sobre tu proyecto..."></textarea>
-            </div>
-            <button class="btn-primary btn-full" id="sendBtn" onclick="handleFormSubmit(event)">
-              Enviar mensaje <i class="fa-solid fa-paper-plane"></i>
-            </button>
-            <p class="form-note" id="formNote"></p>
+      </div>
+
+      <div>
+        <span data-animate class="text-brand font-bold text-sm uppercase tracking-widest">Tu instructor</span>
+        <div data-animate data-animate-delay="1" class="flex items-center gap-3 mt-2">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Yoshio Rivera Agarie</h2>
+          <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" rel="noopener" aria-label="LinkedIn de Yoshio Rivera Agarie"
+            class="w-8 h-8 rounded-full bg-[#0A66C2] text-white flex items-center justify-center shrink-0 hover:opacity-80 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
+        <p data-animate data-animate-delay="1" class="text-brand font-semibold">Analista de Datos & CEO de Perú Python</p>
+
+        <p data-animate data-animate-delay="2" class="text-slate-600 mt-4 leading-relaxed">
+          Más de 5 años de experiencia enseñando programación y análisis de datos a estudiantes universitarios
+          y profesionales de distintos sectores. Analista de datos con conocimiento en Python y librerías como
+          Pandas, NumPy, Matplotlib, Seaborn, Plotly y Scikit-Learn. Ha liderado grupos de estudio en cursos
+          intensivos de programación y cuenta con certificaciones en Data Science y Python.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div data-animate data-animate-delay="1" class="text-center">
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+5</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Años de experiencia enseñando</p>
+          </div>
+          <div data-animate data-animate-delay="2" class="text-center">
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+30</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Dashboards implementados</p>
+          </div>
+          <div data-animate data-animate-delay="3" class="text-center">
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand">+500</p>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Estudiantes formados</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FOOTER ─── -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-logo">LRA<span class="dot">.</span></div>
-      <p class="footer-copy">
-        © 2026 Leonardo Rivera Agarie · Hecho con <i class="fa-solid fa-heart"></i> en Lima, Perú
-      </p>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/yoshioriveraa" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://youtube.com/@yoshioagarie" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+  <!-- ============================================================
+       8. TESTIMONIOS (placeholder — reemplazar con testimonios reales)
+       ============================================================ -->
+  <!--
+  <section class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-center">Lo que dicen mis estudiantes</h2>
+      TODO [PLACEHOLDER]: agrega aquí testimonios reales de alumnos cuando los tengas.
+      No inventar testimonios, cifras ni logos de empresas.
+    </div>
+  </section>
+  -->
+
+  <!-- ============================================================
+       9. PREGUNTAS FRECUENTES
+       ============================================================ -->
+  <section id="faq" class="py-16 md:py-24 px-5 sm:px-8 bg-slate-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 data-animate class="text-2xl sm:text-4xl font-extrabold text-center">Preguntas frecuentes</h2>
+
+      <div class="mt-10 space-y-4" data-faq-list>
+        <!-- Generado por js/script.js a partir de js/config.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. CTA FINAL + FOOTER
+       ============================================================ -->
+  <footer class="bg-ink text-white px-5 sm:px-8 pt-16 pb-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 data-animate class="text-2xl sm:text-3xl font-extrabold">¿Listo para aprender Análisis de Datos?</h2>
+      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases empiezan el 26 de octubre y solo quedan <span data-cupos-restantes>6</span> vacantes. Inscríbete hoy.</p>
+
+      <a href="#" data-wa-cta data-cta-label="Footer: inscribirme" target="_blank" rel="noopener"
+        class="mt-8 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
+        Quiero inscribirme
+      </a>
+
+      <div class="mt-10 flex items-center justify-center gap-5">
+        <a href="https://www.linkedin.com/in/yoshioagarie/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://instagram.com/yoshioagarie" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.39A5.87 5.87 0 0 0 .62 4.14c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.47 1.39 2.13.66.67 1.34 1.08 2.13 1.39.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.39c.67-.66 1.08-1.34 1.39-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.39-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zM18.41 4.6a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        </a>
+        <a href="https://youtube.com/@yoshioagarie" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.6 15.6V8.4l6.4 3.6-6.4 3.6z"/></svg>
+        </a>
+        <a href="#" data-wa-cta data-cta-label="Footer redes" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand transition flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 3.5c-4.9 0-8.9 4-8.9 8.9 0 1.57.42 3.1 1.2 4.45L3 21l4.28-1.32a8.9 8.9 0 0 0 4.77 1.38h.01c4.9 0 8.9-4 8.9-8.9a8.86 8.86 0 0 0-2.36-4.9z"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-white/10 text-xs text-white/40">
+        &copy; <span id="year"></span> Programa con Café. Todos los derechos reservados.
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="js/config.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
