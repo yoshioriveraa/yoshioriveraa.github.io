@@ -55,8 +55,8 @@
        NAVBAR
        ============================================================ -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
-    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 md:h-[4.75rem] flex items-center justify-between gap-6">
-      <a href="#top" class="shrink-0" aria-label="Programa con Café"><img src="assets/img/logo.png" alt="Programa con Café" class="h-12 md:h-16 w-auto" /></a>
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[4.5rem] md:h-24 flex items-center justify-between gap-6">
+      <a href="#top" class="shrink-0" aria-label="Programa con Café"><img src="assets/img/logo.png" alt="Programa con Café" class="h-14 md:h-[4.5rem] w-auto" /></a>
 
       <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
         <a href="#cursos" class="hover:text-brand transition">Cursos</a>
@@ -94,7 +94,7 @@
   <!-- ============================================================
        1. HERO
        ============================================================ -->
-  <section id="top" class="relative pt-28 pb-16 md:pt-40 md:pb-24 px-5 sm:px-8 overflow-hidden">
+  <section id="top" class="relative pt-32 pb-16 md:pt-40 md:pb-24 px-5 sm:px-8 overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-light via-white to-white"></div>
     <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full -z-10" style="background:radial-gradient(closest-side,rgba(37,99,235,.10),transparent)"></div>
 
@@ -121,47 +121,29 @@
 
       </div>
 
-      <!-- Oferta: termina el 25 de octubre a las 23:59 (hora de Lima) -->
-      <div data-animate data-animate-delay="3" class="relative mt-16 max-w-2xl mx-auto">
-        <div class="absolute -top-6 left-1/2 -translate-x-1/2 -rotate-2 z-10 bg-brand text-white rounded-2xl px-6 py-2 shadow-xl shadow-brand/40 whitespace-nowrap">
-          <p class="font-extrabold text-sm sm:text-base tracking-wide">🔥 Oferta por tiempo limitado</p>
-        </div>
-        <div data-discount-timer class="relative overflow-hidden rounded-[2rem] bg-ink text-white pt-12 pb-7 px-5 sm:px-10 shadow-2xl shadow-ink/30">
-          <div class="absolute -top-20 -right-16 w-64 h-64 rounded-full bg-brand/50 blur-3xl"></div>
-          <div class="absolute -bottom-24 -left-16 w-56 h-56 rounded-full bg-brand/30 blur-3xl"></div>
-          <div class="relative">
-            <p class="text-xl sm:text-2xl font-extrabold">Los descuentos terminan en</p>
-            <div class="mt-5 flex items-start justify-center gap-1.5 sm:gap-3">
-              <div class="bg-white/10 border border-white/15 rounded-2xl w-[4rem] sm:w-[5rem] py-3 text-center backdrop-blur">
-              <p data-dt-d class="text-3xl sm:text-4xl font-extrabold tabular-nums leading-none">00</p>
-              <p class="text-[10px] font-bold uppercase tracking-widest text-blue-200 mt-1.5">Días</p>
-            </div>
-              <span class="text-2xl sm:text-3xl font-extrabold mt-2 text-blue-300">:</span>
-              <div class="bg-white/10 border border-white/15 rounded-2xl w-[4rem] sm:w-[5rem] py-3 text-center backdrop-blur">
+      <!-- Oferta del día: termina a las 11:59 pm (hora de Lima) y se reinicia solo -->
+      <div data-animate data-animate-delay="3" data-discount-timer class="mt-12 max-w-2xl mx-auto rounded-3xl bg-ink text-white p-6 sm:p-8 shadow-2xl shadow-ink/25 relative overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-brand/40 blur-2xl"></div>
+        <div class="relative">
+          <p class="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.2em] text-blue-200 pulso-urgencia"><span class="w-2 h-2 rounded-full bg-red-500"></span>Oferta de hoy</p>
+          <p class="mt-2 text-xl sm:text-2xl font-extrabold">El descuento termina en</p>
+          <div class="mt-5 flex items-start justify-center gap-2 sm:gap-3">
+            <div class="bg-white/10 border border-white/15 rounded-2xl w-[4.25rem] sm:w-20 py-3 text-center">
               <p data-dt-h class="text-3xl sm:text-4xl font-extrabold tabular-nums leading-none">00</p>
               <p class="text-[10px] font-bold uppercase tracking-widest text-blue-200 mt-1.5">Horas</p>
             </div>
-              <span class="text-2xl sm:text-3xl font-extrabold mt-2 text-blue-300">:</span>
-              <div class="bg-white/10 border border-white/15 rounded-2xl w-[4rem] sm:w-[5rem] py-3 text-center backdrop-blur">
+            <span class="text-3xl font-extrabold mt-2 text-blue-300">:</span>
+            <div class="bg-white/10 border border-white/15 rounded-2xl w-[4.25rem] sm:w-20 py-3 text-center">
               <p data-dt-m class="text-3xl sm:text-4xl font-extrabold tabular-nums leading-none">00</p>
               <p class="text-[10px] font-bold uppercase tracking-widest text-blue-200 mt-1.5">Min</p>
             </div>
-              <span class="text-2xl sm:text-3xl font-extrabold mt-2 text-blue-300">:</span>
-              <div class="bg-white/10 border border-white/15 rounded-2xl w-[4rem] sm:w-[5rem] py-3 text-center backdrop-blur">
+            <span class="text-3xl font-extrabold mt-2 text-blue-300">:</span>
+            <div class="bg-white/10 border border-white/15 rounded-2xl w-[4.25rem] sm:w-20 py-3 text-center">
               <p data-dt-s class="text-3xl sm:text-4xl font-extrabold tabular-nums leading-none">00</p>
               <p class="text-[10px] font-bold uppercase tracking-widest text-blue-200 mt-1.5">Seg</p>
             </div>
-            </div>
-            <p class="mt-5 text-sm text-blue-100">📅 Hasta el <strong class="text-white">25 de octubre a las 23:59</strong> (hora de Lima)</p>
-            <div class="mt-5 flex items-end justify-center gap-3">
-              <span class="text-xl text-blue-200/60 line-through font-bold">S/ <span data-price-regular>200</span></span>
-              <span class="text-5xl font-extrabold leading-none">S/ <span data-price-launch>100</span></span>
-            </div>
-            <a href="#" data-wa-cta data-cta-label="Oferta: inscribirme" target="_blank" rel="noopener"
-              class="mt-6 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-lg px-10 py-4 rounded-full transition shadow-lg shadow-brand/40">
-              Quiero inscribirme
-            </a>
           </div>
+          <p class="mt-6 text-sm sm:text-base font-semibold bg-white/10 rounded-full py-2.5 px-4">Solo quedan <span class="text-white font-extrabold" data-cupos-restantes>4</span> vacantes · <span class="text-white font-extrabold">S/ <span data-price-launch>100</span></span> <span class="line-through text-blue-200/70">S/ <span data-price-regular>200</span></span></p>
         </div>
       </div>
     </div>
@@ -280,13 +262,18 @@
           </div>
           <p class="text-slate-500 text-sm mt-2">Pago único. Acceso hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span>.</p>
 
-          <div data-discount-timer class="mt-6 rounded-2xl bg-ink text-white p-4 shadow-lg shadow-ink/20">
-            <p class="text-xs font-extrabold uppercase tracking-widest text-blue-200">Los descuentos terminan en</p>
-            <div class="mt-3 grid grid-cols-4 gap-2 text-center">
-              <div class="bg-white/10 rounded-xl py-2"><p data-dt-d class="text-2xl font-extrabold tabular-nums leading-none">00</p><p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Días</p></div><div class="bg-white/10 rounded-xl py-2"><p data-dt-h class="text-2xl font-extrabold tabular-nums leading-none">00</p><p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Horas</p></div><div class="bg-white/10 rounded-xl py-2"><p data-dt-m class="text-2xl font-extrabold tabular-nums leading-none">00</p><p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Min</p></div><div class="bg-white/10 rounded-xl py-2"><p data-dt-s class="text-2xl font-extrabold tabular-nums leading-none">00</p><p class="text-[9px] font-bold uppercase tracking-widest text-blue-200 mt-1">Seg</p></div>
-            </div>
-            <p class="text-[12px] text-blue-100 mt-3">📅 Hasta el 25 de octubre a las 23:59. Después vuelve el precio normal de S/ <span data-price-regular>200</span>.</p>
+          <div data-discount-timer class="mt-6 rounded-2xl bg-gradient-to-br from-red-600 to-orange-500 text-white p-4 shadow-lg shadow-red-500/20">
+            <p class="text-xs font-extrabold uppercase tracking-widest">🔥 El descuento termina en</p>
+            <p class="text-4xl font-extrabold mt-2 tabular-nums">
+              <span data-dt-h>00</span><span class="opacity-60">:</span><span data-dt-m>00</span><span class="opacity-60">:</span><span data-dt-s>00</span>
+            </p>
+            <p class="text-[11px] opacity-80 mt-1">Mañana vuelve el precio normal de S/ <span data-price-regular>200</span></p>
           </div>
+
+          <div class="w-full h-2 bg-slate-100 rounded-full mt-6 overflow-hidden" data-bloque-cupos>
+            <div data-cupos-barra class="h-full bg-red-500" style="width: 0%"></div>
+          </div>
+          <p data-bloque-cupos class="text-sm font-bold text-red-600 mt-2">Asegura tu vacante: solo quedan <span data-cupos-restantes>6</span> disponibles</p>
 
           <ul class="mt-8 space-y-3 text-left text-sm text-slate-600">
             <li class="flex gap-2"><span class="text-brand font-bold">✓</span> Acceso a todos los cursos hasta el <span data-subscripcion-hasta>20 de marzo de 2027</span></li>
@@ -434,7 +421,7 @@
   <footer class="bg-ink text-white px-5 sm:px-8 pt-16 pb-8">
     <div class="max-w-4xl mx-auto text-center">
       <h2 data-animate class="text-2xl sm:text-3xl font-extrabold">¿Listo para aprender Análisis de Datos?</h2>
-      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases empiezan el 26 de octubre. Aprovecha el descuento hasta el 25 de octubre a las 23:59.</p>
+      <p data-animate data-animate-delay="1" class="text-white/60 mt-3">Las clases empiezan el 26 de octubre y solo quedan <span data-cupos-restantes>4</span> vacantes. Inscríbete hoy.</p>
 
       <a href="#" data-wa-cta data-cta-label="Footer: inscribirme" target="_blank" rel="noopener"
         class="mt-8 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">

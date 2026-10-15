@@ -36,11 +36,11 @@ const WHATSAPP_MESSAGE = `Hola, quiero inscribirme y pagar mis S/ ${PRICE_LAUNCH
 const CUPOS_LANZAMIENTO_TOTALES = 50;
 
 // Vacantes que se muestran como disponibles (la página dice "solo quedan N vacantes").
-const VACANTES_DISPONIBLES = 6;
+const VACANTES_DISPONIBLES = 4;
 const CUPOS_LANZAMIENTO_VENDIDOS = CUPOS_LANZAMIENTO_TOTALES - VACANTES_DISPONIBLES;
 
-// El descuento termina el 25 de octubre de 2026 a las 23:59 (hora de Lima, UTC-5).
-const DISCOUNT_END = "2026-10-25T23:59:59-05:00";
+// El descuento termina cada día a las 11:59 pm (hora de Lima, UTC-5) y se reinicia solo a medianoche.
+const DISCOUNT_UTC_OFFSET_HOURS = -5;
 
 // Mensaje prellenado para enviar la captura del pago
 const WHATSAPP_PROOF_MESSAGE = `Hola, ya pagué mis S/ ${PRICE_LAUNCH}. Te envío la captura de mi pago 🧾`;

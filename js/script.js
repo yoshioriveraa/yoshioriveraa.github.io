@@ -31,14 +31,13 @@ function safeRun(fn) {
   }
 }
 
-/* ---------- Temporizador del descuento: cuenta regresiva hasta DISCOUNT_END (fecha fija, hora de Lima) ---------- */
+/* ---------- Temporizador del descuento: termina a las 11:59 pm de Lima y se reinicia cada día ---------- */
 function initDiscountTimer() {
   const boxes = document.querySelectorAll("[data-discount-timer]");
   if (!boxes.length) return;
 
-  const fin = new Date(DISCOUNT_END).getTime();
+  const DIA = 24 * 60 * 60 * 1000;
   const refs = [...boxes].map((box) => ({
-    d: box.querySelector("[data-dt-d]"),
     h: box.querySelector("[data-dt-h]"),
     m: box.querySelector("[data-dt-m]"),
     s: box.querySelector("[data-dt-s]"),
@@ -46,13 +45,10 @@ function initDiscountTimer() {
   const dos = (n) => String(n).padStart(2, "0");
 
   function tick() {
-    const total = Math.max(0, Math.floor((fin - Date.now()) / 1000));
-    const vals = {
-      d: Math.floor(total / 86400),
-      h: Math.floor((total % 86400) / 3600),
-      m: Math.floor((total % 3600) / 60),
-      s: total % 60,
-    };
+    // Hora "de pared" de Lima: lo que falta hasta la próxima medianoche allí
+    const ahoraLima = Date.now() + DISCOUNT_UTC_OFFSET_HOURS * 60 * 60 * 1000;
+    const total = Math.min(Math.floor((DIA - (ahoraLima % DIA)) / 1000), 86399);
+    const vals = { h: Math.floor(total / 3600), m: Math.floor((total % 3600) / 60), s: total % 60 };
     refs.forEach((r) => {
       for (const k in vals) if (r[k]) r[k].textContent = dos(vals[k]);
     });
