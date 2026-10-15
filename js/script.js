@@ -272,24 +272,30 @@ function initEnrollment() {
 }
 
 /* ---------- Tracking de clicks a WhatsApp + eventos de analítica ---------- */
+// Un solo listener delegado en el documento: cada clic dispara un único evento.
+// - Botones de inscripción ([data-wa-cta]) -> Lead
+// - Botón de enviar captura ([data-wa-proof]) -> PagoEnviado (evento personalizado, no Lead)
 function initWhatsAppTracking() {
-  document.querySelectorAll("a[href*='wa.me']").forEach((el) => {
-    el.addEventListener("click", () => {
-      const label = el.dataset.ctaLabel || el.textContent.trim();
-      trackEvent("cta_click", { cta: label });
-    });
+  document.addEventListener("click", (e) => {
+    const proof = e.target.closest("[data-wa-proof]");
+    const cta = proof ? null : e.target.closest("[data-wa-cta]");
+    const el = proof || cta;
+    if (!el) return;
+    const label = el.dataset.ctaLabel || el.textContent.trim();
+    trackEvent(proof ? "PagoEnviado" : "Lead", { cta: label });
   });
 }
 
 /**
- * Hook central de analítica. Hoy solo loguea en consola; cuando se
- * active Meta Pixel / Google Analytics, se dispara aquí también.
+ * Hook central de analítica (Meta Pixel). Lead es evento estándar;
+ * PagoEnviado es personalizado (trackCustom).
  */
 function trackEvent(name, params = {}) {
   console.log(`[tracking] ${name}`, params);
-  if (typeof fbq === "function" && name === "cta_click") fbq("track", "Lead", params);
-  // TODO: cuando tengas Google Analytics (gtag.js) instalado:
-  // if (typeof gtag === "function") gtag("event", name, params);
+  if (typeof fbq === "function") {
+    if (name === "Lead") fbq("track", "Lead", params);
+    else fbq("trackCustom", name, params);
+  }
 }
 
 /* ---------- Animaciones al hacer scroll ---------- */

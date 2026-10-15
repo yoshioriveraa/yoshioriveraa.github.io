@@ -96,34 +96,66 @@
        ============================================================ -->
   <section id="top" class="relative pt-32 pb-16 md:pt-48 md:pb-24 px-5 sm:px-8 overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-light via-white to-white"></div>
-    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full -z-10" style="background:radial-gradient(closest-side,rgba(37,99,235,.10),transparent)"></div>
+    <div class="absolute -top-28 -right-28 w-80 h-80 rounded-full -z-10 bg-brand"></div>
+    <div class="absolute -bottom-40 -left-32 w-96 h-96 rounded-full -z-10 bg-brand"></div>
 
-    <div class="max-w-4xl mx-auto text-center">
-      <div data-animate class="inline-flex items-center gap-2 bg-white border border-brand/30 text-brand-dark text-xs sm:text-sm font-bold px-4 py-2 rounded-full mb-6 shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-brand"></span>
-        Clases en vivo · Hora de Lima (UTC-5)
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_1fr_1.05fr] gap-8 lg:gap-4 items-center">
+
+      <!-- Texto + botón -->
+      <div data-animate class="text-center lg:text-left">
+        <p class="text-[11px] sm:text-xs font-semibold tracking-[0.3em] text-slate-500 mb-5">APRENDE / CREA / AVANZA</p>
+        <h1 class="text-5xl sm:text-6xl xl:text-7xl font-extrabold leading-[1.02] tracking-tight">
+          Tecnología <span class="text-brand">y más</span>
+        </h1>
+        <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-md mx-auto lg:mx-0">Todo lo que necesitas para programar, aprender y crecer.</p>
+        <div class="mt-4 h-0.5 w-20 bg-brand mx-auto lg:mx-0"></div>
+        <div class="mt-8 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-center gap-4 justify-center lg:justify-start">
+          <a href="#" data-wa-cta data-cta-label="Hero: inscribirme" target="_blank" rel="noopener"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-lg px-9 py-4 rounded-full transition shadow-lg shadow-brand/30">
+            Quiero inscribirme
+          </a>
+          <a href="#precio" class="text-brand font-semibold hover:underline">Ver detalles →</a>
+        </div>
+        <span class="mt-8 inline-flex items-center gap-3 bg-brand-light text-brand-dark font-bold text-base sm:text-lg px-6 py-3 rounded-2xl">
+          🎓 Cursos de programación
+        </span>
       </div>
 
-      <h1 data-animate class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
-        Aprende <span class="text-brand">Análisis de Datos</span> desde cero con clases en vivo
-      </h1>
-
-      <p data-animate data-animate-delay="1" class="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
-        Accede a todos mis cursos por un
-        <strong class="text-ink">pago único de S/ <span data-price-launch>100</span> hasta el 20 de marzo</strong>.
-      </p>
-
-      <div data-animate data-animate-delay="2" class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" data-wa-cta data-cta-label="Hero: inscribirme" target="_blank" rel="noopener"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full transition shadow-lg shadow-brand/30">
-          Quiero inscribirme
-        </a>
-        <a href="#precio"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-ink/10 hover:border-brand text-ink font-semibold text-base px-8 py-4 rounded-full transition">
-          Ver cursos y precio
-        </a>
+      <!-- Foto -->
+      <div data-animate data-animate-delay="1" class="hidden md:flex justify-center lg:order-none">
+        <img src="assets/img/setup.jpg" alt="Escritorio de programación con taza de Programa con Café" class="w-full max-w-sm lg:max-w-none mix-blend-multiply" loading="eager" />
       </div>
 
+      <!-- Tarjeta de precio -->
+      <div data-animate data-animate-delay="2" class="relative mt-10 lg:mt-0 max-w-md mx-auto w-full">
+        <div class="absolute -top-9 left-1/2 -translate-x-1/2 -rotate-2 bg-brand text-white rounded-3xl px-8 pt-2 pb-3 text-center shadow-xl shadow-brand/40 whitespace-nowrap">
+          <p class="font-bold text-lg leading-tight">Pack de cursos</p>
+          <p class="text-6xl font-extrabold leading-none">S/ <span data-price-launch>100</span></p>
+        </div>
+        <div class="bg-ink text-white rounded-[2rem] pt-20 pb-6 px-6 shadow-2xl shadow-ink/30">
+          <p class="text-center text-slate-300">Acceso a cursos en vivo hasta el</p>
+          <p class="text-center text-3xl font-extrabold mt-1">📅 20 de marzo</p>
+
+          <div class="mt-6 grid grid-cols-3 gap-2 border border-white/15 rounded-2xl p-3 text-center text-sm font-semibold">
+            <div class="py-2"><div class="text-2xl">📊</div>Power BI</div>
+            <div class="py-2"><div class="text-2xl">📗</div>Excel</div>
+            <div class="py-2"><div class="text-2xl">🗄️</div>SQL</div>
+            <div class="py-2"><div class="text-2xl">🐍</div>Python</div>
+            <div class="py-2"><div class="text-2xl font-serif">∑</div>Matemática</div>
+            <div class="py-2"><div class="text-2xl">📈</div>Estadística</div>
+          </div>
+
+          <p class="mt-4 text-center text-sm font-semibold border border-brand/60 text-blue-100 rounded-2xl py-3">📡 Clases en vivo <span class="opacity-60">|</span> <span class="text-blue-300">+ grabaciones</span></p>
+
+          <a href="#" data-wa-cta data-cta-label="Hero: tarjeta inscribirme" target="_blank" rel="noopener"
+            class="mt-5 w-full inline-flex items-center justify-center bg-brand hover:bg-brand-dark text-white font-bold text-lg px-6 py-4 rounded-full transition shadow-lg shadow-brand/40">
+            Quiero inscribirme
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center mt-14">
       <!-- Oferta del día: termina a las 11:59 pm (hora de Lima) y se reinicia solo -->
       <div data-animate data-animate-delay="3" data-discount-timer class="mt-10 max-w-2xl mx-auto rounded-3xl bg-gradient-to-r from-red-600 to-orange-500 text-white px-5 py-5 shadow-xl shadow-red-500/25">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
