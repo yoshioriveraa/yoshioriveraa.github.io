@@ -85,53 +85,38 @@ function initCourses() {
       if (courses.length === 0) return "";
       const cards = courses
         .map((c) => {
-          const color = ROUTE_COLORS[c.route] || "#1e3a5f";
-          const icon = ROUTE_ICONS[c.route] || "📘";
+          const color = ROUTE_COLORS[c.route] || "#4da3ff";
           const ini = fechaCorta(c.start);
           const fin = fechaCorta(c.end);
           return `
-        <article data-animate class="relative bg-white text-ink rounded-3xl overflow-hidden flex flex-col shadow-xl hover:-translate-y-1.5 hover:shadow-2xl transition duration-300">
-          <div class="relative px-5 pt-5 pb-8 text-white overflow-hidden" style="background:linear-gradient(135deg, ${color}, ${color}cc)">
-            <span class="absolute -right-3 -bottom-6 text-8xl opacity-20 select-none" aria-hidden="true">${icon}</span>
-            <div class="flex items-start justify-between gap-3 relative">
-              <span class="text-[11px] font-extrabold uppercase tracking-widest bg-white/20 rounded-full px-3 py-1">${icon} ${c.route}</span>
-              <div class="bg-white text-ink rounded-2xl text-center px-3 py-1.5 leading-none shadow-lg">
-                <p class="text-[10px] font-bold text-slate-400">INICIA</p>
-                <p class="text-2xl font-extrabold" style="color:${color}">${ini.dia}</p>
-                <p class="text-[11px] font-extrabold">${ini.mes}</p>
-              </div>
-            </div>
-            <h3 class="relative font-extrabold text-lg leading-snug mt-4 pr-16">${c.name}</h3>
+        <article data-animate class="course" style="--c:${color}">
+          <div class="course-top">
+            <span class="chip">${c.route}</span>
+            <div class="date"><small>INICIA</small><b>${ini.dia}</b><span>${ini.mes}</span></div>
           </div>
-          <div class="p-5 flex-1 flex flex-col">
-            <p class="text-sm text-slate-600">${c.learn}</p>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span aria-hidden="true">📅</span><strong>${c.days}</strong></li>
-              <li class="flex items-center gap-2"><span aria-hidden="true">🕒</span><span><strong>${c.time}</strong> <span class="text-slate-400">(Lima)</span></span></li>
-              <li class="flex items-center gap-2"><span aria-hidden="true">🎬</span><span>${c.classes} clases · termina ${fin.dia} ${fin.mes.toLowerCase()}</span></li>
-              <li class="flex items-center gap-2"><span aria-hidden="true">✅</span><span>Requisito: <strong>${c.requirement}</strong></span></li>
-            </ul>
-            <div class="mt-auto pt-4">
-              <div class="border-t border-dashed border-slate-200 pt-4 flex items-center justify-between text-xs font-bold">
-                <span class="text-slate-400">Incluido en tu suscripción</span>
-                <span class="rounded-full px-3 py-1 text-white" style="background:${color}">Todo S/ ${PRICE_LAUNCH}</span>
-              </div>
-            </div>
-          </div>
+          <h4>${c.name}</h4>
+          <p class="learn">${c.learn}</p>
+          <ul>
+            <li><span>días</span><b>${c.days}</b></li>
+            <li><span>hora</span><b>${c.time} (Lima)</b></li>
+            <li><span>clases</span><b>${c.classes} · termina ${fin.dia} ${fin.mes.toLowerCase()}</b></li>
+            <li><span>requisito</span><b>${c.requirement}</b></li>
+          </ul>
+          <div class="course-foot"><span>Incluido en tu suscripción</span><b>Todo S/ ${PRICE_LAUNCH}</b></div>
         </article>`;
         })
         .join("");
       return `
       <div>
-        <div class="flex items-center gap-4 mb-6">
-          <div class="shrink-0 w-14 h-14 rounded-2xl bg-amber-400 text-ink flex items-center justify-center text-3xl font-extrabold shadow-lg shadow-amber-500/30">${cy.id}</div>
+        <div class="cycle">
+          <div class="num">${cy.id}</div>
           <div>
-            <h3 class="text-2xl font-extrabold leading-tight">${cy.title}</h3>
-            <p class="text-amber-300 text-sm font-semibold">${cy.sub}</p>
+            <h3>${cy.title}</h3>
+            <p>${cy.sub}</p>
           </div>
-          <div class="hidden sm:block flex-1 h-px bg-white/15 ml-2"></div>
+          <div class="rule"></div>
         </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">${cards}</div>
+        <div class="courses">${cards}</div>
       </div>`;
     })
     .join("");
@@ -142,10 +127,10 @@ function initLearnCards() {
   const el = document.querySelector("[data-learn-cards]");
   if (el) {
     el.innerHTML = SUBSCRIPTION_TOPICS.map(
-      (t) => `
-      <div data-animate class="rounded-2xl border border-slate-100 hover:border-brand/40 hover:shadow-lg transition p-6 text-center">
-        <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-light text-brand flex items-center justify-center text-2xl mb-4" aria-hidden="true">${t.icon}</div>
-        <p class="font-bold text-sm sm:text-base">${t.name}</p>
+      (t, i) => `
+      <div data-animate class="tile">
+        <small>${String(i + 1).padStart(2, "0")}</small>
+        <b>${t.name}</b>
       </div>`
     ).join("");
   }
@@ -158,13 +143,7 @@ function initLearnCards() {
 function initIncludes() {
   const el = document.querySelector("[data-includes-list]");
   if (!el) return;
-  el.innerHTML = SUBSCRIPTION_INCLUDES.map(
-    (i) => `
-    <li data-animate class="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl p-5">
-      <span class="text-2xl" aria-hidden="true">${i.icon}</span>
-      <span class="text-white/80 text-sm sm:text-base">${i.text}</span>
-    </li>`
-  ).join("");
+  el.innerHTML = SUBSCRIPTION_INCLUDES.map((i) => `<li data-animate>${i.text}</li>`).join("");
 }
 
 /* ---------- Precio: cupos de lanzamiento ---------- */
@@ -211,16 +190,11 @@ function initFaq() {
   const el = document.querySelector("[data-faq-list]");
   if (!el) return;
   el.innerHTML = FAQ_ITEMS.map(
-    (item, i) => `
-    <div data-animate class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
-      <button data-accordion-trigger aria-expanded="false" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold">
-        ${item.q}
-        <svg data-accordion-icon class="w-5 h-5 shrink-0 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
-      </button>
-      <div data-accordion-panel class="px-5">
-        <p class="pb-5 text-sm text-slate-600 border-t border-slate-100 pt-4">${item.a}</p>
-      </div>
-    </div>`
+    (item) => `
+    <details data-animate>
+      <summary>${item.q}</summary>
+      <p>${item.a}</p>
+    </details>`
   ).join("");
 }
 

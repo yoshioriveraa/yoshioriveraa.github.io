@@ -65,10 +65,10 @@ const SUBSCRIPTION_SCHEDULE_NOTE =
 
 /** Color de la etiqueta de cada ruta */
 const ROUTE_COLORS = {
-  "Matemática y Estadística": "#c9573f",
-  Python: "#1f5fa8",
-  SQL: "#2e7d32",
-  Excel: "#00796b",
+  "Matemática y Estadística": "#ff8a65",
+  Python: "#4da3ff",
+  SQL: "#3ddc97",
+  Excel: "#2ed3c0",
 };
 
 /** Ícono grande de cada ruta */
@@ -198,6 +198,6 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿Hay clases los días feriados?",
-    a: 'No. No dictamos clases en los feriados oficiales del calendario peruano, según el listado publicado en <a href="https://www.gob.pe/feriados" target="_blank" rel="noopener" class="text-brand font-semibold underline">gob.pe/feriados</a>. Esas fechas se reprograman o se compensan con el material grabado.',
+    a: 'No. No dictamos clases en los feriados oficiales del calendario peruano, según el listado publicado en <a href="https://www.gob.pe/feriados" target="_blank" rel="noopener" class="faq-link">gob.pe/feriados</a>. Esas fechas se reprograman o se compensan con el material grabado.',
   },
 ];
