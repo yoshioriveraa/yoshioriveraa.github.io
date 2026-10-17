@@ -404,3 +404,34 @@ footer a:hover { color: var(--cyan); }
 
 .sticky .p b span { font: inherit; color: inherit; }
 .course-foot b { white-space: nowrap; }
+
+/* ---------- Ajustes finos de responsive ---------- */
+.sticky .btn { min-width: 0; white-space: nowrap; }
+.sticky .p { flex-shrink: 0; }
+@media (max-width: 359px) {
+  .wrap { padding: 0 16px; }
+  .sticky { padding: 10px 12px; gap: 10px; }
+  .sticky .btn { font-size: 13px; padding: 14px 8px; }
+  .sticky .p b { font-size: 19px; }
+  .btn { padding: 15px 18px; font-size: 14px; }
+  .week { gap: 3px; }
+  .topbar img { height: 36px; }
+}
+/* Tablet: una sola columna cómoda para bloques densos */
+@media (min-width: 600px) and (max-width: 859px) {
+  .tools ul { grid-template-columns: repeat(3, 1fr); }
+  .tools li:last-child:nth-child(odd) { grid-column: auto; }
+  .stats b { font-size: 32px; }
+  .about figure { max-width: 380px; margin: 0 auto; width: 100%; }
+  .hero h1 { font-size: clamp(72px, 14vw, 110px); }
+  .hero h1.h1-md { font-size: clamp(56px, 10vw, 76px); }
+}
+/* Pantallas muy anchas */
+@media (min-width: 1500px) { .wrap { max-width: 1240px; } }
+.stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 479px) {
+  .stats { gap: 6px; }
+  .stats div { padding: 12px 8px; }
+  .stats b { font-size: 21px; }
+  .stats span { font-size: 11px; overflow-wrap: anywhere; }
+}
