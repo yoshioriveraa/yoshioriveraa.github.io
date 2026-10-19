@@ -58,7 +58,7 @@ function initDiscountTimer() {
   setInterval(tick, 1000);
 }
 
-/* ---------- Cursos que abren en octubre y noviembre (agrupados por ciclo) ---------- */
+/* ---------- Cursos que abren en noviembre y diciembre (agrupados por ciclo) ---------- */
 function initCourses() {
   const el = document.querySelector("[data-courses-list]");
   if (!el) return;
@@ -73,8 +73,8 @@ function initCourses() {
   };
 
   const cycles = [
-    { id: "1", title: "Ciclo 1", sub: "Arranca el 26 de octubre" },
-    { id: "2", title: "Ciclo 2", sub: "Arranca el 23 de noviembre" },
+    { id: "1", title: "Ciclo 1", sub: "Arranca el 2 de noviembre" },
+    { id: "2", title: "Ciclo 2", sub: "Arranca el 30 de noviembre" },
   ];
   // Los cursos "1–2" (Excel) abren en el ciclo 1
   const groupOf = (c) => (c.cycle === "2" ? "2" : "1");

@@ -15,7 +15,7 @@
 const WHATSAPP_NUMBER = "51900604267";
 
 // Inicio de las clases oficiales (temario completo)
-const OFFICIAL_CLASSES_START_LABEL = "26 de octubre de 2026";
+const OFFICIAL_CLASSES_START_LABEL = "2 de noviembre de 2026";
 
 // Fecha límite de la suscripción (pago único, acceso hasta esta fecha)
 const SUBSCRIPTION_ACCESS_UNTIL_LABEL = "20 de marzo de 2027";
@@ -79,56 +79,56 @@ const ROUTE_ICONS = {
   Excel: "📊",
 };
 
-/** @type {OfficialCourse[]} Cursos que abren en octubre y noviembre (cada fila es un grupo) */
+/** @type {OfficialCourse[]} Cursos que abren en noviembre y diciembre (cada fila es un grupo) */
 const OFFICIAL_COURSES = [
   {
     cycle: "1", route: "Matemática y Estadística", name: "Matemática aplicada 1",
-    days: "Lun a vie", time: "4:30 – 5:30 pm", classes: 10, start: "26/10/2026", end: "06/11/2026",
+    days: "Lun a vie", time: "4:30 – 5:30 pm", classes: 10, start: "02/11/2026", end: "13/11/2026",
     requirement: "Ninguno", learn: "Álgebra, funciones y porcentajes aplicados a datos y negocios.",
   },
   {
     cycle: "1", route: "Python", name: "Python Básico 1 · Tu primer programa desde cero",
-    days: "Lun, mar y jue", time: "6:00 – 7:00 pm", classes: 12, start: "26/10/2026", end: "19/11/2026",
+    days: "Lun, mar y jue", time: "6:00 – 7:00 pm", classes: 12, start: "02/11/2026", end: "26/11/2026",
     requirement: "Ninguno", learn: "Variables, condicionales y bucles. Resuelves ejercicios reales desde la primera clase.",
   },
   {
     cycle: "1", route: "SQL", name: "SQL Básico 1 · Consultas con PostgreSQL",
-    days: "Lun, mar y jue", time: "7:30 – 8:30 pm", classes: 12, start: "26/10/2026", end: "19/11/2026",
+    days: "Lun, mar y jue", time: "7:30 – 8:30 pm", classes: 12, start: "02/11/2026", end: "26/11/2026",
     requirement: "Ninguno", learn: "SELECT, filtros, orden y funciones. Instalas PostgreSQL y consultas datos reales.",
   },
   {
     cycle: "1–2", route: "Excel", name: "Excel Básico · Tablas, fórmulas y gráficos",
-    days: "Mié y vie", time: "9:00 – 10:00 am", classes: 16, start: "28/10/2026", end: "23/12/2026",
+    days: "Mié y vie", time: "9:00 – 10:00 am", classes: 16, start: "04/11/2026", end: "30/12/2026",
     requirement: "Ninguno", learn: "Fórmulas, formatos, tablas y gráficos para trabajar con orden y rapidez.",
   },
   {
     cycle: "1", route: "Matemática y Estadística", name: "Introducción a la Estadística",
-    days: "Lun a vie", time: "4:30 – 5:30 pm", classes: 10, start: "09/11/2026", end: "20/11/2026",
+    days: "Lun a vie", time: "4:30 – 5:30 pm", classes: 10, start: "16/11/2026", end: "27/11/2026",
     requirement: "Ninguno", learn: "Promedios, dispersión, probabilidad básica y cómo leer datos sin que te engañen.",
   },
   {
     cycle: "2", route: "Python", name: "Python Básico 1 · Tu primer programa desde cero",
-    days: "Lun, mar y jue", time: "6:00 – 7:00 pm", classes: 12, start: "23/11/2026", end: "21/12/2026",
+    days: "Lun, mar y jue", time: "6:00 – 7:00 pm", classes: 12, start: "30/11/2026", end: "28/12/2026",
     requirement: "Ninguno", learn: "Variables, condicionales y bucles. Resuelves ejercicios reales desde la primera clase.",
   },
   {
     cycle: "2", route: "SQL", name: "SQL Básico 1 · Consultas con PostgreSQL",
-    days: "Lun, mar y jue", time: "7:30 – 8:30 pm", classes: 12, start: "23/11/2026", end: "21/12/2026",
+    days: "Lun, mar y jue", time: "7:30 – 8:30 pm", classes: 12, start: "30/11/2026", end: "28/12/2026",
     requirement: "Ninguno", learn: "SELECT, filtros, orden y funciones. Instalas PostgreSQL y consultas datos reales.",
   },
   {
     cycle: "2", route: "Python", name: "Python Básico 2 · Funciones, listas y diccionarios",
-    days: "Mié y vie", time: "5:30 – 7:00 pm", classes: 8, start: "25/11/2026", end: "23/12/2026",
+    days: "Mié y vie", time: "5:30 – 7:00 pm", classes: 8, start: "02/12/2026", end: "30/12/2026",
     requirement: "Python Básico 1", learn: "Funciones, estructuras de datos y manejo de archivos para automatizar tareas.",
   },
   {
     cycle: "2", route: "SQL", name: "SQL Básico 2 · JOINs y agrupaciones",
-    days: "Mié y vie", time: "7:15 – 8:45 pm", classes: 8, start: "25/11/2026", end: "23/12/2026",
+    days: "Mié y vie", time: "7:15 – 8:45 pm", classes: 8, start: "02/12/2026", end: "30/12/2026",
     requirement: "SQL Básico 1", learn: "Unes tablas y resumes datos de un negocio: ventas, inventario y clientes.",
   },
 ];
 
-/** Temas oficiales que entran con la suscripción (desde el 26 de octubre) — cada uno en su propio horario */
+/** Temas oficiales que entran con la suscripción (desde el 2 de noviembre) — cada uno en su propio horario */
 const SUBSCRIPTION_TOPICS = [
   { icon: "📊", name: "Excel básico e intermedio" },
   { icon: "📈", name: "Power BI" },
