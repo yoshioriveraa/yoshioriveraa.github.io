@@ -124,9 +124,14 @@ function initCourses() {
       return `
       <div class="month-panel" data-month-panel="${i}"${i === 0 ? "" : " hidden"}>
         <div class="carousel">
-          <button type="button" class="car-btn prev" data-car-prev aria-label="Anterior">&#8592;</button>
+          <div class="car-bar">
+            <p class="car-count"><b>${mes.courses.length}</b> ${mes.courses.length === 1 ? "curso" : "cursos"} · <span data-car-pos>1</span> de ${mes.courses.length}</p>
+            <div class="car-ctrl">
+              <button type="button" class="car-btn" data-car-prev aria-label="Cursos anteriores"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <button type="button" class="car-btn" data-car-next aria-label="Cursos siguientes"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
           <div class="courses" data-car-track tabindex="0">${cards}</div>
-          <button type="button" class="car-btn next" data-car-next aria-label="Siguiente">&#8594;</button>
         </div>
       </div>`;
     })
@@ -154,15 +159,34 @@ function initCourses() {
       });
       panels.forEach((p) => {
         p.hidden = p.dataset.monthPanel !== t.dataset.monthTab;
-        if (!p.hidden) p.querySelector("[data-car-track]").scrollLeft = 0;
+        if (!p.hidden) {
+          p.querySelector("[data-car-track]").scrollLeft = 0;
+          if (p.__actualizarCarrusel) p.__actualizarCarrusel();
+        }
       });
     })
   );
   panels.forEach((p) => {
     const track = p.querySelector("[data-car-track]");
-    const paso = () => Math.max(track.clientWidth * 0.85, 280);
-    p.querySelector("[data-car-prev]").addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
-    p.querySelector("[data-car-next]").addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
+    const prev = p.querySelector("[data-car-prev]");
+    const next = p.querySelector("[data-car-next]");
+    const pos = p.querySelector("[data-car-pos]");
+    const paso = () => {
+      const card = track.querySelector(".course");
+      return card ? card.getBoundingClientRect().width + 16 : 300;
+    };
+    const actualizar = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+      pos.textContent = Math.min(Math.round(track.scrollLeft / paso()) + 1, track.children.length);
+    };
+    prev.addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
+    next.addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
+    track.addEventListener("scroll", actualizar, { passive: true });
+    window.addEventListener("resize", actualizar);
+    p.__actualizarCarrusel = actualizar;
+    actualizar();
   });
 }
 

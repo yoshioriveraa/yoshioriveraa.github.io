@@ -468,9 +468,12 @@ footer a:hover { color: var(--cyan); }
 .carousel .courses { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 18px; scrollbar-width: thin; scrollbar-color: rgba(15,140,255,.5) transparent; outline: none; }
 .carousel .course { flex: 0 0 min(86%, 340px); scroll-snap-align: start; }
 @media (min-width: 720px) { .carousel .course { flex-basis: 340px; } }
-.car-btn { display: none; position: absolute; top: 50%; z-index: 2; width: 46px; height: 46px; margin-top: -32px; border-radius: 50%; cursor: pointer;
-  align-items: center; justify-content: center; font: 700 18px var(--mono); color: #fff; background: rgba(6,9,16,.92); border: 1px solid var(--cyan); box-shadow: 0 0 22px rgba(15,140,255,.4); }
-.car-btn:hover { background: var(--cyan); }
-.car-btn.prev { left: -14px; }
-.car-btn.next { right: -14px; }
-@media (hover: hover) and (min-width: 720px) { .car-btn { display: inline-flex; } }
+.car-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.car-count { font: 400 13px var(--mono); color: var(--muted); }
+.car-count b { color: #fff; }
+.car-ctrl { display: flex; gap: 10px; }
+.car-btn { width: 48px; height: 48px; border-radius: 14px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: #fff;
+  background: linear-gradient(135deg, #0f8cff, #4db0ff); border: 0; box-shadow: 0 0 24px rgba(15,140,255,.45); transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease; }
+.car-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 0 36px rgba(77,176,255,.7); }
+.car-btn:active:not(:disabled) { transform: scale(.94); }
+.car-btn:disabled { cursor: default; opacity: .3; box-shadow: none; background: var(--panel); border: 1px solid var(--line); color: var(--muted); }
