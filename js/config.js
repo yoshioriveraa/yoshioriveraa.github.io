@@ -245,16 +245,16 @@ const OFFICIAL_COURSES = [
 
 /** Temas oficiales que entran con la suscripción (desde el 2 de noviembre) — cada uno en su propio horario */
 const SUBSCRIPTION_TOPICS = [
-  { icon: "📊", name: "Excel básico e intermedio" },
-  { icon: "📈", name: "Power BI básico e intermedio" },
-  { icon: "🗄️", name: "SQL con PostgreSQL" },
-  { icon: "🐍", name: "Lenguaje de Programación: Python" },
-  { icon: "📉", name: "Python para datos: NumPy, Pandas y gráficas" },
-  { icon: "🕸️", name: "Web scraping con BeautifulSoup" },
-  { icon: "🤖", name: "Machine Learning con scikit-learn" },
-  { icon: "📑", name: "Looker Studio" },
-  { icon: "➗", name: "Matemática aplicada 1 y 2" },
-  { icon: "📐", name: "Introducción a la Estadística" },
+  { icon: "📊", name: "Excel básico e intermedio", color: "#2ed3c0" },
+  { icon: "📈", name: "Power BI básico e intermedio", color: "#f2b134" },
+  { icon: "🗄️", name: "SQL con PostgreSQL", color: "#3ddc97" },
+  { icon: "🐍", name: "Lenguaje de Programación: Python", color: "#4da3ff" },
+  { icon: "📉", name: "Python para datos: NumPy, Pandas y gráficas", color: "#5ec8ff" },
+  { icon: "🕸️", name: "Web scraping con BeautifulSoup", color: "#9b8cff" },
+  { icon: "🤖", name: "Machine Learning con scikit-learn", color: "#ff6bb5" },
+  { icon: "📑", name: "Looker Studio", color: "#d8c040" },
+  { icon: "➗", name: "Matemática aplicada 1 y 2", color: "#ff8a65" },
+  { icon: "📐", name: "Introducción a la Estadística", color: "#ff8a65" },
 ];
 
 /** Qué incluye la suscripción */

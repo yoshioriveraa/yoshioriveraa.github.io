@@ -477,3 +477,19 @@ footer a:hover { color: var(--cyan); }
 .car-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 0 36px rgba(77,176,255,.7); }
 .car-btn:active:not(:disabled) { transform: scale(.94); }
 .car-btn:disabled { cursor: default; opacity: .3; box-shadow: none; background: var(--panel); border: 1px solid var(--line); color: var(--muted); }
+
+/* ---------- "Qué vas a aprender": tarjetas llamativas ---------- */
+.tiles { margin-top: 48px; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 720px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 1000px) { .tiles { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.tile { --c: #4da3ff; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; min-height: 190px; padding: 22px 18px 20px;
+  border-radius: 18px; border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+  background: radial-gradient(180px 140px at 85% 0%, color-mix(in srgb, var(--c) 28%, transparent), transparent 70%), var(--panel);
+  transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease; }
+.tile::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--c); box-shadow: 0 0 22px var(--c); }
+.tile:hover { transform: translateY(-5px); border-color: var(--c); box-shadow: 0 0 40px color-mix(in srgb, var(--c) 40%, transparent); }
+.tile-ico { width: 58px; height: 58px; display: grid; place-items: center; font-size: 30px; line-height: 1; border-radius: 16px;
+  background: color-mix(in srgb, var(--c) 18%, #060910); border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); box-shadow: 0 0 26px color-mix(in srgb, var(--c) 35%, transparent); }
+.tile-n { position: absolute; right: 14px; top: 12px; font: 700 13px var(--mono); color: var(--c); opacity: .85; }
+.tile b { margin-top: auto; font: 800 17px/1.25 "Poppins", sans-serif; color: #fff; }
+@media (min-width: 1000px) { .tile b { font-size: 16px; } }

@@ -196,8 +196,9 @@ function initLearnCards() {
   if (el) {
     el.innerHTML = SUBSCRIPTION_TOPICS.map(
       (t, i) => `
-      <div data-animate class="tile">
-        <small>${String(i + 1).padStart(2, "0")}</small>
+      <div data-animate class="tile" style="--c:${t.color || "#4da3ff"}">
+        <span class="tile-n">${String(i + 1).padStart(2, "0")}</span>
+        <span class="tile-ico" aria-hidden="true">${t.icon}</span>
         <b>${t.name}</b>
       </div>`
     ).join("");
