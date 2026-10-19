@@ -58,7 +58,7 @@ function initDiscountTimer() {
   setInterval(tick, 1000);
 }
 
-/* ---------- Cursos que abren en noviembre y diciembre (agrupados por ciclo) ---------- */
+/* ---------- Cursos de noviembre a marzo (agrupados por mes de inicio) ---------- */
 function initCourses() {
   const el = document.querySelector("[data-courses-list]");
   if (!el) return;
@@ -72,22 +72,33 @@ function initCourses() {
     return { dia: String(Number(d)), mes: meses[Number(m) - 1] };
   };
 
-  const cycles = [
-    { id: "1", title: "Ciclo 1", sub: "Arranca el 2 de noviembre" },
-    { id: "2", title: "Ciclo 2", sub: "Arranca el 30 de noviembre" },
-  ];
-  // Los cursos "1–2" (Excel) abren en el ciclo 1
-  const groupOf = (c) => (c.cycle === "2" ? "2" : "1");
+  const mesesLargo = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const orden = (dmy) => {
+    const [d, m, y] = dmy.split("/").map(Number);
+    return y * 10000 + m * 100 + d;
+  };
 
-  el.innerHTML = cycles
-    .map((cy) => {
-      const courses = OFFICIAL_COURSES.filter((c) => groupOf(c) === cy.id);
-      if (courses.length === 0) return "";
-      const cards = courses
+  // Un bloque por mes de inicio, con los grupos ordenados por fecha
+  const porMes = new Map();
+  [...OFFICIAL_COURSES]
+    .sort((x, y) => orden(x.start) - orden(y.start))
+    .forEach((c) => {
+      const [, m, y] = c.start.split("/").map(Number);
+      const key = `${y}-${m}`;
+      if (!porMes.has(key)) porMes.set(key, { m, y, courses: [] });
+      porMes.get(key).courses.push(c);
+    });
+
+  el.innerHTML = [...porMes.values()]
+    .map((mes, i) => {
+      const cards = mes.courses
         .map((c) => {
           const color = ROUTE_COLORS[c.route] || "#4da3ff";
           const ini = fechaCorta(c.start);
           const fin = fechaCorta(c.end);
+          const temas = (SYLLABI[c.syllabus] || [])
+            .map((t, n) => `<li><i>${String(n + 1).padStart(2, "0")}</i>${t}</li>`)
+            .join("");
           return `
         <article data-animate class="course" style="--c:${color}">
           <div class="course-top">
@@ -99,20 +110,25 @@ function initCourses() {
           <ul>
             <li><span>días</span><b>${c.days}</b></li>
             <li><span>hora</span><b>${c.time} (Lima)</b></li>
-            <li><span>clases</span><b>${c.classes} · termina ${fin.dia} ${fin.mes.toLowerCase()}</b></li>
+            <li><span>clases</span><b>${c.classes} de ${c.dur} · termina ${fin.dia} ${fin.mes.toLowerCase()}</b></li>
             <li><span>requisito</span><b>${c.requirement}</b></li>
           </ul>
-          <div class="course-foot"><span>Incluido en tu suscripción</span><b>Todo S/ ${PRICE_LAUNCH}</b></div>
+          <details class="syl">
+            <summary>Ver temario<span class="syl-n">${c.classes} clases</span></summary>
+            <ol>${temas}</ol>
+          </details>
+          <div class="course-foot"><span>Incluido en tu membresía</span><b>Todo S/ ${PRICE_LAUNCH}</b></div>
         </article>`;
         })
         .join("");
+      const n = mes.courses.length;
       return `
       <div>
         <div class="cycle">
-          <div class="num">${cy.id}</div>
+          <div class="num">${String(i + 1).padStart(2, "0")}</div>
           <div>
-            <h3>${cy.title}</h3>
-            <p>${cy.sub}</p>
+            <h3>${mesesLargo[mes.m - 1].charAt(0).toUpperCase() + mesesLargo[mes.m - 1].slice(1)} ${mes.y}</h3>
+            <p>${n} ${n === 1 ? "grupo inicia" : "grupos inician"} este mes</p>
           </div>
           <div class="rule"></div>
         </div>

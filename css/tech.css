@@ -439,3 +439,15 @@ footer a:hover { color: var(--cyan); }
 /* ---------- Nombre en la barra superior (sin logo) ---------- */
 .brand-name { display: inline-flex; align-items: center; font: 800 20px "Poppins", sans-serif; letter-spacing: -0.02em; text-decoration: none; color: #fff; }
 .brand-name .cur { width: .32em; height: .7em; margin-left: 5px; vertical-align: baseline; }
+
+/* ---------- Temario desplegable en cada curso ---------- */
+.syl { margin-top: 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(4,8,16,.5); }
+.syl summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; font: 600 13px var(--mono); color: var(--c); }
+.syl summary::-webkit-details-marker { display: none; }
+.syl summary::before { content: "+"; margin-right: 8px; font-weight: 700; }
+.syl[open] summary::before { content: "–"; }
+.syl summary { justify-content: flex-start; }
+.syl .syl-n { margin-left: auto; font-weight: 400; color: var(--muted); }
+.syl ol { list-style: none; margin: 0; padding: 4px 14px 14px; display: grid; gap: 6px; }
+.syl li { display: flex; gap: 10px; font-size: 13.5px; color: #c3d0e4; padding: 0; border: 0; justify-content: flex-start; }
+.syl li i { font: 500 11.5px var(--mono); color: var(--muted); font-style: normal; flex: none; padding-top: 2px; }
