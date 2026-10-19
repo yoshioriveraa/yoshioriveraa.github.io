@@ -247,8 +247,8 @@ const OFFICIAL_COURSES = [
 const SUBSCRIPTION_TOPICS = [
   { icon: "📊", name: "Excel básico e intermedio" },
   { icon: "📈", name: "Power BI básico e intermedio" },
-  { icon: "🗄️", name: "SQL básico e intermedio con PostgreSQL" },
-  { icon: "🐍", name: "Python básico e intermedio" },
+  { icon: "🗄️", name: "SQL con PostgreSQL" },
+  { icon: "🐍", name: "Python" },
   { icon: "📉", name: "Python para datos: NumPy, Pandas y gráficas" },
   { icon: "🕸️", name: "Web scraping con BeautifulSoup" },
   { icon: "🤖", name: "Machine Learning con scikit-learn" },
