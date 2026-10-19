@@ -451,3 +451,26 @@ footer a:hover { color: var(--cyan); }
 .syl ol { list-style: none; margin: 0; padding: 4px 14px 14px; display: grid; gap: 6px; }
 .syl li { display: flex; gap: 10px; font-size: 13.5px; color: #c3d0e4; padding: 0; border: 0; justify-content: flex-start; }
 .syl li i { font: 500 11.5px var(--mono); color: var(--muted); font-style: normal; flex: none; padding-top: 2px; }
+
+/* ---------- Filtro por mes + carrusel de cursos ---------- */
+.month-tabs { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 14px; margin: 36px 0 8px; scrollbar-width: none; }
+.month-tabs::-webkit-scrollbar { display: none; }
+.month-tab { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 999px; cursor: pointer;
+  font: 600 14px var(--mono); color: var(--muted); background: var(--panel); border: 1px solid var(--line); transition: color .15s, border-color .15s, background .15s, box-shadow .2s; }
+.month-tab small { font: 400 11px var(--mono); opacity: .7; }
+.month-tab span { min-width: 22px; padding: 2px 7px; border-radius: 999px; font: 700 11px var(--mono); text-align: center; background: rgba(120,160,220,.16); }
+.month-tab:hover { color: #fff; border-color: rgba(15,140,255,.6); }
+.month-tab.on { color: #fff; background: linear-gradient(90deg, #0f8cff, #4db0ff); border-color: transparent; box-shadow: 0 0 28px rgba(15,140,255,.4); }
+.month-tab.on span { background: rgba(255,255,255,.25); }
+.month-panel[hidden] { display: none; }
+
+.carousel { position: relative; margin-top: 14px; }
+.carousel .courses { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 18px; scrollbar-width: thin; scrollbar-color: rgba(15,140,255,.5) transparent; outline: none; }
+.carousel .course { flex: 0 0 min(86%, 340px); scroll-snap-align: start; }
+@media (min-width: 720px) { .carousel .course { flex-basis: 340px; } }
+.car-btn { display: none; position: absolute; top: 50%; z-index: 2; width: 46px; height: 46px; margin-top: -32px; border-radius: 50%; cursor: pointer;
+  align-items: center; justify-content: center; font: 700 18px var(--mono); color: #fff; background: rgba(6,9,16,.92); border: 1px solid var(--cyan); box-shadow: 0 0 22px rgba(15,140,255,.4); }
+.car-btn:hover { background: var(--cyan); }
+.car-btn.prev { left: -14px; }
+.car-btn.next { right: -14px; }
+@media (hover: hover) and (min-width: 720px) { .car-btn { display: inline-flex; } }

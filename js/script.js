@@ -100,7 +100,7 @@ function initCourses() {
             .map((t, n) => `<li><i>${String(n + 1).padStart(2, "0")}</i>${t}</li>`)
             .join("");
           return `
-        <article data-animate class="course" style="--c:${color}">
+        <article class="course" style="--c:${color}">
           <div class="course-top">
             <span class="chip">${c.route}</span>
             <div class="date"><small>INICIA</small><b>${ini.dia}</b><span>${ini.mes}</span></div>
@@ -121,21 +121,49 @@ function initCourses() {
         </article>`;
         })
         .join("");
-      const n = mes.courses.length;
       return `
-      <div>
-        <div class="cycle">
-          <div class="num">${String(i + 1).padStart(2, "0")}</div>
-          <div>
-            <h3>${mesesLargo[mes.m - 1].charAt(0).toUpperCase() + mesesLargo[mes.m - 1].slice(1)} ${mes.y}</h3>
-            <p>${n} ${n === 1 ? "grupo inicia" : "grupos inician"} este mes</p>
-          </div>
-          <div class="rule"></div>
+      <div class="month-panel" data-month-panel="${i}"${i === 0 ? "" : " hidden"}>
+        <div class="carousel">
+          <button type="button" class="car-btn prev" data-car-prev aria-label="Anterior">&#8592;</button>
+          <div class="courses" data-car-track tabindex="0">${cards}</div>
+          <button type="button" class="car-btn next" data-car-next aria-label="Siguiente">&#8594;</button>
         </div>
-        <div class="courses">${cards}</div>
       </div>`;
     })
     .join("");
+
+  const nombreMes = (mes) => mesesLargo[mes.m - 1].charAt(0).toUpperCase() + mesesLargo[mes.m - 1].slice(1);
+  const tabs = [...porMes.values()]
+    .map(
+      (mes, i) => `
+      <button type="button" role="tab" class="month-tab${i === 0 ? " on" : ""}" data-month-tab="${i}" aria-selected="${i === 0}">
+        ${nombreMes(mes)} <small>${mes.y}</small><span>${mes.courses.length}</span>
+      </button>`
+    )
+    .join("");
+
+  el.innerHTML = `<div class="month-tabs" role="tablist" aria-label="Mes de inicio">${tabs}</div>${el.innerHTML}`;
+
+  const tabEls = el.querySelectorAll("[data-month-tab]");
+  const panels = el.querySelectorAll("[data-month-panel]");
+  tabEls.forEach((t) =>
+    t.addEventListener("click", () => {
+      tabEls.forEach((x) => {
+        x.classList.toggle("on", x === t);
+        x.setAttribute("aria-selected", x === t ? "true" : "false");
+      });
+      panels.forEach((p) => {
+        p.hidden = p.dataset.monthPanel !== t.dataset.monthTab;
+        if (!p.hidden) p.querySelector("[data-car-track]").scrollLeft = 0;
+      });
+    })
+  );
+  panels.forEach((p) => {
+    const track = p.querySelector("[data-car-track]");
+    const paso = () => Math.max(track.clientWidth * 0.85, 280);
+    p.querySelector("[data-car-prev]").addEventListener("click", () => track.scrollBy({ left: -paso(), behavior: "smooth" }));
+    p.querySelector("[data-car-next]").addEventListener("click", () => track.scrollBy({ left: paso(), behavior: "smooth" }));
+  });
 }
 
 /* ---------- Tarjetas "Qué vas a aprender" ---------- */
