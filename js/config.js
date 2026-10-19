@@ -248,7 +248,7 @@ const SUBSCRIPTION_TOPICS = [
   { icon: "📊", name: "Excel básico e intermedio" },
   { icon: "📈", name: "Power BI básico e intermedio" },
   { icon: "🗄️", name: "SQL con PostgreSQL" },
-  { icon: "🐍", name: "Python" },
+  { icon: "🐍", name: "Lenguaje de Programación: Python" },
   { icon: "📉", name: "Python para datos: NumPy, Pandas y gráficas" },
   { icon: "🕸️", name: "Web scraping con BeautifulSoup" },
   { icon: "🤖", name: "Machine Learning con scikit-learn" },
