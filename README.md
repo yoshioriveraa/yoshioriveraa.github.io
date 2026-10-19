@@ -9,7 +9,7 @@ publica desde la raíz en GitHub Pages. Al hacer push a `main`, esta página que
 automáticamente en:
 
 ```
-https://programaconcafe.com/
+https://yoshioagarie.com/
 ```
 
 ## Estructura

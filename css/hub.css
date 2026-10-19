@@ -1,0 +1,65 @@
+/* ============================================================
+   Página principal (hub) y página "Sobre mí"
+   Se apoya en las variables y componentes de tech.css
+   ============================================================ */
+
+/* ---------- Hub ---------- */
+.hub { min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow: hidden;
+  background: radial-gradient(900px 500px at 50% -10%, rgba(15,140,255,.22), transparent 60%), var(--bg); }
+.hub::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px; -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 10%, transparent 70%); mask-image: radial-gradient(ellipse at 50% 20%, #000 10%, transparent 70%); }
+.hub main { position: relative; z-index: 1; flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 56px 20px 32px; display: flex; flex-direction: column; justify-content: center; }
+.hub-head { text-align: center; }
+.hub-avatar { width: 104px; height: 104px; margin: 0 auto 22px; padding: 2px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan), var(--violet), var(--green)); box-shadow: 0 0 50px rgba(15,140,255,.35); }
+.hub-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 50%; }
+.hub-head h1 { font-size: clamp(30px, 7vw, 44px); font-weight: 800; letter-spacing: -0.03em; }
+.hub-head .role { margin-top: 10px; font: 500 14px var(--mono); color: var(--cyan); }
+.hub-head .brand { margin-top: 6px; font: 400 13px var(--mono); color: var(--muted); }
+
+.hub-links { margin: 36px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.hub-link { display: flex; align-items: center; gap: 16px; padding: 20px; text-decoration: none; background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
+  backdrop-filter: blur(10px); transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease; }
+.hub-link:hover { transform: translateY(-2px); border-color: rgba(15,140,255,.7); box-shadow: 0 0 36px rgba(15,140,255,.28); }
+.hub-link .n { font: 700 13px var(--mono); color: var(--green); flex: none; }
+.hub-link .tx { flex: 1; min-width: 0; }
+.hub-link b { display: block; font: 700 18px "Poppins", sans-serif; letter-spacing: -0.01em; }
+.hub-link span.d { display: block; margin-top: 2px; font-size: 14px; color: var(--muted); }
+.hub-link .ar { flex: none; font: 700 20px var(--mono); color: var(--cyan); transition: transform .15s ease; }
+.hub-link:hover .ar { transform: translateX(4px); }
+.hub-link.main { background: linear-gradient(90deg, #0f8cff, #4db0ff); border-color: transparent; box-shadow: 0 0 34px rgba(120,200,255,.3); }
+.hub-link.main .n, .hub-link.main .ar, .hub-link.main span.d { color: #fff; }
+
+.hub .socials { margin-top: 32px; display: flex; justify-content: center; gap: 12px; }
+.hub .socials a { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 12px; color: var(--muted); transition: color .15s, border-color .15s; }
+.hub .socials a:hover { color: #fff; border-color: var(--cyan); }
+.hub .socials svg { width: 20px; height: 20px; fill: currentColor; }
+.hub-foot { position: relative; z-index: 1; text-align: center; padding: 20px; font: 400 12px var(--mono); color: var(--muted); }
+
+/* ---------- Sobre mí ---------- */
+.about-hero .wrap { padding-top: 56px; padding-bottom: 64px; }
+.about-hero .about { align-items: center; }
+.about-hero h1 { font-size: clamp(38px, 8vw, 68px); font-weight: 800; letter-spacing: -0.035em; line-height: 1; margin-top: 14px; }
+.about-hero .role { margin-top: 14px; font: 500 14px var(--mono); color: var(--cyan); }
+.about-hero .bio { margin-top: 20px; color: var(--muted); font-size: 17px; max-width: 560px; }
+.about-hero .hero-cta { margin-top: 28px; }
+.about-hero figure { max-width: 340px; }
+@media (min-width: 860px) { .about-hero .about { grid-template-columns: 340px minmax(0, 1fr); gap: 64px; } }
+
+.job .co { font: 500 13px var(--mono); color: var(--green); }
+.job ul { margin: 12px 0 0; padding: 0; list-style: none; max-width: 700px; }
+.job li { position: relative; padding: 4px 0 4px 20px; color: var(--muted); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 2px; top: 14px; width: 6px; height: 6px; border-radius: 2px; background: var(--cyan); }
+.job h3 { font-size: 22px; }
+.job h3::before { content: none; }
+.now-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; font: 500 11px var(--mono); color: var(--green); border: 1px solid rgba(124,200,255,.5); border-radius: 999px; vertical-align: middle; }
+
+.chips { margin: 28px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li { padding: 9px 14px; font: 500 13px var(--mono); color: #cfdaec; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; }
+
+.edu { margin: 36px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+@media (min-width: 720px) { .edu { grid-template-columns: repeat(2, 1fr); } }
+.edu li { padding: 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+.edu b { display: block; font: 700 16px "Poppins", sans-serif; }
+.edu span { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; }
+.edu em { display: block; margin-top: 8px; font: 400 12.5px var(--mono); color: var(--green); font-style: normal; }
