@@ -1,4 +1,4 @@
-# Programa con Café
+# Yoshio Agarie
 
 Landing page estática (HTML + Tailwind CSS compilado + JS vanilla) con los cursos que abren en
 octubre y noviembre, y para dirigir a WhatsApp a quien quiera inscribirse a la suscripción de

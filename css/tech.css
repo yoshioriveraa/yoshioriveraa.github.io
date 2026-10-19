@@ -435,3 +435,7 @@ footer a:hover { color: var(--cyan); }
   .stats b { font-size: 21px; }
   .stats span { font-size: 11px; overflow-wrap: anywhere; }
 }
+
+/* ---------- Nombre en la barra superior (sin logo) ---------- */
+.brand-name { display: inline-flex; align-items: center; font: 800 20px "Poppins", sans-serif; letter-spacing: -0.02em; text-decoration: none; color: #fff; }
+.brand-name .cur { width: .32em; height: .7em; margin-left: 5px; vertical-align: baseline; }
